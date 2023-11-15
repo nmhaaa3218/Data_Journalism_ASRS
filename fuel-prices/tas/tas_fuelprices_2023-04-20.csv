@@ -1,0 +1,886 @@
+stationcode,brand,name,address,lat,long,fueltype,fueltype_long,price,collection_datetime,collection_date
+4,BP,BP Brighton,"163 Brighton Road, Brighton TAS 7019",-42.6993,147.2513,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+4,BP,BP Brighton,"163 Brighton Road, Brighton TAS 7019",-42.6993,147.2513,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+4,BP,BP Brighton,"163 Brighton Road, Brighton TAS 7019",-42.6993,147.2513,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+4,BP,BP Brighton,"163 Brighton Road, Brighton TAS 7019",-42.6993,147.2513,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+5,BP,BP Brooker,"200 Brooker Highway, North Hobart TAS 7000",-42.8700379,147.3214497,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+5,BP,BP Brooker,"200 Brooker Highway, North Hobart TAS 7000",-42.8700379,147.3214497,P98,Premium 98,221.9,2023-04-20 14:00:16.498751,2023-04-20
+5,BP,BP Brooker,"200 Brooker Highway, North Hobart TAS 7000",-42.8700379,147.3214497,PDL,Premium Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+5,BP,BP Brooker,"200 Brooker Highway, North Hobart TAS 7000",-42.8700379,147.3214497,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+6,BP,BP Cambridge,"967 Cambridge Road, Cambridge TAS 7170",-42.837107,147.4408011,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+6,BP,BP Cambridge,"967 Cambridge Road, Cambridge TAS 7170",-42.837107,147.4408011,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+6,BP,BP Cambridge,"967 Cambridge Road, Cambridge TAS 7170",-42.837107,147.4408011,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+7,BP,BP Devonport,"3 Friend Street, Devonport TAS 7310",-41.1915972,146.3369471,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+7,BP,BP Devonport,"3 Friend Street, Devonport TAS 7310",-41.1915972,146.3369471,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+7,BP,BP Devonport,"3 Friend Street, Devonport TAS 7310",-41.1915972,146.3369471,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+7,BP,BP Devonport,"3 Friend Street, Devonport TAS 7310",-41.1915972,146.3369471,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+8,BP,BP Hobart Airport,"3 Holyman Avenue, Hobart TAS 7170",-42.8327,147.491,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+8,BP,BP Hobart Airport,"3 Holyman Avenue, Hobart TAS 7170",-42.8327,147.491,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+8,BP,BP Hobart Airport,"3 Holyman Avenue, Hobart TAS 7170",-42.8327,147.491,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+8,BP,BP Hobart Airport,"3 Holyman Avenue, Hobart TAS 7170",-42.8327,147.491,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+9,BP,BP Huonville,"60 Main Road, Huonville TAS 7109",-43.0292136,147.0500176,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+9,BP,BP Huonville,"60 Main Road, Huonville TAS 7109",-43.0292136,147.0500176,PDL,Premium Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+9,BP,BP Huonville,"60 Main Road, Huonville TAS 7109",-43.0292136,147.0500176,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+10,BP,BP Kingston Tas,"Cnr Channel Highway & John Street, Kingston TAS 7050",-42.9754,147.3096,P95,Premium 95,218.9,2023-04-20 14:00:16.498751,2023-04-20
+10,BP,BP Kingston Tas,"Cnr Channel Highway & John Street, Kingston TAS 7050",-42.9754,147.3096,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+10,BP,BP Kingston Tas,"Cnr Channel Highway & John Street, Kingston TAS 7050",-42.9754,147.3096,PDL,Premium Diesel,219.9,2023-04-20 14:00:16.498751,2023-04-20
+11,BP,BP Launceston,"31 Wellington Street, Launceston TAS 7250",-41.4393566,147.1365688,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+11,BP,BP Launceston,"31 Wellington Street, Launceston TAS 7250",-41.4393566,147.1365688,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+11,BP,BP Launceston,"31 Wellington Street, Launceston TAS 7250",-41.4393566,147.1365688,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+11,BP,BP Launceston,"31 Wellington Street, Launceston TAS 7250",-41.4393566,147.1365688,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+12,BP,BP Lindisfarne,"170 East Derwent Highway, Lindisfarne TAS 7015",-42.8457973,147.35833,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+12,BP,BP Lindisfarne,"170 East Derwent Highway, Lindisfarne TAS 7015",-42.8457973,147.35833,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+12,BP,BP Lindisfarne,"170 East Derwent Highway, Lindisfarne TAS 7015",-42.8457973,147.35833,PDL,Premium Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+12,BP,BP Lindisfarne,"170 East Derwent Highway, Lindisfarne TAS 7015",-42.8457973,147.35833,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+13,BP,BP Margate,"1718 Channel Highway, Margate TAS 7054",-43.0266606,147.2609635,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+13,BP,BP Margate,"1718 Channel Highway, Margate TAS 7054",-43.0266606,147.2609635,P98,Premium 98,220.9,2023-04-20 14:00:16.498751,2023-04-20
+13,BP,BP Margate,"1718 Channel Highway, Margate TAS 7054",-43.0266606,147.2609635,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+13,BP,BP Margate,"1718 Channel Highway, Margate TAS 7054",-43.0266606,147.2609635,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+14,BP,BP Moonah,"30 Main Road, Moonah TAS 7009",-42.8456751,147.294134,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+14,BP,BP Moonah,"30 Main Road, Moonah TAS 7009",-42.8456751,147.294134,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+14,BP,BP Moonah,"30 Main Road, Moonah TAS 7009",-42.8456751,147.294134,PDL,Premium Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+14,BP,BP Moonah,"30 Main Road, Moonah TAS 7009",-42.8456751,147.294134,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+15,BP,BP Newnham,"117 George Town Road, Newnham TAS 7248",-41.3847474,147.1276279,P95,Premium 95,211.9,2023-04-20 14:00:16.498751,2023-04-20
+15,BP,BP Newnham,"117 George Town Road, Newnham TAS 7248",-41.3847474,147.1276279,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+15,BP,BP Newnham,"117 George Town Road, Newnham TAS 7248",-41.3847474,147.1276279,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+15,BP,BP Newnham,"117 George Town Road, Newnham TAS 7248",-41.3847474,147.1276279,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+16,BP,BP North Terrace,"36 North Terrace, Burnie TAS 7320",-41.0478,145.901,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+16,BP,BP North Terrace,"36 North Terrace, Burnie TAS 7320",-41.0478,145.901,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+16,BP,BP North Terrace,"36 North Terrace, Burnie TAS 7320",-41.0478,145.901,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+16,BP,BP North Terrace,"36 North Terrace, Burnie TAS 7320",-41.0478,145.901,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+17,BP,BP Riverside,"214 West Tamar Road, Riverside TAS 7250",-41.4200043,147.1093515,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+17,BP,BP Riverside,"214 West Tamar Road, Riverside TAS 7250",-41.4200043,147.1093515,PDL,Premium Diesel,214.9,2023-04-20 14:00:16.498751,2023-04-20
+17,BP,BP Riverside,"214 West Tamar Road, Riverside TAS 7250",-41.4200043,147.1093515,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+18,BP,BP St Helens,"Cnr 6 Circassion & Cecilia Streets, St Helens TAS 7216",-41.3236,148.24981,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+18,BP,BP St Helens,"Cnr 6 Circassion & Cecilia Streets, St Helens TAS 7216",-41.3236,148.24981,PDL,Premium Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+18,BP,BP St Helens,"Cnr 6 Circassion & Cecilia Streets, St Helens TAS 7216",-41.3236,148.24981,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+19,BP,BP Ulverstone,"58 Main Street, Ulverstone TAS 7315",-41.1575246,146.1775819,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+19,BP,BP Ulverstone,"58 Main Street, Ulverstone TAS 7315",-41.1575246,146.1775819,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+19,BP,BP Ulverstone,"58 Main Street, Ulverstone TAS 7315",-41.1575246,146.1775819,PDL,Premium Diesel,213.9,2023-04-20 14:00:16.498751,2023-04-20
+19,BP,BP Ulverstone,"58 Main Street, Ulverstone TAS 7315",-41.1575246,146.1775819,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+20,Ampol,Ampol Hill Street Lauderdale,"528 South Arm Highway, Lauderdale TAS 7021",-42.9140087,147.4863129,DL,Diesel,203.0,2023-04-20 14:00:16.498751,2023-04-20
+20,Ampol,Ampol Hill Street Lauderdale,"528 South Arm Highway, Lauderdale TAS 7021",-42.9140087,147.4863129,U91,Unleaded 91,192.0,2023-04-20 14:00:16.498751,2023-04-20
+22,Ampol,Ampol Foodary Eastlands,"1 Gordons Hill Road, Bellerive TAS 7018",-42.8660745,147.3729827,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+22,Ampol,Ampol Foodary Eastlands,"1 Gordons Hill Road, Bellerive TAS 7018",-42.8660745,147.3729827,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+22,Ampol,Ampol Foodary Eastlands,"1 Gordons Hill Road, Bellerive TAS 7018",-42.8660745,147.3729827,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+22,Ampol,Ampol Foodary Eastlands,"1 Gordons Hill Road, Bellerive TAS 7018",-42.8660745,147.3729827,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+22,Ampol,Ampol Foodary Eastlands,"1 Gordons Hill Road, Bellerive TAS 7018",-42.8660745,147.3729827,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+23,Ampol,Ampol Foodary Glenorchy,"323-325 Main Road, Glenorchy TAS 7010",-42.8336862,147.2809297,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+23,Ampol,Ampol Foodary Glenorchy,"323-325 Main Road, Glenorchy TAS 7010",-42.8336862,147.2809297,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+23,Ampol,Ampol Foodary Glenorchy,"323-325 Main Road, Glenorchy TAS 7010",-42.8336862,147.2809297,PDL,Premium Diesel,197.9,2023-04-20 14:00:16.498751,2023-04-20
+23,Ampol,Ampol Foodary Glenorchy,"323-325 Main Road, Glenorchy TAS 7010",-42.8336862,147.2809297,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+24,Ampol,Ampol Hobart Macquarie St,"272 Macquarie Street, South Hobart TAS 7004",-42.8912049,147.319796,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+24,Ampol,Ampol Hobart Macquarie St,"272 Macquarie Street, South Hobart TAS 7004",-42.8912049,147.319796,PDL,Premium Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+24,Ampol,Ampol Hobart Macquarie St,"272 Macquarie Street, South Hobart TAS 7004",-42.8912049,147.319796,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+25,Ampol,Ampol Hobart South,"152-158 Davey Street CNR Antill Street, Hobart South TAS 7000",-42.891354,147.321352,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+25,Ampol,Ampol Hobart South,"152-158 Davey Street CNR Antill Street, Hobart South TAS 7000",-42.891354,147.321352,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+25,Ampol,Ampol Hobart South,"152-158 Davey Street CNR Antill Street, Hobart South TAS 7000",-42.891354,147.321352,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+25,Ampol,Ampol Hobart South,"152-158 Davey Street CNR Antill Street, Hobart South TAS 7000",-42.891354,147.321352,PDL,Premium Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+25,Ampol,Ampol Hobart South,"152-158 Davey Street CNR Antill Street, Hobart South TAS 7000",-42.891354,147.321352,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+26,Ampol,Ampol Foodary Lindisfarne,"109 EAST DERWENT HWY, LINDISFARNE TAS 7015",-42.8517409,147.3601656,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+26,Ampol,Ampol Foodary Lindisfarne,"109 EAST DERWENT HWY, LINDISFARNE TAS 7015",-42.8517409,147.3601656,PDL,Premium Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+26,Ampol,Ampol Foodary Lindisfarne,"109 EAST DERWENT HWY, LINDISFARNE TAS 7015",-42.8517409,147.3601656,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+27,Ampol,Ampol Foodary Midway Point,"13 Tasman Highway, Midway Point TAS 7171",-42.8041329,147.5326407,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+27,Ampol,Ampol Foodary Midway Point,"13 Tasman Highway, Midway Point TAS 7171",-42.8041329,147.5326407,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+27,Ampol,Ampol Foodary Midway Point,"13 Tasman Highway, Midway Point TAS 7171",-42.8041329,147.5326407,PDL,Premium Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+27,Ampol,Ampol Foodary Midway Point,"13 Tasman Highway, Midway Point TAS 7171",-42.8041329,147.5326407,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+28,Ampol,Ampol Foodary New Town,"71 Risdon Road near Queens Walk, New Town TAS 7008",-42.851853,147.310634,P95,Premium 95,211.9,2023-04-20 14:00:16.498751,2023-04-20
+28,Ampol,Ampol Foodary New Town,"71 Risdon Road near Queens Walk, New Town TAS 7008",-42.851853,147.310634,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+28,Ampol,Ampol Foodary New Town,"71 Risdon Road near Queens Walk, New Town TAS 7008",-42.851853,147.310634,PDL,Premium Diesel,206.9,2023-04-20 14:00:16.498751,2023-04-20
+28,Ampol,Ampol Foodary New Town,"71 Risdon Road near Queens Walk, New Town TAS 7008",-42.851853,147.310634,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+29,Ampol,Ampol Foodary Sandy Bay,"388 Sandy Bay Road, Sandy Bay TAS 7005",-42.9022118,147.3346868,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+29,Ampol,Ampol Foodary Sandy Bay,"388 Sandy Bay Road, Sandy Bay TAS 7005",-42.9022118,147.3346868,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+29,Ampol,Ampol Foodary Sandy Bay,"388 Sandy Bay Road, Sandy Bay TAS 7005",-42.9022118,147.3346868,PDL,Premium Diesel,211.9,2023-04-20 14:00:16.498751,2023-04-20
+29,Ampol,Ampol Foodary Sandy Bay,"388 Sandy Bay Road, Sandy Bay TAS 7005",-42.9022118,147.3346868,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+30,EG Ampol,EG Ampol Burnie,"Cnr North Terrace & Mount Street, Burnie TAS 7320",-41.0498,145.9052,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+30,EG Ampol,EG Ampol Burnie,"Cnr North Terrace & Mount Street, Burnie TAS 7320",-41.0498,145.9052,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+30,EG Ampol,EG Ampol Burnie,"Cnr North Terrace & Mount Street, Burnie TAS 7320",-41.0498,145.9052,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+30,EG Ampol,EG Ampol Burnie,"Cnr North Terrace & Mount Street, Burnie TAS 7320",-41.0498,145.9052,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+31,EG Ampol,EG Ampol Claremont,"1 Box Hill Road, Claremont TAS 7011",-42.7924693,147.2567552,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+31,EG Ampol,EG Ampol Claremont,"1 Box Hill Road, Claremont TAS 7011",-42.7924693,147.2567552,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+31,EG Ampol,EG Ampol Claremont,"1 Box Hill Road, Claremont TAS 7011",-42.7924693,147.2567552,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+32,EG Ampol,EG Ampol Glenorchy,"463-465 Main Road, Glenorchy TAS 7010",-42.8294,147.2691,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+32,EG Ampol,EG Ampol Glenorchy,"463-465 Main Road, Glenorchy TAS 7010",-42.8294,147.2691,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+32,EG Ampol,EG Ampol Glenorchy,"463-465 Main Road, Glenorchy TAS 7010",-42.8294,147.2691,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+32,EG Ampol,EG Ampol Glenorchy,"463-465 Main Road, Glenorchy TAS 7010",-42.8294,147.2691,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+33,EG Ampol,EG Ampol Howrah,"242 CLARENCE ST, HOWRAH TAS 7018",-42.8775095,147.3962802,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+33,EG Ampol,EG Ampol Howrah,"242 CLARENCE ST, HOWRAH TAS 7018",-42.8775095,147.3962802,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+33,EG Ampol,EG Ampol Howrah,"242 CLARENCE ST, HOWRAH TAS 7018",-42.8775095,147.3962802,PDL,Premium Diesel,206.9,2023-04-20 14:00:16.498751,2023-04-20
+33,EG Ampol,EG Ampol Howrah,"242 CLARENCE ST, HOWRAH TAS 7018",-42.8775095,147.3962802,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+34,EG Ampol,EG Ampol Huonville,"45 Main Road, Huonville TAS 7109",-43.03,147.0486,LPG,LPG,132.9,2023-04-20 14:00:16.498751,2023-04-20
+34,EG Ampol,EG Ampol Huonville,"45 Main Road, Huonville TAS 7109",-43.03,147.0486,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+34,EG Ampol,EG Ampol Huonville,"45 Main Road, Huonville TAS 7109",-43.03,147.0486,PDL,Premium Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+34,EG Ampol,EG Ampol Huonville,"45 Main Road, Huonville TAS 7109",-43.03,147.0486,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+35,EG Ampol, EG Ampol Kingsmeadows,"111 Hobart Road, Kingsmeadows TAS 7249",-41.4651,147.1594,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+35,EG Ampol, EG Ampol Kingsmeadows,"111 Hobart Road, Kingsmeadows TAS 7249",-41.4651,147.1594,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+35,EG Ampol, EG Ampol Kingsmeadows,"111 Hobart Road, Kingsmeadows TAS 7249",-41.4651,147.1594,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+36,EG Ampol,EG Ampol Kingston,"37-59 Maranoa Road, Kingston TAS 7050",-42.9799431,147.3027728,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+36,EG Ampol,EG Ampol Kingston,"37-59 Maranoa Road, Kingston TAS 7050",-42.9799431,147.3027728,P98,Premium 98,220.9,2023-04-20 14:00:16.498751,2023-04-20
+36,EG Ampol,EG Ampol Kingston,"37-59 Maranoa Road, Kingston TAS 7050",-42.9799431,147.3027728,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+36,EG Ampol,EG Ampol Kingston,"37-59 Maranoa Road, Kingston TAS 7050",-42.9799431,147.3027728,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+37,EG Ampol,EG Ampol Legana,"Corner Freshwater Point Road and Legana Grove, Legana TAS 7277",-41.3639,147.0422,LPG,LPG,131.9,2023-04-20 14:00:16.498751,2023-04-20
+37,EG Ampol,EG Ampol Legana,"Corner Freshwater Point Road and Legana Grove, Legana TAS 7277",-41.3639,147.0422,P95,Premium 95,211.9,2023-04-20 14:00:16.498751,2023-04-20
+37,EG Ampol,EG Ampol Legana,"Corner Freshwater Point Road and Legana Grove, Legana TAS 7277",-41.3639,147.0422,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+37,EG Ampol,EG Ampol Legana,"Corner Freshwater Point Road and Legana Grove, Legana TAS 7277",-41.3639,147.0422,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+38,EG Ampol,EG Ampol Mowbray,"262 Invermay Road, Mowbray TAS 7248",-41.4050213,147.1342124,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+38,EG Ampol,EG Ampol Mowbray,"262 Invermay Road, Mowbray TAS 7248",-41.4050213,147.1342124,PDL,Premium Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+38,EG Ampol,EG Ampol Mowbray,"262 Invermay Road, Mowbray TAS 7248",-41.4050213,147.1342124,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+39,EG Ampol,EG Ampol New Norfolk,"81 High Street, New Norfolk TAS 7140",-42.7802635,147.0657961,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+39,EG Ampol,EG Ampol New Norfolk,"81 High Street, New Norfolk TAS 7140",-42.7802635,147.0657961,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+39,EG Ampol,EG Ampol New Norfolk,"81 High Street, New Norfolk TAS 7140",-42.7802635,147.0657961,PDL,Premium Diesel,200.9,2023-04-20 14:00:16.498751,2023-04-20
+39,EG Ampol,EG Ampol New Norfolk,"81 High Street, New Norfolk TAS 7140",-42.7802635,147.0657961,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+40,EG Ampol,EG Ampol Prospect Vale,"360-364 Westbury Road, Prospect Vale TAS 7250",-41.4810797,147.1259995,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+40,EG Ampol,EG Ampol Prospect Vale,"360-364 Westbury Road, Prospect Vale TAS 7250",-41.4810797,147.1259995,PDL,Premium Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+40,EG Ampol,EG Ampol Prospect Vale,"360-364 Westbury Road, Prospect Vale TAS 7250",-41.4810797,147.1259995,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+41,EG Ampol,EG Ampol Sorell,"12 Weston Hill Road, Sorell TAS 7172",-42.7802,147.565,LPG,LPG,129.7,2023-04-20 14:00:16.498751,2023-04-20
+41,EG Ampol,EG Ampol Sorell,"12 Weston Hill Road, Sorell TAS 7172",-42.7802,147.565,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+41,EG Ampol,EG Ampol Sorell,"12 Weston Hill Road, Sorell TAS 7172",-42.7802,147.565,P98,Premium 98,214.9,2023-04-20 14:00:16.498751,2023-04-20
+41,EG Ampol,EG Ampol Sorell,"12 Weston Hill Road, Sorell TAS 7172",-42.7802,147.565,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+41,EG Ampol,EG Ampol Sorell,"12 Weston Hill Road, Sorell TAS 7172",-42.7802,147.565,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+42,EG Ampol, EG Ampol Ulverstone,"20-22 Eastland Drive, Ulverstone TAS 7315",-41.1587,146.184,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+42,EG Ampol, EG Ampol Ulverstone,"20-22 Eastland Drive, Ulverstone TAS 7315",-41.1587,146.184,PDL,Premium Diesel,213.9,2023-04-20 14:00:16.498751,2023-04-20
+42,EG Ampol, EG Ampol Ulverstone,"20-22 Eastland Drive, Ulverstone TAS 7315",-41.1587,146.184,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+43,EG Ampol,EG Ampol Wynyard,"34 Jackson Street, Wynyard TAS 7325",-40.9904269,145.7282697,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+43,EG Ampol,EG Ampol Wynyard,"34 Jackson Street, Wynyard TAS 7325",-40.9904269,145.7282697,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+43,EG Ampol,EG Ampol Wynyard,"34 Jackson Street, Wynyard TAS 7325",-40.9904269,145.7282697,PDL,Premium Diesel,216.9,2023-04-20 14:00:16.498751,2023-04-20
+43,EG Ampol,EG Ampol Wynyard,"34 Jackson Street, Wynyard TAS 7325",-40.9904269,145.7282697,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+44,Coles Express,Coles Express Blackmans Bay,"176 Roslyn Avenue, Blackmans Bay TAS 7052",-43.0001808,147.320607,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+44,Coles Express,Coles Express Blackmans Bay,"176 Roslyn Avenue, Blackmans Bay TAS 7052",-43.0001808,147.320607,P95,Premium 95,216.9,2023-04-20 14:00:16.498751,2023-04-20
+44,Coles Express,Coles Express Blackmans Bay,"176 Roslyn Avenue, Blackmans Bay TAS 7052",-43.0001808,147.320607,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+45,Coles Express,Coles Express Brighton,"146 Brighton Road (Cnr Andrew Street), Brighton TAS 7030",-42.700453,147.251113,DL,Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+45,Coles Express,Coles Express Brighton,"146 Brighton Road (Cnr Andrew Street), Brighton TAS 7030",-42.700453,147.251113,P95,Premium 95,211.9,2023-04-20 14:00:16.498751,2023-04-20
+45,Coles Express,Coles Express Brighton,"146 Brighton Road (Cnr Andrew Street), Brighton TAS 7030",-42.700453,147.251113,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+46,Coles Express,Coles Express Devonport,"22 Formby Road & Ashburner Street, Devonport TAS 7310",-41.187463,146.361823,DL,Diesel,202.9,2023-04-20 14:00:16.498751,2023-04-20
+46,Coles Express,Coles Express Devonport,"22 Formby Road & Ashburner Street, Devonport TAS 7310",-41.187463,146.361823,P95,Premium 95,203.9,2023-04-20 14:00:16.498751,2023-04-20
+46,Coles Express,Coles Express Devonport,"22 Formby Road & Ashburner Street, Devonport TAS 7310",-41.187463,146.361823,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+46,Coles Express,Coles Express Devonport,"22 Formby Road & Ashburner Street, Devonport TAS 7310",-41.187463,146.361823,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+47,Coles Express,Coles Express Glenorchy,"418 Main Road, Glenorchy TAS 7010",-42.8320708,147.2707854,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+47,Coles Express,Coles Express Glenorchy,"418 Main Road, Glenorchy TAS 7010",-42.8320708,147.2707854,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+47,Coles Express,Coles Express Glenorchy,"418 Main Road, Glenorchy TAS 7010",-42.8320708,147.2707854,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+48,Coles Express,Coles Express Hobart,"257 Elizabeth Street, Hobart TAS 7000",-42.8765375,147.3190101,DL,Diesel,206.9,2023-04-20 14:00:16.498751,2023-04-20
+48,Coles Express,Coles Express Hobart,"257 Elizabeth Street, Hobart TAS 7000",-42.8765375,147.3190101,P95,Premium 95,214.9,2023-04-20 14:00:16.498751,2023-04-20
+48,Coles Express,Coles Express Hobart,"257 Elizabeth Street, Hobart TAS 7000",-42.8765375,147.3190101,P98,Premium 98,220.9,2023-04-20 14:00:16.498751,2023-04-20
+48,Coles Express,Coles Express Hobart,"257 Elizabeth Street, Hobart TAS 7000",-42.8765375,147.3190101,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+49,Coles Express,Coles Express Howrah,"2 Howrah Road, Howrah TAS 7018",-42.8806114,147.4058823,DL,Diesel,206.9,2023-04-20 14:00:16.498751,2023-04-20
+49,Coles Express,Coles Express Howrah,"2 Howrah Road, Howrah TAS 7018",-42.8806114,147.4058823,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+49,Coles Express,Coles Express Howrah,"2 Howrah Road, Howrah TAS 7018",-42.8806114,147.4058823,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+50,Coles Express,Coles Express Invermay,"103 Invermay Road, Launceston TAS 7250",-41.425354,147.136585,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+50,Coles Express,Coles Express Invermay,"103 Invermay Road, Launceston TAS 7250",-41.425354,147.136585,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+50,Coles Express,Coles Express Invermay,"103 Invermay Road, Launceston TAS 7250",-41.425354,147.136585,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+51,Coles Express,Coles Express Launceston,"69 Wellington St, Cnr York St, Launceston TAS 7250",-41.440432,147.137347,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+51,Coles Express,Coles Express Launceston,"69 Wellington St, Cnr York St, Launceston TAS 7250",-41.440432,147.137347,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+51,Coles Express,Coles Express Launceston,"69 Wellington St, Cnr York St, Launceston TAS 7250",-41.440432,147.137347,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+52,Coles Express,Coles Express Launceston Bathurst St,"106-114 Bathurst St, Launceston TAS 7250",-41.4446547,147.1375611,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+52,Coles Express,Coles Express Launceston Bathurst St,"106-114 Bathurst St, Launceston TAS 7250",-41.4446547,147.1375611,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+52,Coles Express,Coles Express Launceston Bathurst St,"106-114 Bathurst St, Launceston TAS 7250",-41.4446547,147.1375611,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+52,Coles Express,Coles Express Launceston Bathurst St,"106-114 Bathurst St, Launceston TAS 7250",-41.4446547,147.1375611,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+53,Coles Express,Coles Express Moonah,"112 Charles Street, Moonah TAS 7009",-42.8414921,147.2884415,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+53,Coles Express,Coles Express Moonah,"112 Charles Street, Moonah TAS 7009",-42.8414921,147.2884415,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+53,Coles Express,Coles Express Moonah,"112 Charles Street, Moonah TAS 7009",-42.8414921,147.2884415,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+53,Coles Express,Coles Express Moonah,"112 Charles Street, Moonah TAS 7009",-42.8414921,147.2884415,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+54,Coles Express,Coles Express New Norfolk,"27 Hamilton Road (Lyell Highway), New Norfolk TAS 7140",-42.777244,147.053854,DL,Diesel,198.9,2023-04-20 14:00:16.498751,2023-04-20
+54,Coles Express,Coles Express New Norfolk,"27 Hamilton Road (Lyell Highway), New Norfolk TAS 7140",-42.777244,147.053854,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+54,Coles Express,Coles Express New Norfolk,"27 Hamilton Road (Lyell Highway), New Norfolk TAS 7140",-42.777244,147.053854,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+55,Coles Express,Coles Express Newstead,"1-3 Hobblers Bridge Road, Launceston TAS 7250",-41.441623,147.162028,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+55,Coles Express,Coles Express Newstead,"1-3 Hobblers Bridge Road, Launceston TAS 7250",-41.441623,147.162028,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+55,Coles Express,Coles Express Newstead,"1-3 Hobblers Bridge Road, Launceston TAS 7250",-41.441623,147.162028,P98,Premium 98,214.9,2023-04-20 14:00:16.498751,2023-04-20
+55,Coles Express,Coles Express Newstead,"1-3 Hobblers Bridge Road, Launceston TAS 7250",-41.441623,147.162028,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+56,Coles Express,Coles Express Sandy Bay,"142 Sandy Bay Road, Sandy Bay TAS 7005",-42.8937266,147.3261043,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+56,Coles Express,Coles Express Sandy Bay,"142 Sandy Bay Road, Sandy Bay TAS 7005",-42.8937266,147.3261043,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+56,Coles Express,Coles Express Sandy Bay,"142 Sandy Bay Road, Sandy Bay TAS 7005",-42.8937266,147.3261043,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+56,Coles Express,Coles Express Sandy Bay,"142 Sandy Bay Road, Sandy Bay TAS 7005",-42.8937266,147.3261043,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+57,Coles Express,Coles Express Smithton,"6-8 Brittons Road, Smithton TAS 7330",-40.8560213,145.1339397,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+57,Coles Express,Coles Express Smithton,"6-8 Brittons Road, Smithton TAS 7330",-40.8560213,145.1339397,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+57,Coles Express,Coles Express Smithton,"6-8 Brittons Road, Smithton TAS 7330",-40.8560213,145.1339397,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+58,Coles Express,Coles Express Sorell,"4-12 Cole St (Arthur Highway), Sorell TAS 7172",-42.782008,147.565414,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+58,Coles Express,Coles Express Sorell,"4-12 Cole St (Arthur Highway), Sorell TAS 7172",-42.782008,147.565414,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+58,Coles Express,Coles Express Sorell,"4-12 Cole St (Arthur Highway), Sorell TAS 7172",-42.782008,147.565414,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+59,Lowes Petroleum BP,Lowes BP Bell Bay (unmanned terminal),"Lot 10-12 Bellbay Road, Bell Bay TAS 7253",-41.1173046,146.8671413,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+59,Lowes Petroleum BP,Lowes BP Bell Bay (unmanned terminal),"Lot 10-12 Bellbay Road, Bell Bay TAS 7253",-41.1173046,146.8671413,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+59,Lowes Petroleum BP,Lowes BP Bell Bay (unmanned terminal),"Lot 10-12 Bellbay Road, Bell Bay TAS 7253",-41.1173046,146.8671413,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+60,Lowes Petroleum BP,Lowes Bp Brighton Opt,"19 Greenbanks Road, Bridgewater TAS 7030",-42.723994,147.231813,DL,Diesel,195.9,2023-04-20 14:00:16.498751,2023-04-20
+61,Lowes Petroleum BP,Lowes Bp Burnie (Wivenhoe) Opt,"River Road, Wivenhoe TAS 7230",-41.0671008,145.9257496,DL,Diesel,197.9,2023-04-20 14:00:16.498751,2023-04-20
+62,Lowes Petroleum BP,Lowes Bp Deloraine Opt,"29 MEANDER VALLEY RD, DELORAINE TAS 7304",-41.5249983,146.6640326,P95,Premium 95,215.9,2023-04-20 14:00:16.498751,2023-04-20
+62,Lowes Petroleum BP,Lowes Bp Deloraine Opt,"29 MEANDER VALLEY RD, DELORAINE TAS 7304",-41.5249983,146.6640326,PDL,Premium Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+62,Lowes Petroleum BP,Lowes Bp Deloraine Opt,"29 MEANDER VALLEY RD, DELORAINE TAS 7304",-41.5249983,146.6640326,U91,Unleaded 91,202.9,2023-04-20 14:00:16.498751,2023-04-20
+63,Lowes Petroleum BP,Lowes Bp Devonport (Quoiba) Opt,"1-3 Stoney Rise Road, Quoiba TAS 7310",-41.209849,146.3437915,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+66,Lowes Petroleum BP,Lowes Bp Launceston (Gleadow Street) Opt,"Gleadow Street, Launceston TAS 7250",-41.4264166,147.1370712,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+68,Lowes Petroleum BP,Lowes Bp Scottsdale Opt,"7 King Street, Scottsdale TAS 7260",-41.1601235,147.518321,PDL,Premium Diesel,198.9,2023-04-20 14:00:16.498751,2023-04-20
+68,Lowes Petroleum BP,Lowes Bp Scottsdale Opt,"7 King Street, Scottsdale TAS 7260",-41.1601235,147.518321,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+69,Lowes Petroleum BP,Lowes Bp Sheffield Opt,"3 Spring Street, Sheffield TAS 7306",-41.3833676,146.3328401,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+69,Lowes Petroleum BP,Lowes Bp Sheffield Opt,"3 Spring Street, Sheffield TAS 7306",-41.3833676,146.3328401,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+69,Lowes Petroleum BP,Lowes Bp Sheffield Opt,"3 Spring Street, Sheffield TAS 7306",-41.3833676,146.3328401,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+70,Lowes Petroleum BP,Lowes Bp Smithton Opt,"Bass Highway, Smithton TAS 7330",-40.8580528,145.1274173,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+71,Lowes Petroleum BP,Lowes Bp Strahan Wharf Opt,"Strahan Wharf, Strahan TAS 7468",-42.15359,145.328592,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+72,Lowes Petroleum BP,Lowes BP Triabunna OPT(unmanned),"21 Tasman Highway, Triabunna TAS 7190",-42.5006664,147.913759,DL,Diesel,211.9,2023-04-20 14:00:16.498751,2023-04-20
+72,Lowes Petroleum BP,Lowes BP Triabunna OPT(unmanned),"21 Tasman Highway, Triabunna TAS 7190",-42.5006664,147.913759,P95,Premium 95,214.9,2023-04-20 14:00:16.498751,2023-04-20
+72,Lowes Petroleum BP,Lowes BP Triabunna OPT(unmanned),"21 Tasman Highway, Triabunna TAS 7190",-42.5006664,147.913759,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+73,Lowes Petroleum BP,Lowes Bp Zeehan Opt,"258 Main Street, Zeehan TAS 7469",-41.881125,145.3278295,PDL,Premium Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+73,Lowes Petroleum BP,Lowes Bp Zeehan Opt,"258 Main Street, Zeehan TAS 7469",-41.881125,145.3278295,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+74,United,United Beaconsfield,"187 Weld Street, BEACONSFIELD TAS 7270",-41.1959248,146.8118829,DL,Diesel,207.5,2023-04-20 14:00:16.498751,2023-04-20
+74,United,United Beaconsfield,"187 Weld Street, BEACONSFIELD TAS 7270",-41.1959248,146.8118829,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+74,United,United Beaconsfield,"187 Weld Street, BEACONSFIELD TAS 7270",-41.1959248,146.8118829,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+74,United,United Beaconsfield,"187 Weld Street, BEACONSFIELD TAS 7270",-41.1959248,146.8118829,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+75,United,United Bell Bay Tt Ufill,"Bell Bay Road, BELL BAY TAS 7253",-41.129818,146.86711,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+75,United,United Bell Bay Tt Ufill,"Bell Bay Road, BELL BAY TAS 7253",-41.129818,146.86711,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+76,United,United Bicheno,"28 Tasman Highway, BICHENO TAS 7215",-41.8717712,148.2950255,DL,Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+76,United,United Bicheno,"28 Tasman Highway, BICHENO TAS 7215",-41.8717712,148.2950255,E10,Ethanol 94,192.9,2023-04-20 14:00:16.498751,2023-04-20
+76,United,United Bicheno,"28 Tasman Highway, BICHENO TAS 7215",-41.8717712,148.2950255,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+76,United,United Bicheno,"28 Tasman Highway, BICHENO TAS 7215",-41.8717712,148.2950255,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+76,United,United Bicheno,"28 Tasman Highway, BICHENO TAS 7215",-41.8717712,148.2950255,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+77,United,United Burnie,"74 -76 Mount Street, BURNIE TAS 7320",-41.054208,145.9042558,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+77,United,United Burnie,"74 -76 Mount Street, BURNIE TAS 7320",-41.054208,145.9042558,E10,Ethanol 94,194.9,2023-04-20 14:00:16.498751,2023-04-20
+77,United,United Burnie,"74 -76 Mount Street, BURNIE TAS 7320",-41.054208,145.9042558,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+77,United,United Burnie,"74 -76 Mount Street, BURNIE TAS 7320",-41.054208,145.9042558,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+77,United,United Burnie,"74 -76 Mount Street, BURNIE TAS 7320",-41.054208,145.9042558,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+78,United,United Camdale Ufill,"3 East Cam Road, CAMDALE TAS 7320",-41.04068,145.84494,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+78,United,United Camdale Ufill,"3 East Cam Road, CAMDALE TAS 7320",-41.04068,145.84494,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+79,United,United Claremont,"94 Main Road, CLAREMONT TAS 7011",-42.7875827,147.251918,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+79,United,United Claremont,"94 Main Road, CLAREMONT TAS 7011",-42.7875827,147.251918,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+79,United,United Claremont,"94 Main Road, CLAREMONT TAS 7011",-42.7875827,147.251918,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+79,United,United Claremont,"94 Main Road, CLAREMONT TAS 7011",-42.7875827,147.251918,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+80,United,United Devonport,"89 Best Street, DEVONPORT TAS 7310",-41.177393,146.3512702,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+80,United,United Devonport,"89 Best Street, DEVONPORT TAS 7310",-41.177393,146.3512702,E85,Ethanol 105,219.9,2023-04-20 14:00:16.498751,2023-04-20
+80,United,United Devonport,"89 Best Street, DEVONPORT TAS 7310",-41.177393,146.3512702,LPG,LPG,131.9,2023-04-20 14:00:16.498751,2023-04-20
+80,United,United Devonport,"89 Best Street, DEVONPORT TAS 7310",-41.177393,146.3512702,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+80,United,United Devonport,"89 Best Street, DEVONPORT TAS 7310",-41.177393,146.3512702,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+80,United,United Devonport,"89 Best Street, DEVONPORT TAS 7310",-41.177393,146.3512702,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+82,United,United East Devonport Ufill,"161 Tarleton Street, EAST DEVONPORT TAS 7310",-41.185203,146.3720877,DL,Diesel,199.5,2023-04-20 14:00:16.498751,2023-04-20
+82,United,United East Devonport Ufill,"161 Tarleton Street, EAST DEVONPORT TAS 7310",-41.185203,146.3720877,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+82,United,United East Devonport Ufill,"161 Tarleton Street, EAST DEVONPORT TAS 7310",-41.185203,146.3720877,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+82,United,United East Devonport Ufill,"161 Tarleton Street, EAST DEVONPORT TAS 7310",-41.185203,146.3720877,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+84,United,United Exeter,"110A Main Road, EXETER TAS 7275",-41.2996746,146.9530931,DL,Diesel,207.5,2023-04-20 14:00:16.498751,2023-04-20
+84,United,United Exeter,"110A Main Road, EXETER TAS 7275",-41.2996746,146.9530931,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+84,United,United Exeter,"110A Main Road, EXETER TAS 7275",-41.2996746,146.9530931,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+84,United,United Exeter,"110A Main Road, EXETER TAS 7275",-41.2996746,146.9530931,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+85,United,United Gagebrook,"15 Gage Road, GAGEBROOK TAS 7030",-42.7505491,147.2748559,DL,Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+85,United,United Gagebrook,"15 Gage Road, GAGEBROOK TAS 7030",-42.7505491,147.2748559,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+85,United,United Gagebrook,"15 Gage Road, GAGEBROOK TAS 7030",-42.7505491,147.2748559,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+86,United,United George Town Central,"59-63 Main Road, GEORGE TOWN TAS 7253",-41.1086195,146.8365299,DL,Diesel,207.5,2023-04-20 14:00:16.498751,2023-04-20
+86,United,United George Town Central,"59-63 Main Road, GEORGE TOWN TAS 7253",-41.1086195,146.8365299,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+86,United,United George Town Central,"59-63 Main Road, GEORGE TOWN TAS 7253",-41.1086195,146.8365299,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+86,United,United George Town Central,"59-63 Main Road, GEORGE TOWN TAS 7253",-41.1086195,146.8365299,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+87,United,United Hagley Ufill,"84 Meander Valley Road, HAGLEY TAS 7292",-41.5264323,146.8833442,DL,Diesel,196.9,2023-04-20 14:00:16.498751,2023-04-20
+87,United,United Hagley Ufill,"84 Meander Valley Road, HAGLEY TAS 7292",-41.5264323,146.8833442,E10,Ethanol 94,187.5,2023-04-20 14:00:16.498751,2023-04-20
+87,United,United Hagley Ufill,"84 Meander Valley Road, HAGLEY TAS 7292",-41.5264323,146.8833442,U91,Unleaded 91,189.5,2023-04-20 14:00:16.498751,2023-04-20
+88,United,United Hamilton Ufill,"5540 Lyell Highway, HAMILTON TAS 7140",-42.5499823,146.8198205,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+89,United,United Kingston,"197 Channel Highway, KINGSTON TAS 7050",-42.9841449,147.2931529,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+89,United,United Kingston,"197 Channel Highway, KINGSTON TAS 7050",-42.9841449,147.2931529,E10,Ethanol 94,190.9,2023-04-20 14:00:16.498751,2023-04-20
+89,United,United Kingston,"197 Channel Highway, KINGSTON TAS 7050",-42.9841449,147.2931529,E85,Ethanol 105,219.9,2023-04-20 14:00:16.498751,2023-04-20
+89,United,United Kingston,"197 Channel Highway, KINGSTON TAS 7050",-42.9841449,147.2931529,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+89,United,United Kingston,"197 Channel Highway, KINGSTON TAS 7050",-42.9841449,147.2931529,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+89,United,United Kingston,"197 Channel Highway, KINGSTON TAS 7050",-42.9841449,147.2931529,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+90,United,United Latrobe,"191 Gilbert Street,, LATROBE TAS 7307",-41.23601,146.4172,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+90,United,United Latrobe,"191 Gilbert Street,, LATROBE TAS 7307",-41.23601,146.4172,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+90,United,United Latrobe,"191 Gilbert Street,, LATROBE TAS 7307",-41.23601,146.4172,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+91,United,United Legana,"771 West Tamar Highway, LEGANA TAS 7277",-41.3692652,147.0472339,DL,Diesel,207.5,2023-04-20 14:00:16.498751,2023-04-20
+91,United,United Legana,"771 West Tamar Highway, LEGANA TAS 7277",-41.3692652,147.0472339,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+91,United,United Legana,"771 West Tamar Highway, LEGANA TAS 7277",-41.3692652,147.0472339,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+92,United,United Longford,"5 Wellington Street, LONGFORD TAS 7301",-41.5878096,147.1194987,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+92,United,United Longford,"5 Wellington Street, LONGFORD TAS 7301",-41.5878096,147.1194987,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+92,United,United Longford,"5 Wellington Street, LONGFORD TAS 7301",-41.5878096,147.1194987,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+92,United,United Longford,"5 Wellington Street, LONGFORD TAS 7301",-41.5878096,147.1194987,PDL,Premium Diesel,216.5,2023-04-20 14:00:16.498751,2023-04-20
+92,United,United Longford,"5 Wellington Street, LONGFORD TAS 7301",-41.5878096,147.1194987,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+93,United,United Lutana,"409 Brooker Hwy, LUTANA TAS 7009",-42.8374,147.30339,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+93,United,United Lutana,"409 Brooker Hwy, LUTANA TAS 7009",-42.8374,147.30339,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+93,United,United Lutana,"409 Brooker Hwy, LUTANA TAS 7009",-42.8374,147.30339,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+93,United,United Lutana,"409 Brooker Hwy, LUTANA TAS 7009",-42.8374,147.30339,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+93,United,United Lutana,"409 Brooker Hwy, LUTANA TAS 7009",-42.8374,147.30339,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+94,United,United Newnham,"7 George Town Road, NEWNHAM TAS 7248",-41.3980623,147.1279732,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+94,United,United Newnham,"7 George Town Road, NEWNHAM TAS 7248",-41.3980623,147.1279732,E10,Ethanol 94,193.9,2023-04-20 14:00:16.498751,2023-04-20
+94,United,United Newnham,"7 George Town Road, NEWNHAM TAS 7248",-41.3980623,147.1279732,E85,Ethanol 105,219.9,2023-04-20 14:00:16.498751,2023-04-20
+94,United,United Newnham,"7 George Town Road, NEWNHAM TAS 7248",-41.3980623,147.1279732,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+94,United,United Newnham,"7 George Town Road, NEWNHAM TAS 7248",-41.3980623,147.1279732,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+94,United,United Newnham,"7 George Town Road, NEWNHAM TAS 7248",-41.3980623,147.1279732,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+95,United,United North Hobart,"353-357 Argyle Street, NORTH HOBART TAS 7000",-42.8708967,147.3170467,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+95,United,United North Hobart,"353-357 Argyle Street, NORTH HOBART TAS 7000",-42.8708967,147.3170467,E10,Ethanol 94,190.9,2023-04-20 14:00:16.498751,2023-04-20
+95,United,United North Hobart,"353-357 Argyle Street, NORTH HOBART TAS 7000",-42.8708967,147.3170467,E85,Ethanol 105,219.9,2023-04-20 14:00:16.498751,2023-04-20
+95,United,United North Hobart,"353-357 Argyle Street, NORTH HOBART TAS 7000",-42.8708967,147.3170467,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+95,United,United North Hobart,"353-357 Argyle Street, NORTH HOBART TAS 7000",-42.8708967,147.3170467,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+95,United,United North Hobart,"353-357 Argyle Street, NORTH HOBART TAS 7000",-42.8708967,147.3170467,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+96,United,United Paterson Street,"123 Paterson Street, LAUNCESTON TAS 7250",-41.4401675,147.1317211,DL,Diesel,207.5,2023-04-20 14:00:16.498751,2023-04-20
+96,United,United Paterson Street,"123 Paterson Street, LAUNCESTON TAS 7250",-41.4401675,147.1317211,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+96,United,United Paterson Street,"123 Paterson Street, LAUNCESTON TAS 7250",-41.4401675,147.1317211,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+96,United,United Paterson Street,"123 Paterson Street, LAUNCESTON TAS 7250",-41.4401675,147.1317211,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+97,United,United Perth South,"102 Main Road, PERTH TAS 7300",-41.5786426,147.1765334,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+97,United,United Perth South,"102 Main Road, PERTH TAS 7300",-41.5786426,147.1765334,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+97,United,United Perth South,"102 Main Road, PERTH TAS 7300",-41.5786426,147.1765334,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+97,United,United Perth South,"102 Main Road, PERTH TAS 7300",-41.5786426,147.1765334,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+98,United,United Queenstown Ufill,"Penghana Road, QUEENSTOWN TAS 7467",-42.069304,145.560741,DL,Diesel,211.9,2023-04-20 14:00:16.498751,2023-04-20
+99,United,United Sandy Bay,"149 Sandy Bay Road, SANDY BAY TAS 7005",-42.8941963,147.3255924,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+99,United,United Sandy Bay,"149 Sandy Bay Road, SANDY BAY TAS 7005",-42.8941963,147.3255924,E10,Ethanol 94,190.9,2023-04-20 14:00:16.498751,2023-04-20
+99,United,United Sandy Bay,"149 Sandy Bay Road, SANDY BAY TAS 7005",-42.8941963,147.3255924,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+99,United,United Sandy Bay,"149 Sandy Bay Road, SANDY BAY TAS 7005",-42.8941963,147.3255924,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+99,United,United Sandy Bay,"149 Sandy Bay Road, SANDY BAY TAS 7005",-42.8941963,147.3255924,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+99,United,United Sandy Bay,"149 Sandy Bay Road, SANDY BAY TAS 7005",-42.8941963,147.3255924,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+100,United,United Sassafras,"6 Churchills Road, SASSAFRAS TAS 7307",-41.28357,146.4929,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+100,United,United Sassafras,"6 Churchills Road, SASSAFRAS TAS 7307",-41.28357,146.4929,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+100,United,United Sassafras,"6 Churchills Road, SASSAFRAS TAS 7307",-41.28357,146.4929,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+100,United,United Sassafras,"6 Churchills Road, SASSAFRAS TAS 7307",-41.28357,146.4929,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+101,United,United Scottsdale Ufill,"34814 Tasman Highway, SCOTTSDALE TAS 7260",-41.1859015,147.5534873,DL,Diesel,193.9,2023-04-20 14:00:16.498751,2023-04-20
+101,United,United Scottsdale Ufill,"34814 Tasman Highway, SCOTTSDALE TAS 7260",-41.1859015,147.5534873,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+102,United,United Selfs Point Ufill,"20 Selfs Point Road, NEW TOWN TAS 7008",-42.8463157,147.3230819,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+103,United,United Shearwater,"100 Alexander Street, SHEARWATER TAS 7307",-41.1626681,146.5324834,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+103,United,United Shearwater,"100 Alexander Street, SHEARWATER TAS 7307",-41.1626681,146.5324834,LPG,LPG,131.9,2023-04-20 14:00:16.498751,2023-04-20
+103,United,United Shearwater,"100 Alexander Street, SHEARWATER TAS 7307",-41.1626681,146.5324834,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+103,United,United Shearwater,"100 Alexander Street, SHEARWATER TAS 7307",-41.1626681,146.5324834,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+103,United,United Shearwater,"100 Alexander Street, SHEARWATER TAS 7307",-41.1626681,146.5324834,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+104,United,United Sheffield,"2 Main Street, SHEFFIELD TAS 7306",-41.3798036,146.3174368,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+104,United,United Sheffield,"2 Main Street, SHEFFIELD TAS 7306",-41.3798036,146.3174368,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+104,United,United Sheffield,"2 Main Street, SHEFFIELD TAS 7306",-41.3798036,146.3174368,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+104,United,United Sheffield,"2 Main Street, SHEFFIELD TAS 7306",-41.3798036,146.3174368,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+105,United,United Smithton Ufill,"Greys Mill Road, SMITHTON TAS 7330",-40.857738,145.128784,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+105,United,United Smithton Ufill,"Greys Mill Road, SMITHTON TAS 7330",-40.857738,145.128784,U91,Unleaded 91,184.7,2023-04-20 14:00:16.498751,2023-04-20
+106,United,United Sorell,"14 Gordon Street, SORELL TAS 7172",-42.7829702,147.5627379,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+106,United,United Sorell,"14 Gordon Street, SORELL TAS 7172",-42.7829702,147.5627379,E10,Ethanol 94,190.9,2023-04-20 14:00:16.498751,2023-04-20
+106,United,United Sorell,"14 Gordon Street, SORELL TAS 7172",-42.7829702,147.5627379,E85,Ethanol 105,219.9,2023-04-20 14:00:16.498751,2023-04-20
+106,United,United Sorell,"14 Gordon Street, SORELL TAS 7172",-42.7829702,147.5627379,LPG,LPG,129.7,2023-04-20 14:00:16.498751,2023-04-20
+106,United,United Sorell,"14 Gordon Street, SORELL TAS 7172",-42.7829702,147.5627379,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+106,United,United Sorell,"14 Gordon Street, SORELL TAS 7172",-42.7829702,147.5627379,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+106,United,United Sorell,"14 Gordon Street, SORELL TAS 7172",-42.7829702,147.5627379,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+107,United,United St Helens,"16 Cecilia Street, ST HELENS TAS 7216",-41.3229899,148.2499719,DL,Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+107,United,United St Helens,"16 Cecilia Street, ST HELENS TAS 7216",-41.3229899,148.2499719,E10,Ethanol 94,192.9,2023-04-20 14:00:16.498751,2023-04-20
+107,United,United St Helens,"16 Cecilia Street, ST HELENS TAS 7216",-41.3229899,148.2499719,LPG,LPG,127.5,2023-04-20 14:00:16.498751,2023-04-20
+107,United,United St Helens,"16 Cecilia Street, ST HELENS TAS 7216",-41.3229899,148.2499719,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+107,United,United St Helens,"16 Cecilia Street, ST HELENS TAS 7216",-41.3229899,148.2499719,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+107,United,United St Helens,"16 Cecilia Street, ST HELENS TAS 7216",-41.3229899,148.2499719,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+108,United,United Tasman,"2 Rosny Hill Road, BELLERIVE  TAS 7018",-42.8683231,147.3712637,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+108,United,United Tasman,"2 Rosny Hill Road, BELLERIVE  TAS 7018",-42.8683231,147.3712637,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+108,United,United Tasman,"2 Rosny Hill Road, BELLERIVE  TAS 7018",-42.8683231,147.3712637,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+108,United,United Tasman,"2 Rosny Hill Road, BELLERIVE  TAS 7018",-42.8683231,147.3712637,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+108,United,United Tasman,"2 Rosny Hill Road, BELLERIVE  TAS 7018",-42.8683231,147.3712637,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+109,United,United Ulverstone Ufill,"22 - 24 Trevor Street, ULVERSTONE TAS 7315",-41.1644633,146.1618593,DL,Diesel,208.9,2023-04-20 14:00:16.498751,2023-04-20
+109,United,United Ulverstone Ufill,"22 - 24 Trevor Street, ULVERSTONE TAS 7315",-41.1644633,146.1618593,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+110,United,United Wentworth,"174 Clarence Street, HOWRAH TAS 7018",-42.8760349,147.3884315,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+110,United,United Wentworth,"174 Clarence Street, HOWRAH TAS 7018",-42.8760349,147.3884315,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+110,United,United Wentworth,"174 Clarence Street, HOWRAH TAS 7018",-42.8760349,147.3884315,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+110,United,United Wentworth,"174 Clarence Street, HOWRAH TAS 7018",-42.8760349,147.3884315,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+111,United,United Wynyard,"10 Inglis Street, WYNYARD TAS 7325",-40.9899358,145.7231957,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+111,United,United Wynyard,"10 Inglis Street, WYNYARD TAS 7325",-40.9899358,145.7231957,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+111,United,United Wynyard,"10 Inglis Street, WYNYARD TAS 7325",-40.9899358,145.7231957,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+111,United,United Wynyard,"10 Inglis Street, WYNYARD TAS 7325",-40.9899358,145.7231957,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+112,United,United Zeehan Ufill,"115 Main Street, ZEEHAN TAS 7469",-41.8841979,145.336797,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+112,United,United Zeehan Ufill,"115 Main Street, ZEEHAN TAS 7469",-41.8841979,145.336797,U91,Unleaded 91,187.9,2023-04-20 14:00:16.498751,2023-04-20
+114,BP,BP Oatlands,"52 High Street, Oatlands TAS 7120",-42.30074,147.3694561,DL,Diesel,211.9,2023-04-20 14:00:16.498751,2023-04-20
+114,BP,BP Oatlands,"52 High Street, Oatlands TAS 7120",-42.30074,147.3694561,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+114,BP,BP Oatlands,"52 High Street, Oatlands TAS 7120",-42.30074,147.3694561,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+116,BP,BP Strahan,"7 Reid Street, STRAHAN TAS 7468",-42.1500753,145.3280146,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+116,BP,BP Strahan,"7 Reid Street, STRAHAN TAS 7468",-42.1500753,145.3280146,LPG,LPG,154.9,2023-04-20 14:00:16.498751,2023-04-20
+116,BP,BP Strahan,"7 Reid Street, STRAHAN TAS 7468",-42.1500753,145.3280146,P98,Premium 98,229.9,2023-04-20 14:00:16.498751,2023-04-20
+116,BP,BP Strahan,"7 Reid Street, STRAHAN TAS 7468",-42.1500753,145.3280146,U91,Unleaded 91,209.9,2023-04-20 14:00:16.498751,2023-04-20
+117,Shell,Kings Bridge Service Station,"21 Wellington, LONGFORD TAS 7301",-41.589316,147.120673,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+117,Shell,Kings Bridge Service Station,"21 Wellington, LONGFORD TAS 7301",-41.589316,147.120673,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+117,Shell,Kings Bridge Service Station,"21 Wellington, LONGFORD TAS 7301",-41.589316,147.120673,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+117,Shell,Kings Bridge Service Station,"21 Wellington, LONGFORD TAS 7301",-41.589316,147.120673,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+118,BP,BP Cygnet,"42 Mary Street, CYGNET TAS 7112",-43.1598687,147.0760916,P95,Premium 95,217.9,2023-04-20 14:00:16.498751,2023-04-20
+118,BP,BP Cygnet,"42 Mary Street, CYGNET TAS 7112",-43.1598687,147.0760916,PDL,Premium Diesel,214.9,2023-04-20 14:00:16.498751,2023-04-20
+118,BP,BP Cygnet,"42 Mary Street, CYGNET TAS 7112",-43.1598687,147.0760916,U91,Unleaded 91,207.9,2023-04-20 14:00:16.498751,2023-04-20
+119,Independent,Rocky Cape Roadhouse,"19326 Bass Highway, ROCKY CAPE TAS 7321",-40.8872897,145.4699586,DL,Diesel,198.9,2023-04-20 14:00:16.498751,2023-04-20
+119,Independent,Rocky Cape Roadhouse,"19326 Bass Highway, ROCKY CAPE TAS 7321",-40.8872897,145.4699586,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+120,BP,BP Scottsdale,"7 King Street, SCOTTSDALE TAS 7260",-41.1601235,147.518321,P98,Premium 98,221.9,2023-04-20 14:00:16.498751,2023-04-20
+120,BP,BP Scottsdale,"7 King Street, SCOTTSDALE TAS 7260",-41.1601235,147.518321,PDL,Premium Diesel,198.9,2023-04-20 14:00:16.498751,2023-04-20
+120,BP,BP Scottsdale,"7 King Street, SCOTTSDALE TAS 7260",-41.1601235,147.518321,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+121,Ampol,Ampol Bob's Servo,"5-7 Cutten Street, Queenstown TAS 7467",-42.0805026,145.5539823,DL,Diesel,214.1,2023-04-20 14:00:16.498751,2023-04-20
+121,Ampol,Ampol Bob's Servo,"5-7 Cutten Street, Queenstown TAS 7467",-42.0805026,145.5539823,P95,Premium 95,219.1,2023-04-20 14:00:16.498751,2023-04-20
+121,Ampol,Ampol Bob's Servo,"5-7 Cutten Street, Queenstown TAS 7467",-42.0805026,145.5539823,U91,Unleaded 91,206.1,2023-04-20 14:00:16.498751,2023-04-20
+123,Ampol,AMPOL OUSE,"6954 Lyell Highway, Ouse TAS 7140",-42.4846164,146.7105901,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+123,Ampol,AMPOL OUSE,"6954 Lyell Highway, Ouse TAS 7140",-42.4846164,146.7105901,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+123,Ampol,AMPOL OUSE,"6954 Lyell Highway, Ouse TAS 7140",-42.4846164,146.7105901,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+124,Ampol,Ampol Westbury,"92 Meander Valley Road, Westbury TAS 7303",-41.5264203,146.8333992,LPG,LPG,134.9,2023-04-20 14:00:16.498751,2023-04-20
+124,Ampol,Ampol Westbury,"92 Meander Valley Road, Westbury TAS 7303",-41.5264203,146.8333992,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+124,Ampol,Ampol Westbury,"92 Meander Valley Road, Westbury TAS 7303",-41.5264203,146.8333992,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+124,Ampol,Ampol Westbury,"92 Meander Valley Road, Westbury TAS 7303",-41.5264203,146.8333992,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+125,Ampol,Ampol Campbell Town,"85 High Street, Campbell Town  TAS 7210",-41.9278466,147.4945134,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+125,Ampol,Ampol Campbell Town,"85 High Street, Campbell Town  TAS 7210",-41.9278466,147.4945134,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+125,Ampol,Ampol Campbell Town,"85 High Street, Campbell Town  TAS 7210",-41.9278466,147.4945134,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+125,Ampol,Ampol Campbell Town,"85 High Street, Campbell Town  TAS 7210",-41.9278466,147.4945134,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+126,Ampol,Ampol Campbell Town South,"184 High Street, Campbell Town  TAS 7210",-41.9410437,147.4910721,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+126,Ampol,Ampol Campbell Town South,"184 High Street, Campbell Town  TAS 7210",-41.9410437,147.4910721,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+127,Ampol,Ampol East Devonport,"136-138 Tarleton Street, East Devonport TAS 7310",-41.1856297,146.3712977,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+127,Ampol,Ampol East Devonport,"136-138 Tarleton Street, East Devonport TAS 7310",-41.1856297,146.3712977,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+127,Ampol,Ampol East Devonport,"136-138 Tarleton Street, East Devonport TAS 7310",-41.1856297,146.3712977,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+128,Ampol,Ampol Exeter,"84 Main Road, Exeter TAS 7275",-41.302828,146.9569097,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+128,Ampol,Ampol Exeter,"84 Main Road, Exeter TAS 7275",-41.302828,146.9569097,P98,Premium 98,220.9,2023-04-20 14:00:16.498751,2023-04-20
+128,Ampol,Ampol Exeter,"84 Main Road, Exeter TAS 7275",-41.302828,146.9569097,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+128,Ampol,Ampol Exeter,"84 Main Road, Exeter TAS 7275",-41.302828,146.9569097,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+129,Ampol,Ampol Georgetown,"32-36 Main Road, George Town TAS 7253",-41.1082991,146.8312461,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+129,Ampol,Ampol Georgetown,"32-36 Main Road, George Town TAS 7253",-41.1082991,146.8312461,LPG,LPG,139.9,2023-04-20 14:00:16.498751,2023-04-20
+129,Ampol,Ampol Georgetown,"32-36 Main Road, George Town TAS 7253",-41.1082991,146.8312461,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+129,Ampol,Ampol Georgetown,"32-36 Main Road, George Town TAS 7253",-41.1082991,146.8312461,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+130,Ampol,Ampol Glen Dhu,"329-333 Wellington Street , South Launceston TAS 7249",-41.4537344,147.1446911,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+130,Ampol,Ampol Glen Dhu,"329-333 Wellington Street , South Launceston TAS 7249",-41.4537344,147.1446911,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+130,Ampol,Ampol Glen Dhu,"329-333 Wellington Street , South Launceston TAS 7249",-41.4537344,147.1446911,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+130,Ampol,Ampol Glen Dhu,"329-333 Wellington Street , South Launceston TAS 7249",-41.4537344,147.1446911,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+131,Ampol,Ampol IGA Brighton,"178 Brighton Road , Brighton TAS 7030",-42.6983033,147.2530678,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+131,Ampol,Ampol IGA Brighton,"178 Brighton Road , Brighton TAS 7030",-42.6983033,147.2530678,PDL,Premium Diesel,218.9,2023-04-20 14:00:16.498751,2023-04-20
+131,Ampol,Ampol IGA Brighton,"178 Brighton Road , Brighton TAS 7030",-42.6983033,147.2530678,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+132,Ampol,Ampol Invermay,"32-36 Invermay Road, Invermay TAS 7248",-41.42217,147.13632,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+132,Ampol,Ampol Invermay,"32-36 Invermay Road, Invermay TAS 7248",-41.42217,147.13632,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+132,Ampol,Ampol Invermay,"32-36 Invermay Road, Invermay TAS 7248",-41.42217,147.13632,P98,Premium 98,211.9,2023-04-20 14:00:16.498751,2023-04-20
+132,Ampol,Ampol Invermay,"32-36 Invermay Road, Invermay TAS 7248",-41.42217,147.13632,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+132,Ampol,Ampol Invermay,"32-36 Invermay Road, Invermay TAS 7248",-41.42217,147.13632,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+133,Ampol,Ampol Longford,"25-27 Marlborough Street, Longford TAS 7301",-41.5972761,147.1218895,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+133,Ampol,Ampol Longford,"25-27 Marlborough Street, Longford TAS 7301",-41.5972761,147.1218895,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+133,Ampol,Ampol Longford,"25-27 Marlborough Street, Longford TAS 7301",-41.5972761,147.1218895,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+134,Ampol,Ampol Mt Direction,"2176 East Tamar Highway, Mt Direction TAS 7252",-41.2663951,147.0346858,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+134,Ampol,Ampol Mt Direction,"2176 East Tamar Highway, Mt Direction TAS 7252",-41.2663951,147.0346858,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+134,Ampol,Ampol Mt Direction,"2176 East Tamar Highway, Mt Direction TAS 7252",-41.2663951,147.0346858,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+135,Ampol,Ampol Penguin,"98 Main Street, Penguin TAS 7315",-41.11397,146.07316,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+135,Ampol,Ampol Penguin,"98 Main Street, Penguin TAS 7315",-41.11397,146.07316,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+135,Ampol,Ampol Penguin,"98 Main Street, Penguin TAS 7315",-41.11397,146.07316,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+135,Ampol,Ampol Penguin,"98 Main Street, Penguin TAS 7315",-41.11397,146.07316,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+136,Ampol,Poatina Service Station,"6 Franklin Avenue, Poatina TAS 7302",-41.7959471,146.9606131,DL,Diesel,204.0,2023-04-20 14:00:16.498751,2023-04-20
+136,Ampol,Poatina Service Station,"6 Franklin Avenue, Poatina TAS 7302",-41.7959471,146.9606131,P95,Premium 95,205.0,2023-04-20 14:00:16.498751,2023-04-20
+136,Ampol,Poatina Service Station,"6 Franklin Avenue, Poatina TAS 7302",-41.7959471,146.9606131,U91,Unleaded 91,195.0,2023-04-20 14:00:16.498751,2023-04-20
+137,Ampol,Ampol Sheffield,"54 Main Street, Sheffield TAS 7306",-41.3824595,146.324836,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+137,Ampol,Ampol Sheffield,"54 Main Street, Sheffield TAS 7306",-41.3824595,146.324836,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+137,Ampol,Ampol Sheffield,"54 Main Street, Sheffield TAS 7306",-41.3824595,146.324836,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+138,Ampol,Ampol Smithton,"23 NELSON ST, SMITHTON TAS 7330",-40.8518305,145.1199832,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+138,Ampol,Ampol Smithton,"23 NELSON ST, SMITHTON TAS 7330",-40.8518305,145.1199832,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+138,Ampol,Ampol Smithton,"23 NELSON ST, SMITHTON TAS 7330",-40.8518305,145.1199832,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+138,Ampol,Ampol Smithton,"23 NELSON ST, SMITHTON TAS 7330",-40.8518305,145.1199832,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+139,Ampol,Ampol Spreyton,"2/4 Mersey Main Road, Spreyton TAS 7310",-41.21163,146.34396,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+139,Ampol,Ampol Spreyton,"2/4 Mersey Main Road, Spreyton TAS 7310",-41.21163,146.34396,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+139,Ampol,Ampol Spreyton,"2/4 Mersey Main Road, Spreyton TAS 7310",-41.21163,146.34396,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+140,Ampol,Ampol Wattle Hill,"8659 Bass Highway , Latrobe TAS 7307",-41.2419602,146.4431184,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+140,Ampol,Ampol Wattle Hill,"8659 Bass Highway , Latrobe TAS 7307",-41.2419602,146.4431184,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+140,Ampol,Ampol Wattle Hill,"8659 Bass Highway , Latrobe TAS 7307",-41.2419602,146.4431184,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+140,Ampol,Ampol Wattle Hill,"8659 Bass Highway , Latrobe TAS 7307",-41.2419602,146.4431184,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+141,Ampol,Ampol William Street,"118 William Street, Devonport TAS 7310",-41.1791219,146.3508217,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+141,Ampol,Ampol William Street,"118 William Street, Devonport TAS 7310",-41.1791219,146.3508217,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+141,Ampol,Ampol William Street,"118 William Street, Devonport TAS 7310",-41.1791219,146.3508217,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+141,Ampol,Ampol William Street,"118 William Street, Devonport TAS 7310",-41.1791219,146.3508217,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+142,Ampol,Ampol Wivenhoe,"21 River Road, Wivenhoe TAS 7320",-41.0703394,145.9260796,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+142,Ampol,Ampol Wivenhoe,"21 River Road, Wivenhoe TAS 7320",-41.0703394,145.9260796,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+142,Ampol,Ampol Wivenhoe,"21 River Road, Wivenhoe TAS 7320",-41.0703394,145.9260796,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+142,Ampol,Ampol Wivenhoe,"21 River Road, Wivenhoe TAS 7320",-41.0703394,145.9260796,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+143,Ampol,Ampol Somerset,"93 Bass Highway, Somerset TAS 7322",-41.0361023,145.825381,P95,Premium 95,219.9,2023-04-20 14:00:16.498751,2023-04-20
+143,Ampol,Ampol Somerset,"93 Bass Highway, Somerset TAS 7322",-41.0361023,145.825381,P98,Premium 98,226.9,2023-04-20 14:00:16.498751,2023-04-20
+143,Ampol,Ampol Somerset,"93 Bass Highway, Somerset TAS 7322",-41.0361023,145.825381,PDL,Premium Diesel,217.9,2023-04-20 14:00:16.498751,2023-04-20
+143,Ampol,Ampol Somerset,"93 Bass Highway, Somerset TAS 7322",-41.0361023,145.825381,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+144,Ampol,Ampol Brooker,"188 Brooker Avenue, North Hobart TAS 7000",-42.8710984,147.3224479,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+144,Ampol,Ampol Brooker,"188 Brooker Avenue, North Hobart TAS 7000",-42.8710984,147.3224479,LPG,LPG,129.9,2023-04-20 14:00:16.498751,2023-04-20
+144,Ampol,Ampol Brooker,"188 Brooker Avenue, North Hobart TAS 7000",-42.8710984,147.3224479,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+144,Ampol,Ampol Brooker,"188 Brooker Avenue, North Hobart TAS 7000",-42.8710984,147.3224479,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+144,Ampol,Ampol Brooker,"188 Brooker Avenue, North Hobart TAS 7000",-42.8710984,147.3224479,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+144,Ampol,Ampol Brooker,"188 Brooker Avenue, North Hobart TAS 7000",-42.8710984,147.3224479,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+145,Ampol,Ampol Grove Store,"1952 Huon Highway, Grove TAS 7109",-42.9814734,147.0968076,DL,Diesel,197.9,2023-04-20 14:00:16.498751,2023-04-20
+145,Ampol,Ampol Grove Store,"1952 Huon Highway, Grove TAS 7109",-42.9814734,147.0968076,P95,Premium 95,204.9,2023-04-20 14:00:16.498751,2023-04-20
+145,Ampol,Ampol Grove Store,"1952 Huon Highway, Grove TAS 7109",-42.9814734,147.0968076,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+145,Ampol,Ampol Grove Store,"1952 Huon Highway, Grove TAS 7109",-42.9814734,147.0968076,PDL,Premium Diesel,202.9,2023-04-20 14:00:16.498751,2023-04-20
+145,Ampol,Ampol Grove Store,"1952 Huon Highway, Grove TAS 7109",-42.9814734,147.0968076,U91,Unleaded 91,187.9,2023-04-20 14:00:16.498751,2023-04-20
+146,Ampol,Ampol Sorell Service Station,"38 Gordon Street, SORELL TAS 7172",-42.7862162,147.5619237,P98,Premium 98,214.9,2023-04-20 14:00:16.498751,2023-04-20
+146,Ampol,Ampol Sorell Service Station,"38 Gordon Street, SORELL TAS 7172",-42.7862162,147.5619237,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+146,Ampol,Ampol Sorell Service Station,"38 Gordon Street, SORELL TAS 7172",-42.7862162,147.5619237,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+148,Ampol,Ampol Bennetts Petroleum Bushy Park Roadhouse,"525 Gordon River Road, BUSHY PARK TAS 7140",-42.7060981,146.891887,DL,Diesel,216.9,2023-04-20 14:00:16.498751,2023-04-20
+148,Ampol,Ampol Bennetts Petroleum Bushy Park Roadhouse,"525 Gordon River Road, BUSHY PARK TAS 7140",-42.7060981,146.891887,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+148,Ampol,Ampol Bennetts Petroleum Bushy Park Roadhouse,"525 Gordon River Road, BUSHY PARK TAS 7140",-42.7060981,146.891887,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+149,Ampol,Ampol  Lagoon General Store,"504 Main Road, Granton TAS 7030",-42.7613419,147.2396487,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+149,Ampol,Ampol  Lagoon General Store,"504 Main Road, Granton TAS 7030",-42.7613419,147.2396487,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+149,Ampol,Ampol  Lagoon General Store,"504 Main Road, Granton TAS 7030",-42.7613419,147.2396487,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+149,Ampol,Ampol  Lagoon General Store,"504 Main Road, Granton TAS 7030",-42.7613419,147.2396487,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+150,Independent,Independent Bob And Tom's Hampden Road Service Station,"64 Sandy Bay Road, Battery Point TAS 7004",-42.8895283,147.3306035,P95,Premium 95,215.9,2023-04-20 14:00:16.498751,2023-04-20
+150,Independent,Independent Bob And Tom's Hampden Road Service Station,"64 Sandy Bay Road, Battery Point TAS 7004",-42.8895283,147.3306035,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+150,Independent,Independent Bob And Tom's Hampden Road Service Station,"64 Sandy Bay Road, Battery Point TAS 7004",-42.8895283,147.3306035,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+150,Independent,Independent Bob And Tom's Hampden Road Service Station,"64 Sandy Bay Road, Battery Point TAS 7004",-42.8895283,147.3306035,U91,Unleaded 91,204.9,2023-04-20 14:00:16.498751,2023-04-20
+151,Independent,Independent Bothwell Garage,"16 Patrick Street, Bothwell TAS 7030",-42.3844705,147.0073132,DL,Diesel,208.9,2023-04-20 14:00:16.498751,2023-04-20
+151,Independent,Independent Bothwell Garage,"16 Patrick Street, Bothwell TAS 7030",-42.3844705,147.0073132,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+151,Independent,Independent Bothwell Garage,"16 Patrick Street, Bothwell TAS 7030",-42.3844705,147.0073132,U91,Unleaded 91,188.9,2023-04-20 14:00:16.498751,2023-04-20
+152,Independent,Independent Detention River Roadhouse,"19535 Bass Highway, Detention TAS 7321",-40.8795371,145.4479555,DL,Diesel,204.5,2023-04-20 14:00:16.498751,2023-04-20
+152,Independent,Independent Detention River Roadhouse,"19535 Bass Highway, Detention TAS 7321",-40.8795371,145.4479555,P95,Premium 95,210.1,2023-04-20 14:00:16.498751,2023-04-20
+152,Independent,Independent Detention River Roadhouse,"19535 Bass Highway, Detention TAS 7321",-40.8795371,145.4479555,U91,Unleaded 91,198.1,2023-04-20 14:00:16.498751,2023-04-20
+153,Independent,Independent Lindisfarne Service Centre,"151 East Derwent Highway, Lindisfarne TAS 7015",-42.8480549,147.3623785,DL,Diesel,218.9,2023-04-20 14:00:16.498751,2023-04-20
+153,Independent,Independent Lindisfarne Service Centre,"151 East Derwent Highway, Lindisfarne TAS 7015",-42.8480549,147.3623785,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+153,Independent,Independent Lindisfarne Service Centre,"151 East Derwent Highway, Lindisfarne TAS 7015",-42.8480549,147.3623785,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+154,Independent,Independent Middleton General Store,"4409 Channel Highway, Middleton TAS 7163",-43.2327807,147.2534398,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+154,Independent,Independent Middleton General Store,"4409 Channel Highway, Middleton TAS 7163",-43.2327807,147.2534398,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+154,Independent,Independent Middleton General Store,"4409 Channel Highway, Middleton TAS 7163",-43.2327807,147.2534398,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+155,Ampol,Ampol Murdunna Roadhouse,"4050 Arthur Highway, Murdunna TAS 7178",-42.9477975,147.8662198,DL,Diesel,206.9,2023-04-20 14:00:16.498751,2023-04-20
+155,Ampol,Ampol Murdunna Roadhouse,"4050 Arthur Highway, Murdunna TAS 7178",-42.9477975,147.8662198,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+155,Ampol,Ampol Murdunna Roadhouse,"4050 Arthur Highway, Murdunna TAS 7178",-42.9477975,147.8662198,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+157,Independent,Independent Sandfly General Store,"821 Sandfly Road, Sandfly TAS 7150",-42.9840366,147.1954958,DL,Diesel,196.7,2023-04-20 14:00:16.498751,2023-04-20
+157,Independent,Independent Sandfly General Store,"821 Sandfly Road, Sandfly TAS 7150",-42.9840366,147.1954958,P95,Premium 95,197.9,2023-04-20 14:00:16.498751,2023-04-20
+157,Independent,Independent Sandfly General Store,"821 Sandfly Road, Sandfly TAS 7150",-42.9840366,147.1954958,U91,Unleaded 91,184.9,2023-04-20 14:00:16.498751,2023-04-20
+158,Tas Petroleum,Independent Tas Petroleum Fingal (unmanned),"29 Grant Street, Fingal TAS 7214",-41.6385293,147.9713271,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+158,Tas Petroleum,Independent Tas Petroleum Fingal (unmanned),"29 Grant Street, Fingal TAS 7214",-41.6385293,147.9713271,P95,Premium 95,203.9,2023-04-20 14:00:16.498751,2023-04-20
+158,Tas Petroleum,Independent Tas Petroleum Fingal (unmanned),"29 Grant Street, Fingal TAS 7214",-41.6385293,147.9713271,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+159,Tas Petroleum,Independent Tas Petroleum Launceston (Unmanned),"58 Goderich Street, Invermay TAS 7248",-41.4262971,147.1318728,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+159,Tas Petroleum,Independent Tas Petroleum Launceston (Unmanned),"58 Goderich Street, Invermay TAS 7248",-41.4262971,147.1318728,P98,Premium 98,207.9,2023-04-20 14:00:16.498751,2023-04-20
+159,Tas Petroleum,Independent Tas Petroleum Launceston (Unmanned),"58 Goderich Street, Invermay TAS 7248",-41.4262971,147.1318728,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+160,Tas Petroleum,Independent Tas Petroleum Smithton (Unmanned),"22790 Bass Highway, Smithton TAS 7330",-40.8577002,145.1330019,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+161,Independent,Independent Derrico Automotive,"156 William Street, DEVONPORT TAS 7310",-41.1752746,146.3517893,DL,Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+161,Independent,Independent Derrico Automotive,"156 William Street, DEVONPORT TAS 7310",-41.1752746,146.3517893,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+161,Independent,Independent Derrico Automotive,"156 William Street, DEVONPORT TAS 7310",-41.1752746,146.3517893,U91,Unleaded 91,198.9,2023-04-20 14:00:16.498751,2023-04-20
+163,Shell,Shell Pineview Service Station,"2 George Street, Scottsdale TAS 7260",-41.159121,147.518909,DL,Diesel,197.0,2023-04-20 14:00:16.498751,2023-04-20
+163,Shell,Shell Pineview Service Station,"2 George Street, Scottsdale TAS 7260",-41.159121,147.518909,P95,Premium 95,208.0,2023-04-20 14:00:16.498751,2023-04-20
+163,Shell,Shell Pineview Service Station,"2 George Street, Scottsdale TAS 7260",-41.159121,147.518909,U91,Unleaded 91,199.0,2023-04-20 14:00:16.498751,2023-04-20
+164,Shell,Shell Dunalley,"119 Arthur Highway, Dunalley TAS 7177",-42.8872929,147.8119103,DL,Diesel,190.9,2023-04-20 14:00:16.498751,2023-04-20
+164,Shell,Shell Dunalley,"119 Arthur Highway, Dunalley TAS 7177",-42.8872929,147.8119103,P95,Premium 95,201.9,2023-04-20 14:00:16.498751,2023-04-20
+164,Shell,Shell Dunalley,"119 Arthur Highway, Dunalley TAS 7177",-42.8872929,147.8119103,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+165,Shell,Shell Fourways,"2 Risby Street, Ulverstone TAS 7315",-41.1581999,146.1757437,DL,Diesel,213.9,2023-04-20 14:00:16.498751,2023-04-20
+165,Shell,Shell Fourways,"2 Risby Street, Ulverstone TAS 7315",-41.1581999,146.1757437,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+166,Shell,Shell Tas Petroleum Bridgewater(unmanned),"121 Glenstone Road, Bridgewater TAS 7030",-42.7217178,147.2322859,DL,Diesel,195.9,2023-04-20 14:00:16.498751,2023-04-20
+166,Shell,Shell Tas Petroleum Bridgewater(unmanned),"121 Glenstone Road, Bridgewater TAS 7030",-42.7217178,147.2322859,P98,Premium 98,207.9,2023-04-20 14:00:16.498751,2023-04-20
+166,Shell,Shell Tas Petroleum Bridgewater(unmanned),"121 Glenstone Road, Bridgewater TAS 7030",-42.7217178,147.2322859,U91,Unleaded 91,187.9,2023-04-20 14:00:16.498751,2023-04-20
+167,Shell,Shell Tas Petroleum Burnie River Rd (unmanned),"16 River Road, Wivenhoe TAS 7320",-41.0733646,145.923983,DL,Diesel,197.9,2023-04-20 14:00:16.498751,2023-04-20
+167,Shell,Shell Tas Petroleum Burnie River Rd (unmanned),"16 River Road, Wivenhoe TAS 7320",-41.0733646,145.923983,P95,Premium 95,199.9,2023-04-20 14:00:16.498751,2023-04-20
+167,Shell,Shell Tas Petroleum Burnie River Rd (unmanned),"16 River Road, Wivenhoe TAS 7320",-41.0733646,145.923983,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+168,Shell,Shell Tas Petroleum Burnie Wharf,"1 Bollard Drive, Burnie TAS 7320",-41.058771,145.910512,DL,Diesel,197.9,2023-04-20 14:00:16.498751,2023-04-20
+169,Shell,Shell Tas Petroleum East Devonport(Unmanned),"150 Tarleton Street, East Devonport TAS 7310",-41.1866027,146.3709167,DL,Diesel,199.5,2023-04-20 14:00:16.498751,2023-04-20
+169,Shell,Shell Tas Petroleum East Devonport(Unmanned),"150 Tarleton Street, East Devonport TAS 7310",-41.1866027,146.3709167,P98,Premium 98,207.9,2023-04-20 14:00:16.498751,2023-04-20
+169,Shell,Shell Tas Petroleum East Devonport(Unmanned),"150 Tarleton Street, East Devonport TAS 7310",-41.1866027,146.3709167,U91,Unleaded 91,187.9,2023-04-20 14:00:16.498751,2023-04-20
+170,Shell,Shell Tas Petroleum Scottsdale (Unmanned),"18 Ten Mile Track, Scottsdale TAS 7260",-41.1982041,147.5464421,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+171,Shell,Shell Tas Petroleum Westbury (Unmanned),"27 Roxford Avenue, Westbury TAS 7303",-41.5090343,146.82896,DL,Diesel,196.9,2023-04-20 14:00:16.498751,2023-04-20
+171,Shell,Shell Tas Petroleum Westbury (Unmanned),"27 Roxford Avenue, Westbury TAS 7303",-41.5090343,146.82896,P98,Premium 98,207.9,2023-04-20 14:00:16.498751,2023-04-20
+171,Shell,Shell Tas Petroleum Westbury (Unmanned),"27 Roxford Avenue, Westbury TAS 7303",-41.5090343,146.82896,U91,Unleaded 91,188.9,2023-04-20 14:00:16.498751,2023-04-20
+172,Shell,Shell Corbs Servo And Takeaway,"74 Forth Road, Turners Beach TAS 7315",-41.1688376,146.2308572,DL,Diesel,216.9,2023-04-20 14:00:16.498751,2023-04-20
+172,Shell,Shell Corbs Servo And Takeaway,"74 Forth Road, Turners Beach TAS 7315",-41.1688376,146.2308572,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+172,Shell,Shell Corbs Servo And Takeaway,"74 Forth Road, Turners Beach TAS 7315",-41.1688376,146.2308572,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+173,Shell,Shell Scamander,"122-124 Scamander Avenue, SCAMANDER TAS 7215",-41.4540776,148.2632037,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+173,Shell,Shell Scamander,"122-124 Scamander Avenue, SCAMANDER TAS 7215",-41.4540776,148.2632037,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+173,Shell,Shell Scamander,"122-124 Scamander Avenue, SCAMANDER TAS 7215",-41.4540776,148.2632037,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+176,United,United Geeveston,"4840 Huon Highway, GEEVESTON TAS 7116",-43.1649399,146.9261533,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+176,United,United Geeveston,"4840 Huon Highway, GEEVESTON TAS 7116",-43.1649399,146.9261533,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+176,United,United Geeveston,"4840 Huon Highway, GEEVESTON TAS 7116",-43.1649399,146.9261533,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+177,Ampol, Ampol Huonville,"5 Main Road, Huonville TAS 7109",-43.0323113,147.0470996,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+177,Ampol, Ampol Huonville,"5 Main Road, Huonville TAS 7109",-43.0323113,147.0470996,LPG,LPG,132.9,2023-04-20 14:00:16.498751,2023-04-20
+177,Ampol, Ampol Huonville,"5 Main Road, Huonville TAS 7109",-43.0323113,147.0470996,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+177,Ampol, Ampol Huonville,"5 Main Road, Huonville TAS 7109",-43.0323113,147.0470996,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+177,Ampol, Ampol Huonville,"5 Main Road, Huonville TAS 7109",-43.0323113,147.0470996,PDL,Premium Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+177,Ampol, Ampol Huonville,"5 Main Road, Huonville TAS 7109",-43.0323113,147.0470996,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+178,Ampol,Ampol Snug,"2243 Channel Highway, Snug TAS 7054",-43.065187,147.2545112,DL,Diesel,213.9,2023-04-20 14:00:16.498751,2023-04-20
+178,Ampol,Ampol Snug,"2243 Channel Highway, Snug TAS 7054",-43.065187,147.2545112,P98,Premium 98,221.9,2023-04-20 14:00:16.498751,2023-04-20
+178,Ampol,Ampol Snug,"2243 Channel Highway, Snug TAS 7054",-43.065187,147.2545112,PDL,Premium Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+178,Ampol,Ampol Snug,"2243 Channel Highway, Snug TAS 7054",-43.065187,147.2545112,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+179,Ampol,AMPOL Moonah,"200 Main Road , Moonah TAS 7009",-42.8408911,147.2902637,DL,Diesel,195.9,2023-04-20 14:00:16.498751,2023-04-20
+179,Ampol,AMPOL Moonah,"200 Main Road , Moonah TAS 7009",-42.8408911,147.2902637,P95,Premium 95,203.9,2023-04-20 14:00:16.498751,2023-04-20
+179,Ampol,AMPOL Moonah,"200 Main Road , Moonah TAS 7009",-42.8408911,147.2902637,P98,Premium 98,211.9,2023-04-20 14:00:16.498751,2023-04-20
+179,Ampol,AMPOL Moonah,"200 Main Road , Moonah TAS 7009",-42.8408911,147.2902637,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+179,Ampol,AMPOL Moonah,"200 Main Road , Moonah TAS 7009",-42.8408911,147.2902637,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+180,Ampol,Ampol Rokeby,"42 South Arm Road, Rokeby TAS 7019",-42.9014164,147.4464065,P98,Premium 98,221.9,2023-04-20 14:00:16.498751,2023-04-20
+180,Ampol,Ampol Rokeby,"42 South Arm Road, Rokeby TAS 7019",-42.9014164,147.4464065,PDL,Premium Diesel,213.9,2023-04-20 14:00:16.498751,2023-04-20
+180,Ampol,Ampol Rokeby,"42 South Arm Road, Rokeby TAS 7019",-42.9014164,147.4464065,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+181,Ampol,Ampol Claremont,"708 Main Road, Claremont TAS 7011",-42.8018709,147.2543439,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+181,Ampol,Ampol Claremont,"708 Main Road, Claremont TAS 7011",-42.8018709,147.2543439,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+181,Ampol,Ampol Claremont,"708 Main Road, Claremont TAS 7011",-42.8018709,147.2543439,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+181,Ampol,Ampol Claremont,"708 Main Road, Claremont TAS 7011",-42.8018709,147.2543439,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+181,Ampol,Ampol Claremont,"708 Main Road, Claremont TAS 7011",-42.8018709,147.2543439,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+182,Ampol,Ampol New Norfolk,"Cnr Montagu & Burnett Streets, New Norfolk TAS 7140",-42.779245,147.06143,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+182,Ampol,Ampol New Norfolk,"Cnr Montagu & Burnett Streets, New Norfolk TAS 7140",-42.779245,147.06143,EV,EV charge,50.0,2023-04-20 14:00:16.498751,2023-04-20
+182,Ampol,Ampol New Norfolk,"Cnr Montagu & Burnett Streets, New Norfolk TAS 7140",-42.779245,147.06143,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+182,Ampol,Ampol New Norfolk,"Cnr Montagu & Burnett Streets, New Norfolk TAS 7140",-42.779245,147.06143,P98,Premium 98,217.9,2023-04-20 14:00:16.498751,2023-04-20
+182,Ampol,Ampol New Norfolk,"Cnr Montagu & Burnett Streets, New Norfolk TAS 7140",-42.779245,147.06143,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+182,Ampol,Ampol New Norfolk,"Cnr Montagu & Burnett Streets, New Norfolk TAS 7140",-42.779245,147.06143,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+183,Ampol,Ampol Kempton,"3001 Midland Hwy, Kempton TAS 7030",-42.512086,147.1884415,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+183,Ampol,Ampol Kempton,"3001 Midland Hwy, Kempton TAS 7030",-42.512086,147.1884415,EV,EV charge,50.0,2023-04-20 14:00:16.498751,2023-04-20
+183,Ampol,Ampol Kempton,"3001 Midland Hwy, Kempton TAS 7030",-42.512086,147.1884415,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+183,Ampol,Ampol Kempton,"3001 Midland Hwy, Kempton TAS 7030",-42.512086,147.1884415,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+183,Ampol,Ampol Kempton,"3001 Midland Hwy, Kempton TAS 7030",-42.512086,147.1884415,PDL,Premium Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+183,Ampol,Ampol Kempton,"3001 Midland Hwy, Kempton TAS 7030",-42.512086,147.1884415,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+184,Ampol,Ampol Lenah Valley,"101 Augusta Road, Lenah Valley TAS 7008",-42.8655207,147.2968076,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+184,Ampol,Ampol Lenah Valley,"101 Augusta Road, Lenah Valley TAS 7008",-42.8655207,147.2968076,P95,Premium 95,214.9,2023-04-20 14:00:16.498751,2023-04-20
+184,Ampol,Ampol Lenah Valley,"101 Augusta Road, Lenah Valley TAS 7008",-42.8655207,147.2968076,P98,Premium 98,221.9,2023-04-20 14:00:16.498751,2023-04-20
+184,Ampol,Ampol Lenah Valley,"101 Augusta Road, Lenah Valley TAS 7008",-42.8655207,147.2968076,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+184,Ampol,Ampol Lenah Valley,"101 Augusta Road, Lenah Valley TAS 7008",-42.8655207,147.2968076,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+185,Ampol,Ampol Grand Central,"86-96 Wellington Street, Launceston TAS 7250",-41.443077,147.138069,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+185,Ampol,Ampol Grand Central,"86-96 Wellington Street, Launceston TAS 7250",-41.443077,147.138069,P98,Premium 98,220.9,2023-04-20 14:00:16.498751,2023-04-20
+185,Ampol,Ampol Grand Central,"86-96 Wellington Street, Launceston TAS 7250",-41.443077,147.138069,PDL,Premium Diesel,216.9,2023-04-20 14:00:16.498751,2023-04-20
+185,Ampol,Ampol Grand Central,"86-96 Wellington Street, Launceston TAS 7250",-41.443077,147.138069,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+186,Ampol,AMPOL SWANSEA,"6 Franklin Street, Swansea TAS 7190",-42.1250734,148.077707,DL,Diesel,208.9,2023-04-20 14:00:16.498751,2023-04-20
+186,Ampol,AMPOL SWANSEA,"6 Franklin Street, Swansea TAS 7190",-42.1250734,148.077707,P95,Premium 95,220.9,2023-04-20 14:00:16.498751,2023-04-20
+186,Ampol,AMPOL SWANSEA,"6 Franklin Street, Swansea TAS 7190",-42.1250734,148.077707,U91,Unleaded 91,205.9,2023-04-20 14:00:16.498751,2023-04-20
+187,Ampol,Ampol Regent Street,"66 Regent Street, Sandy Bay TAS 7005",-42.8971585,147.323381,P95,Premium 95,214.9,2023-04-20 14:00:16.498751,2023-04-20
+187,Ampol,Ampol Regent Street,"66 Regent Street, Sandy Bay TAS 7005",-42.8971585,147.323381,P98,Premium 98,221.9,2023-04-20 14:00:16.498751,2023-04-20
+187,Ampol,Ampol Regent Street,"66 Regent Street, Sandy Bay TAS 7005",-42.8971585,147.323381,PDL,Premium Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+187,Ampol,Ampol Regent Street,"66 Regent Street, Sandy Bay TAS 7005",-42.8971585,147.323381,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+188,United,United Swansea,"36 Franklin Street, Swansea TAS 7190",-42.1232779,148.0741116,DL,Diesel,208.9,2023-04-20 14:00:16.498751,2023-04-20
+188,United,United Swansea,"36 Franklin Street, Swansea TAS 7190",-42.1232779,148.0741116,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+188,United,United Swansea,"36 Franklin Street, Swansea TAS 7190",-42.1232779,148.0741116,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+188,United,United Swansea,"36 Franklin Street, Swansea TAS 7190",-42.1232779,148.0741116,U91,Unleaded 91,205.9,2023-04-20 14:00:16.498751,2023-04-20
+189,Ampol,Ampol Montrose,"494 Main Road, Montrose TAS 7010",-42.8258365,147.2657479,DL,Diesel,195.9,2023-04-20 14:00:16.498751,2023-04-20
+189,Ampol,Ampol Montrose,"494 Main Road, Montrose TAS 7010",-42.8258365,147.2657479,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+189,Ampol,Ampol Montrose,"494 Main Road, Montrose TAS 7010",-42.8258365,147.2657479,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+189,Ampol,Ampol Montrose,"494 Main Road, Montrose TAS 7010",-42.8258365,147.2657479,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+191,Ampol,Ampol Highclere Roadhouse,"1576 Ridgley Highway, Highclere TAS 7321",-41.1920741,145.8053715,P98,Premium 98,214.9,2023-04-20 14:00:16.498751,2023-04-20
+191,Ampol,Ampol Highclere Roadhouse,"1576 Ridgley Highway, Highclere TAS 7321",-41.1920741,145.8053715,PDL,Premium Diesel,208.9,2023-04-20 14:00:16.498751,2023-04-20
+191,Ampol,Ampol Highclere Roadhouse,"1576 Ridgley Highway, Highclere TAS 7321",-41.1920741,145.8053715,U91,Unleaded 91,203.9,2023-04-20 14:00:16.498751,2023-04-20
+192,Independent,Independent Chudleigh General Store,"60 Sorell Street, Chudleigh TAS 7304",-41.5570917,146.4808594,U91,Unleaded 91,219.9,2023-04-20 14:00:16.498751,2023-04-20
+193,BP,BP Service Station,"5 Station Road, Dover TAS 7117",-43.3120185,147.0167088,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+193,BP,BP Service Station,"5 Station Road, Dover TAS 7117",-43.3120185,147.0167088,P95,Premium 95,220.9,2023-04-20 14:00:16.498751,2023-04-20
+193,BP,BP Service Station,"5 Station Road, Dover TAS 7117",-43.3120185,147.0167088,U91,Unleaded 91,208.9,2023-04-20 14:00:16.498751,2023-04-20
+194,Ampol,Ampol St. Marys,"41 Main Street, St. Marys TAS 7215",-41.5786152,148.1878919,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+194,Ampol,Ampol St. Marys,"41 Main Street, St. Marys TAS 7215",-41.5786152,148.1878919,P95,Premium 95,211.9,2023-04-20 14:00:16.498751,2023-04-20
+194,Ampol,Ampol St. Marys,"41 Main Street, St. Marys TAS 7215",-41.5786152,148.1878919,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+194,Ampol,Ampol St. Marys,"41 Main Street, St. Marys TAS 7215",-41.5786152,148.1878919,U91,Unleaded 91,198.9,2023-04-20 14:00:16.498751,2023-04-20
+195,Independent,Independent Dodges Ferry Hill Street Grocer,"60 Carlton Beach Road , Dodges Ferry TAS 7173",-42.8581297,147.616764,DL,Diesel,198.0,2023-04-20 14:00:16.498751,2023-04-20
+195,Independent,Independent Dodges Ferry Hill Street Grocer,"60 Carlton Beach Road , Dodges Ferry TAS 7173",-42.8581297,147.616764,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+195,Independent,Independent Dodges Ferry Hill Street Grocer,"60 Carlton Beach Road , Dodges Ferry TAS 7173",-42.8581297,147.616764,U91,Unleaded 91,198.0,2023-04-20 14:00:16.498751,2023-04-20
+196,BP,BP Claremont,"34 Wyndham Road, Claremont TAS 7011",-42.7896726,147.2465915,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+196,BP,BP Claremont,"34 Wyndham Road, Claremont TAS 7011",-42.7896726,147.2465915,PDL,Premium Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+196,BP,BP Claremont,"34 Wyndham Road, Claremont TAS 7011",-42.7896726,147.2465915,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+198,United,United Bardenhagen Hardware And Rural Supplies,"4 Golconda Road, Lilydale TAS 7268",-41.248798,147.218158,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+198,United,United Bardenhagen Hardware And Rural Supplies,"4 Golconda Road, Lilydale TAS 7268",-41.248798,147.218158,P95,Premium 95,203.9,2023-04-20 14:00:16.498751,2023-04-20
+198,United,United Bardenhagen Hardware And Rural Supplies,"4 Golconda Road, Lilydale TAS 7268",-41.248798,147.218158,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+199,United,United Forth Village Store,"668 Main Road, Forth TAS 7310",-41.1893009,146.2499114,DL,Diesel,219.9,2023-04-20 14:00:16.498751,2023-04-20
+199,United,United Forth Village Store,"668 Main Road, Forth TAS 7310",-41.1893009,146.2499114,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+199,United,United Forth Village Store,"668 Main Road, Forth TAS 7310",-41.1893009,146.2499114,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+200,Independent,Independent Ringarooma Garage,"47 Main Street, Ringarooma TAS 7263",-41.2419108,147.739909,DL,Diesel,247.0,2023-04-20 14:00:16.498751,2023-04-20
+200,Independent,Independent Ringarooma Garage,"47 Main Street, Ringarooma TAS 7263",-41.2419108,147.739909,P95,Premium 95,215.0,2023-04-20 14:00:16.498751,2023-04-20
+200,Independent,Independent Ringarooma Garage,"47 Main Street, Ringarooma TAS 7263",-41.2419108,147.739909,U91,Unleaded 91,190.0,2023-04-20 14:00:16.498751,2023-04-20
+201,United,United Triabunna,"34 Tasman Highway, Triabunna TAS 7190",-42.5007562,147.9188227,DL,Diesel,211.9,2023-04-20 14:00:16.498751,2023-04-20
+201,United,United Triabunna,"34 Tasman Highway, Triabunna TAS 7190",-42.5007562,147.9188227,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+201,United,United Triabunna,"34 Tasman Highway, Triabunna TAS 7190",-42.5007562,147.9188227,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+203,Shell,Shell West Launceston,"167-169 Cambridge Street, West Launceston TAS 7250",-41.4618432,147.1326733,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+203,Shell,Shell West Launceston,"167-169 Cambridge Street, West Launceston TAS 7250",-41.4618432,147.1326733,P95,Premium 95,199.9,2023-04-20 14:00:16.498751,2023-04-20
+203,Shell,Shell West Launceston,"167-169 Cambridge Street, West Launceston TAS 7250",-41.4618432,147.1326733,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+204,Independent,Independent Berriedale Service Centre,"625 Main Road, Berriedale TAS 7011",-42.8155514,147.2561693,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+204,Independent,Independent Berriedale Service Centre,"625 Main Road, Berriedale TAS 7011",-42.8155514,147.2561693,P95,Premium 95,203.9,2023-04-20 14:00:16.498751,2023-04-20
+204,Independent,Independent Berriedale Service Centre,"625 Main Road, Berriedale TAS 7011",-42.8155514,147.2561693,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+205,Independent,Independent Seven Mile Beach Store,"1-3 Lewis Avenue, Seven Mile Beach TAS 7170",-42.8612962,147.50534,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+205,Independent,Independent Seven Mile Beach Store,"1-3 Lewis Avenue, Seven Mile Beach TAS 7170",-42.8612962,147.50534,P95,Premium 95,219.9,2023-04-20 14:00:16.498751,2023-04-20
+205,Independent,Independent Seven Mile Beach Store,"1-3 Lewis Avenue, Seven Mile Beach TAS 7170",-42.8612962,147.50534,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+209,Ampol,Arnolds Ampol,"70 Goldie Street, Smithton TAS 7330",-40.8425152,145.1258652,P98,Premium 98,210.9,2023-04-20 14:00:16.498751,2023-04-20
+209,Ampol,Arnolds Ampol,"70 Goldie Street, Smithton TAS 7330",-40.8425152,145.1258652,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+209,Ampol,Arnolds Ampol,"70 Goldie Street, Smithton TAS 7330",-40.8425152,145.1258652,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+210,Shell,Shell Buckland Store,"6023 High Street, Buckland TAS 7190",-42.6074757,147.7194962,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+210,Shell,Shell Buckland Store,"6023 High Street, Buckland TAS 7190",-42.6074757,147.7194962,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+211,Tas Petroleum,Tas Petroleum Moonah,"138-140 Main Rd, Moonah TAS 7009",-42.84477,147.29325,DL,Diesel,195.9,2023-04-20 14:00:16.498751,2023-04-20
+211,Tas Petroleum,Tas Petroleum Moonah,"138-140 Main Rd, Moonah TAS 7009",-42.84477,147.29325,P95,Premium 95,203.9,2023-04-20 14:00:16.498751,2023-04-20
+211,Tas Petroleum,Tas Petroleum Moonah,"138-140 Main Rd, Moonah TAS 7009",-42.84477,147.29325,P98,Premium 98,211.9,2023-04-20 14:00:16.498751,2023-04-20
+211,Tas Petroleum,Tas Petroleum Moonah,"138-140 Main Rd, Moonah TAS 7009",-42.84477,147.29325,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+211,Tas Petroleum,Tas Petroleum Moonah,"138-140 Main Rd, Moonah TAS 7009",-42.84477,147.29325,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+212,United,United Bridgewater,"Cnr Scotts & Greenpoint Roads, BRIDGEWATER TAS 7030",-42.7394997,147.244232,DL,Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+212,United,United Bridgewater,"Cnr Scotts & Greenpoint Roads, BRIDGEWATER TAS 7030",-42.7394997,147.244232,E10,Ethanol 94,190.9,2023-04-20 14:00:16.498751,2023-04-20
+212,United,United Bridgewater,"Cnr Scotts & Greenpoint Roads, BRIDGEWATER TAS 7030",-42.7394997,147.244232,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+212,United,United Bridgewater,"Cnr Scotts & Greenpoint Roads, BRIDGEWATER TAS 7030",-42.7394997,147.244232,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+213,United,United Launceston Breadalbane,"Evandale Road and Translink Ave S, Breadalbane TAS 7258",-41.5369161,147.1934275,DL,Diesel,209.5,2023-04-20 14:00:16.498751,2023-04-20
+213,United,United Launceston Breadalbane,"Evandale Road and Translink Ave S, Breadalbane TAS 7258",-41.5369161,147.1934275,LPG,LPG,131.9,2023-04-20 14:00:16.498751,2023-04-20
+213,United,United Launceston Breadalbane,"Evandale Road and Translink Ave S, Breadalbane TAS 7258",-41.5369161,147.1934275,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+213,United,United Launceston Breadalbane,"Evandale Road and Translink Ave S, Breadalbane TAS 7258",-41.5369161,147.1934275,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+213,United,United Launceston Breadalbane,"Evandale Road and Translink Ave S, Breadalbane TAS 7258",-41.5369161,147.1934275,PDL,Premium Diesel,214.5,2023-04-20 14:00:16.498751,2023-04-20
+213,United,United Launceston Breadalbane,"Evandale Road and Translink Ave S, Breadalbane TAS 7258",-41.5369161,147.1934275,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+214,United,United York Park,"135 Invermay, Invermay TAS 7248",-41.424033,147.136213,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+214,United,United York Park,"135 Invermay, Invermay TAS 7248",-41.424033,147.136213,E10,Ethanol 94,193.9,2023-04-20 14:00:16.498751,2023-04-20
+214,United,United York Park,"135 Invermay, Invermay TAS 7248",-41.424033,147.136213,LPG,LPG,137.9,2023-04-20 14:00:16.498751,2023-04-20
+214,United,United York Park,"135 Invermay, Invermay TAS 7248",-41.424033,147.136213,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+214,United,United York Park,"135 Invermay, Invermay TAS 7248",-41.424033,147.136213,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+215,BP,BP Deloraine,"29 Bass Hwy, Deloraine TAS 7304",-41.524852,146.664088,P95,Premium 95,215.9,2023-04-20 14:00:16.498751,2023-04-20
+215,BP,BP Deloraine,"29 Bass Hwy, Deloraine TAS 7304",-41.524852,146.664088,P98,Premium 98,227.9,2023-04-20 14:00:16.498751,2023-04-20
+215,BP,BP Deloraine,"29 Bass Hwy, Deloraine TAS 7304",-41.524852,146.664088,PDL,Premium Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+215,BP,BP Deloraine,"29 Bass Hwy, Deloraine TAS 7304",-41.524852,146.664088,U91,Unleaded 91,202.9,2023-04-20 14:00:16.498751,2023-04-20
+216,BP,BP Mahoneys Bp Rosebery,"7 Arthur Street, ROSEBERY TAS 7470",-41.778466,145.537088,P95,Premium 95,219.9,2023-04-20 14:00:16.498751,2023-04-20
+216,BP,BP Mahoneys Bp Rosebery,"7 Arthur Street, ROSEBERY TAS 7470",-41.778466,145.537088,P98,Premium 98,227.9,2023-04-20 14:00:16.498751,2023-04-20
+216,BP,BP Mahoneys Bp Rosebery,"7 Arthur Street, ROSEBERY TAS 7470",-41.778466,145.537088,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+216,BP,BP Mahoneys Bp Rosebery,"7 Arthur Street, ROSEBERY TAS 7470",-41.778466,145.537088,U91,Unleaded 91,205.9,2023-04-20 14:00:16.498751,2023-04-20
+217,Independent,Independent Bangalee Store,"10b Bangalee Street, Lauderdale TAS 7021",-42.9083654,147.4899028,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+217,Independent,Independent Bangalee Store,"10b Bangalee Street, Lauderdale TAS 7021",-42.9083654,147.4899028,P95,Premium 95,211.9,2023-04-20 14:00:16.498751,2023-04-20
+217,Independent,Independent Bangalee Store,"10b Bangalee Street, Lauderdale TAS 7021",-42.9083654,147.4899028,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+220,Ampol,Ampol Terrylands Service Station,"24 Joyce Street, Burnie TAS 7320",-41.0625045,145.896431,DL,Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+220,Ampol,Ampol Terrylands Service Station,"24 Joyce Street, Burnie TAS 7320",-41.0625045,145.896431,P95,Premium 95,212.9,2023-04-20 14:00:16.498751,2023-04-20
+220,Ampol,Ampol Terrylands Service Station,"24 Joyce Street, Burnie TAS 7320",-41.0625045,145.896431,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+222,Independent,Independent Port Cygnet Fuel,"2 Charlton Street, Cygnet TAS 7112",-43.1635085,147.0799709,DL,Diesel,217.9,2023-04-20 14:00:16.498751,2023-04-20
+222,Independent,Independent Port Cygnet Fuel,"2 Charlton Street, Cygnet TAS 7112",-43.1635085,147.0799709,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+222,Independent,Independent Port Cygnet Fuel,"2 Charlton Street, Cygnet TAS 7112",-43.1635085,147.0799709,U91,Unleaded 91,208.9,2023-04-20 14:00:16.498751,2023-04-20
+224,Ampol,Ampol Skyline Service Station,"414 Huon Road, South Hobart TAS 7004",-42.8986727,147.3022755,P98,Premium 98,219.9,2023-04-20 14:00:16.498751,2023-04-20
+224,Ampol,Ampol Skyline Service Station,"414 Huon Road, South Hobart TAS 7004",-42.8986727,147.3022755,PDL,Premium Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+224,Ampol,Ampol Skyline Service Station,"414 Huon Road, South Hobart TAS 7004",-42.8986727,147.3022755,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+225,Shell,Shell Huetts Service Station,"138 Emu Bay Road , Deloraine  TAS 7304",-41.5218759,146.6443909,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+225,Shell,Shell Huetts Service Station,"138 Emu Bay Road , Deloraine  TAS 7304",-41.5218759,146.6443909,LPG,LPG,139.9,2023-04-20 14:00:16.498751,2023-04-20
+225,Shell,Shell Huetts Service Station,"138 Emu Bay Road , Deloraine  TAS 7304",-41.5218759,146.6443909,P95,Premium 95,215.9,2023-04-20 14:00:16.498751,2023-04-20
+225,Shell,Shell Huetts Service Station,"138 Emu Bay Road , Deloraine  TAS 7304",-41.5218759,146.6443909,P98,Premium 98,227.9,2023-04-20 14:00:16.498751,2023-04-20
+225,Shell,Shell Huetts Service Station,"138 Emu Bay Road , Deloraine  TAS 7304",-41.5218759,146.6443909,U91,Unleaded 91,202.9,2023-04-20 14:00:16.498751,2023-04-20
+226,Independent,Independent Railton Motor & Tyre Service,"26-28 Foster Street, Railton TAS 7305",-41.3463891,146.4216822,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+226,Independent,Independent Railton Motor & Tyre Service,"26-28 Foster Street, Railton TAS 7305",-41.3463891,146.4216822,P98,Premium 98,216.9,2023-04-20 14:00:16.498751,2023-04-20
+226,Independent,Independent Railton Motor & Tyre Service,"26-28 Foster Street, Railton TAS 7305",-41.3463891,146.4216822,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+227,Ampol,Ampol Carrick,"45 Meander Valley Road, Carrick TAS 7291",-41.5317578,147.0090264,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+227,Ampol,Ampol Carrick,"45 Meander Valley Road, Carrick TAS 7291",-41.5317578,147.0090264,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+227,Ampol,Ampol Carrick,"45 Meander Valley Road, Carrick TAS 7291",-41.5317578,147.0090264,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+228,Ampol,Ampol IAJ Motors,"71 Main Street, Bridport TAS 7262",-41.0041706,147.3945714,DL,Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+228,Ampol,Ampol IAJ Motors,"71 Main Street, Bridport TAS 7262",-41.0041706,147.3945714,P95,Premium 95,218.9,2023-04-20 14:00:16.498751,2023-04-20
+228,Ampol,Ampol IAJ Motors,"71 Main Street, Bridport TAS 7262",-41.0041706,147.3945714,U91,Unleaded 91,206.9,2023-04-20 14:00:16.498751,2023-04-20
+230,Independent,Lewisham service centre,"96 Lewisham Scenic Drive, Lewisham TAS 7173",-42.8290538,147.6074909,DL,Diesel,196.9,2023-04-20 14:00:16.498751,2023-04-20
+230,Independent,Lewisham service centre,"96 Lewisham Scenic Drive, Lewisham TAS 7173",-42.8290538,147.6074909,P95,Premium 95,199.9,2023-04-20 14:00:16.498751,2023-04-20
+230,Independent,Lewisham service centre,"96 Lewisham Scenic Drive, Lewisham TAS 7173",-42.8290538,147.6074909,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+230,Independent,Lewisham service centre,"96 Lewisham Scenic Drive, Lewisham TAS 7173",-42.8290538,147.6074909,U91,Unleaded 91,185.9,2023-04-20 14:00:16.498751,2023-04-20
+231,Shell,Shell Risdon Vale,"42 Sugarloaf Road, Risdon Vale TAS 7016",-42.8133779,147.3515764,DL,Diesel,195.7,2023-04-20 14:00:16.498751,2023-04-20
+231,Shell,Shell Risdon Vale,"42 Sugarloaf Road, Risdon Vale TAS 7016",-42.8133779,147.3515764,P98,Premium 98,214.7,2023-04-20 14:00:16.498751,2023-04-20
+231,Shell,Shell Risdon Vale,"42 Sugarloaf Road, Risdon Vale TAS 7016",-42.8133779,147.3515764,U91,Unleaded 91,189.7,2023-04-20 14:00:16.498751,2023-04-20
+233,BP,BP Youngtown,"295 Hobart Road, Youngtown TAS 7249",-41.4892145,147.16791,P95,Premium 95,219.9,2023-04-20 14:00:16.498751,2023-04-20
+233,BP,BP Youngtown,"295 Hobart Road, Youngtown TAS 7249",-41.4892145,147.16791,P98,Premium 98,229.9,2023-04-20 14:00:16.498751,2023-04-20
+233,BP,BP Youngtown,"295 Hobart Road, Youngtown TAS 7249",-41.4892145,147.16791,PDL,Premium Diesel,211.9,2023-04-20 14:00:16.498751,2023-04-20
+233,BP,BP Youngtown,"295 Hobart Road, Youngtown TAS 7249",-41.4892145,147.16791,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+234,Independent,Independent Iluka General Store,"U2/15 Esplanade, Coles Bay TAS 7215",-42.1226051,148.2836012,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+234,Independent,Independent Iluka General Store,"U2/15 Esplanade, Coles Bay TAS 7215",-42.1226051,148.2836012,P95,Premium 95,213.9,2023-04-20 14:00:16.498751,2023-04-20
+234,Independent,Independent Iluka General Store,"U2/15 Esplanade, Coles Bay TAS 7215",-42.1226051,148.2836012,U91,Unleaded 91,200.9,2023-04-20 14:00:16.498751,2023-04-20
+235,Ampol, AMPOL Copping Roadhouse,"2233 Arthur Highway, Copping TAS 7174",-42.8194331,147.8015479,DL,Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+235,Ampol, AMPOL Copping Roadhouse,"2233 Arthur Highway, Copping TAS 7174",-42.8194331,147.8015479,P98,Premium 98,214.9,2023-04-20 14:00:16.498751,2023-04-20
+235,Ampol, AMPOL Copping Roadhouse,"2233 Arthur Highway, Copping TAS 7174",-42.8194331,147.8015479,U91,Unleaded 91,192.9,2023-04-20 14:00:16.498751,2023-04-20
+239,Ampol,Ampol Ulverstone,"73 Reibey Street, Ulverstone TAS 7315",-41.1573289,146.1735688,DL,Diesel,207.9,2023-04-20 14:00:16.498751,2023-04-20
+239,Ampol,Ampol Ulverstone,"73 Reibey Street, Ulverstone TAS 7315",-41.1573289,146.1735688,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+239,Ampol,Ampol Ulverstone,"73 Reibey Street, Ulverstone TAS 7315",-41.1573289,146.1735688,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+240,Ampol,Campania Self Serve,"96A REEVE ST, CAMPANIA TAS 7026",-42.66172,147.4235237,DL,Diesel,197.9,2023-04-20 14:00:16.498751,2023-04-20
+240,Ampol,Campania Self Serve,"96A REEVE ST, CAMPANIA TAS 7026",-42.66172,147.4235237,P95,Premium 95,201.9,2023-04-20 14:00:16.498751,2023-04-20
+240,Ampol,Campania Self Serve,"96A REEVE ST, CAMPANIA TAS 7026",-42.66172,147.4235237,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+242,Independent,Ridgley Roadhouse & Fuel Pty Ltd,"1023 RIDGLEY HWY, RIDGLEY TAS 7321",-41.1503515,145.8333656,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+242,Independent,Ridgley Roadhouse & Fuel Pty Ltd,"1023 RIDGLEY HWY, RIDGLEY TAS 7321",-41.1503515,145.8333656,P98,Premium 98,215.9,2023-04-20 14:00:16.498751,2023-04-20
+242,Independent,Ridgley Roadhouse & Fuel Pty Ltd,"1023 RIDGLEY HWY, RIDGLEY TAS 7321",-41.1503515,145.8333656,U91,Unleaded 91,198.9,2023-04-20 14:00:16.498751,2023-04-20
+244,Independent,Southport Hotel and Caravan Park,"8777 HUON HWY, SOUTHPORT TAS 7109",-43.4246492,146.9744774,DL,Diesel,233.9,2023-04-20 14:00:16.498751,2023-04-20
+244,Independent,Southport Hotel and Caravan Park,"8777 HUON HWY, SOUTHPORT TAS 7109",-43.4246492,146.9744774,U91,Unleaded 91,209.9,2023-04-20 14:00:16.498751,2023-04-20
+245,Independent,Great Lake General Store,"3096 MARLBOROUGH RD, MIENA TAS 7030",-41.9808252,146.6762884,DL,Diesel,208.0,2023-04-20 14:00:16.498751,2023-04-20
+245,Independent,Great Lake General Store,"3096 MARLBOROUGH RD, MIENA TAS 7030",-41.9808252,146.6762884,P98,Premium 98,223.0,2023-04-20 14:00:16.498751,2023-04-20
+245,Independent,Great Lake General Store,"3096 MARLBOROUGH RD, MIENA TAS 7030",-41.9808252,146.6762884,U91,Unleaded 91,209.0,2023-04-20 14:00:16.498751,2023-04-20
+246,Independent,"Tasman Fuel, Takeaway and Convenience Store","46-48 FAULKNER RD, RAVENSWOOD TAS 7250",-41.4237153,147.1799574,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+246,Independent,"Tasman Fuel, Takeaway and Convenience Store","46-48 FAULKNER RD, RAVENSWOOD TAS 7250",-41.4237153,147.1799574,U91,Unleaded 91,190.9,2023-04-20 14:00:16.498751,2023-04-20
+247,Independent,Eastside Motors (Tas) PTY LTD,"10 HEDLEY ST, SCOTTSDALE TAS 7260",-41.162285,147.5183976,DL,Diesel,196.0,2023-04-20 14:00:16.498751,2023-04-20
+247,Independent,Eastside Motors (Tas) PTY LTD,"10 HEDLEY ST, SCOTTSDALE TAS 7260",-41.162285,147.5183976,U91,Unleaded 91,195.0,2023-04-20 14:00:16.498751,2023-04-20
+248,Independent,Port Arthur General Store,"6959 ARTHUR HWY, PORT ARTHUR TAS 7182",-43.1398441,147.8511617,DL,Diesel,195.9,2023-04-20 14:00:16.498751,2023-04-20
+248,Independent,Port Arthur General Store,"6959 ARTHUR HWY, PORT ARTHUR TAS 7182",-43.1398441,147.8511617,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+248,Independent,Port Arthur General Store,"6959 ARTHUR HWY, PORT ARTHUR TAS 7182",-43.1398441,147.8511617,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+249,Independent,Gawler General Store,"170 GAWLER RD, GAWLER TAS 7315",-41.1831201,146.1595958,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+249,Independent,Gawler General Store,"170 GAWLER RD, GAWLER TAS 7315",-41.1831201,146.1595958,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+249,Independent,Gawler General Store,"170 GAWLER RD, GAWLER TAS 7315",-41.1831201,146.1595958,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+252,Independent,Bracknell Roadhouse,"23 ELIZABETH ST, BRACKNELL TAS 7302",-41.6493151,146.9390448,DL,Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+252,Independent,Bracknell Roadhouse,"23 ELIZABETH ST, BRACKNELL TAS 7302",-41.6493151,146.9390448,P95,Premium 95,215.9,2023-04-20 14:00:16.498751,2023-04-20
+252,Independent,Bracknell Roadhouse,"23 ELIZABETH ST, BRACKNELL TAS 7302",-41.6493151,146.9390448,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+253,United,VEER Tas United Wivenhoe Service Station With RACT Fuel Discount,"33 MAIN RD, WIVENHOE TAS 7320",-41.0680916,145.9342931,DL,Diesel,212.9,2023-04-20 14:00:16.498751,2023-04-20
+253,United,VEER Tas United Wivenhoe Service Station With RACT Fuel Discount,"33 MAIN RD, WIVENHOE TAS 7320",-41.0680916,145.9342931,P98,Premium 98,214.9,2023-04-20 14:00:16.498751,2023-04-20
+253,United,VEER Tas United Wivenhoe Service Station With RACT Fuel Discount,"33 MAIN RD, WIVENHOE TAS 7320",-41.0680916,145.9342931,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+254,Independent,	 Lady Barron Store,"11 HENWOOD ST, LADY BARRON TAS 7255",-40.2087038,148.2434878,DL,Diesel,252.0,2023-04-20 14:00:16.498751,2023-04-20
+254,Independent,	 Lady Barron Store,"11 HENWOOD ST, LADY BARRON TAS 7255",-40.2087038,148.2434878,U91,Unleaded 91,237.0,2023-04-20 14:00:16.498751,2023-04-20
+255,Independent,Mole Creek Servo 24/7,"8 CAVESIDE RD, MOLE CREEK TAS 7304",-41.5578824,146.4071371,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+255,Independent,Mole Creek Servo 24/7,"8 CAVESIDE RD, MOLE CREEK TAS 7304",-41.5578824,146.4071371,P95,Premium 95,215.9,2023-04-20 14:00:16.498751,2023-04-20
+255,Independent,Mole Creek Servo 24/7,"8 CAVESIDE RD, MOLE CREEK TAS 7304",-41.5578824,146.4071371,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+362,United,United Brighton,"40 BRIGHTON RD, BRIGHTON TAS 7030",-42.7092186,147.248002,DL,Diesel,210.9,2023-04-20 14:00:16.498751,2023-04-20
+362,United,United Brighton,"40 BRIGHTON RD, BRIGHTON TAS 7030",-42.7092186,147.248002,E10,Ethanol 94,190.9,2023-04-20 14:00:16.498751,2023-04-20
+362,United,United Brighton,"40 BRIGHTON RD, BRIGHTON TAS 7030",-42.7092186,147.248002,E85,Ethanol 105,219.9,2023-04-20 14:00:16.498751,2023-04-20
+362,United,United Brighton,"40 BRIGHTON RD, BRIGHTON TAS 7030",-42.7092186,147.248002,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+362,United,United Brighton,"40 BRIGHTON RD, BRIGHTON TAS 7030",-42.7092186,147.248002,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+362,United,United Brighton,"40 BRIGHTON RD, BRIGHTON TAS 7030",-42.7092186,147.248002,PDL,Premium Diesel,213.9,2023-04-20 14:00:16.498751,2023-04-20
+362,United,United Brighton,"40 BRIGHTON RD, BRIGHTON TAS 7030",-42.7092186,147.248002,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+364,BP,Gladstone General Store & Post Office,"30 CHAFFEY ST, GLADSTONE TAS 7264",-40.9600036,148.0100913,DL,Diesel,205.0,2023-04-20 14:00:16.498751,2023-04-20
+364,BP,Gladstone General Store & Post Office,"30 CHAFFEY ST, GLADSTONE TAS 7264",-40.9600036,148.0100913,P95,Premium 95,205.0,2023-04-20 14:00:16.498751,2023-04-20
+364,BP,Gladstone General Store & Post Office,"30 CHAFFEY ST, GLADSTONE TAS 7264",-40.9600036,148.0100913,U91,Unleaded 91,195.0,2023-04-20 14:00:16.498751,2023-04-20
+365,Ampol,Primrose Servo,"575 PRIMROSE SANDS RD, PRIMROSE SANDS TAS 7173",-42.8933116,147.6714413,DL,Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+365,Ampol,Primrose Servo,"575 PRIMROSE SANDS RD, PRIMROSE SANDS TAS 7173",-42.8933116,147.6714413,P95,Premium 95,202.9,2023-04-20 14:00:16.498751,2023-04-20
+365,Ampol,Primrose Servo,"575 PRIMROSE SANDS RD, PRIMROSE SANDS TAS 7173",-42.8933116,147.6714413,U91,Unleaded 91,188.9,2023-04-20 14:00:16.498751,2023-04-20
+366,Independent,Hillcrest Tourist Park,"10 CHIMNEY HEIGHTS RD, STIEGLITZ TAS 7216",-41.3252422,148.2967021,DL,Diesel,216.9,2023-04-20 14:00:16.498751,2023-04-20
+366,Independent,Hillcrest Tourist Park,"10 CHIMNEY HEIGHTS RD, STIEGLITZ TAS 7216",-41.3252422,148.2967021,P95,Premium 95,209.9,2023-04-20 14:00:16.498751,2023-04-20
+366,Independent,Hillcrest Tourist Park,"10 CHIMNEY HEIGHTS RD, STIEGLITZ TAS 7216",-41.3252422,148.2967021,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+367,Shell,Shell Tas Petroleum Cambridge (unmanned),"116 CAMBRIDGE PARK DR, CAMBRIDGE TAS 7170",-42.8339147,147.4807342,DL,Diesel,191.9,2023-04-20 14:00:16.498751,2023-04-20
+367,Shell,Shell Tas Petroleum Cambridge (unmanned),"116 CAMBRIDGE PARK DR, CAMBRIDGE TAS 7170",-42.8339147,147.4807342,P95,Premium 95,195.9,2023-04-20 14:00:16.498751,2023-04-20
+367,Shell,Shell Tas Petroleum Cambridge (unmanned),"116 CAMBRIDGE PARK DR, CAMBRIDGE TAS 7170",-42.8339147,147.4807342,P98,Premium 98,205.9,2023-04-20 14:00:16.498751,2023-04-20
+367,Shell,Shell Tas Petroleum Cambridge (unmanned),"116 CAMBRIDGE PARK DR, CAMBRIDGE TAS 7170",-42.8339147,147.4807342,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+367,Shell,Shell Tas Petroleum Cambridge (unmanned),"116 CAMBRIDGE PARK DR, CAMBRIDGE TAS 7170",-42.8339147,147.4807342,U91,Unleaded 91,185.9,2023-04-20 14:00:16.498751,2023-04-20
+368,Independent,King Island Motors,"1 NETHERBY RD, CURRIE TAS 7256",-39.9324434,143.8515739,DL,Diesel,242.0,2023-04-20 14:00:16.498751,2023-04-20
+368,Independent,King Island Motors,"1 NETHERBY RD, CURRIE TAS 7256",-39.9324434,143.8515739,U91,Unleaded 91,242.0,2023-04-20 14:00:16.498751,2023-04-20
+369,Tas Petroleum,Arthurs Lake Roadhouse,"40 ARTHURS LAKE RD, ARTHURS LAKE TAS 7030",-42.0013232,146.8546105,DL,Diesel,202.0,2023-04-20 14:00:16.498751,2023-04-20
+369,Tas Petroleum,Arthurs Lake Roadhouse,"40 ARTHURS LAKE RD, ARTHURS LAKE TAS 7030",-42.0013232,146.8546105,P98,Premium 98,211.0,2023-04-20 14:00:16.498751,2023-04-20
+369,Tas Petroleum,Arthurs Lake Roadhouse,"40 ARTHURS LAKE RD, ARTHURS LAKE TAS 7030",-42.0013232,146.8546105,U91,Unleaded 91,202.0,2023-04-20 14:00:16.498751,2023-04-20
+370,Ampol,J&N Car Care - Triabunna Service Station,"6 VICARY ST, TRIABUNNA TAS 7190",-42.5084156,147.9115726,DL,Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+370,Ampol,J&N Car Care - Triabunna Service Station,"6 VICARY ST, TRIABUNNA TAS 7190",-42.5084156,147.9115726,P95,Premium 95,229.9,2023-04-20 14:00:16.498751,2023-04-20
+370,Ampol,J&N Car Care - Triabunna Service Station,"6 VICARY ST, TRIABUNNA TAS 7190",-42.5084156,147.9115726,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+372,Tas Petroleum,Tas Petroleum St Helens (Unmanned),"1-11 WARRENS WAY, ST HELENS TAS 7216",-41.313397,148.2343527,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+373,Ampol,South Spreyton Store,"172 SHEFFIELD RD, SPREYTON TAS 7310",-41.2370676,146.3440494,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+373,Ampol,South Spreyton Store,"172 SHEFFIELD RD, SPREYTON TAS 7310",-41.2370676,146.3440494,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+374,Ampol,Ampol Richmond,"37 BRIDGE ST, RICHMOND TAS 7025",-42.7351599,147.437683,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+374,Ampol,Ampol Richmond,"37 BRIDGE ST, RICHMOND TAS 7025",-42.7351599,147.437683,P98,Premium 98,214.9,2023-04-20 14:00:16.498751,2023-04-20
+374,Ampol,Ampol Richmond,"37 BRIDGE ST, RICHMOND TAS 7025",-42.7351599,147.437683,PDL,Premium Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+374,Ampol,Ampol Richmond,"37 BRIDGE ST, RICHMOND TAS 7025",-42.7351599,147.437683,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+375,BP,BP TARLETON STREET,"54 TARLETON ST, EAST DEVONPORT TAS 7310",-41.1758428,146.3737014,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+375,BP,BP TARLETON STREET,"54 TARLETON ST, EAST DEVONPORT TAS 7310",-41.1758428,146.3737014,P95,Premium 95,211.9,2023-04-20 14:00:16.498751,2023-04-20
+375,BP,BP TARLETON STREET,"54 TARLETON ST, EAST DEVONPORT TAS 7310",-41.1758428,146.3737014,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+376,BP,Ross Convenience Store,"38 CHURCH ST, ROSS TAS 7209",-42.0303871,147.4916747,DL,Diesel,198.9,2023-04-20 14:00:16.498751,2023-04-20
+376,BP,Ross Convenience Store,"38 CHURCH ST, ROSS TAS 7209",-42.0303871,147.4916747,P95,Premium 95,208.9,2023-04-20 14:00:16.498751,2023-04-20
+376,BP,Ross Convenience Store,"38 CHURCH ST, ROSS TAS 7209",-42.0303871,147.4916747,U91,Unleaded 91,197.9,2023-04-20 14:00:16.498751,2023-04-20
+377,Independent,Valley Fuel (unmanned site),"55 HAMILTON RD, NEW NORFOLK TAS 7140",-42.7772943,147.0504861,DL,Diesel,195.9,2023-04-20 14:00:16.498751,2023-04-20
+377,Independent,Valley Fuel (unmanned site),"55 HAMILTON RD, NEW NORFOLK TAS 7140",-42.7772943,147.0504861,P98,Premium 98,208.9,2023-04-20 14:00:16.498751,2023-04-20
+377,Independent,Valley Fuel (unmanned site),"55 HAMILTON RD, NEW NORFOLK TAS 7140",-42.7772943,147.0504861,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+378,Ampol,Ampol Cradle Mountain,"4057 CRADLE MOUNTAIN RD, CRADLE MOUNTAIN TAS 7306",-41.5969555,145.9307466,DL,Diesel,217.0,2023-04-20 14:00:16.498751,2023-04-20
+378,Ampol,Ampol Cradle Mountain,"4057 CRADLE MOUNTAIN RD, CRADLE MOUNTAIN TAS 7306",-41.5969555,145.9307466,P95,Premium 95,222.0,2023-04-20 14:00:16.498751,2023-04-20
+378,Ampol,Ampol Cradle Mountain,"4057 CRADLE MOUNTAIN RD, CRADLE MOUNTAIN TAS 7306",-41.5969555,145.9307466,U91,Unleaded 91,207.0,2023-04-20 14:00:16.498751,2023-04-20
+379,United,Kalangadoo Store,"3370 Lake Leake Hwy, Lake Leake TAS 7210",-42.03195,147.82931,DL,Diesel,208.9,2023-04-20 14:00:16.498751,2023-04-20
+379,United,Kalangadoo Store,"3370 Lake Leake Hwy, Lake Leake TAS 7210",-42.03195,147.82931,P98,Premium 98,218.9,2023-04-20 14:00:16.498751,2023-04-20
+379,United,Kalangadoo Store,"3370 Lake Leake Hwy, Lake Leake TAS 7210",-42.03195,147.82931,U91,Unleaded 91,208.9,2023-04-20 14:00:16.498751,2023-04-20
+380,Ampol, Ampol Epping Forest,"13490 Midlands Highway,  Epping Forest TAS 7211",-41.75935,147.35149,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+380,Ampol, Ampol Epping Forest,"13490 Midlands Highway,  Epping Forest TAS 7211",-41.75935,147.35149,PDL,Premium Diesel,209.9,2023-04-20 14:00:16.498751,2023-04-20
+380,Ampol, Ampol Epping Forest,"13490 Midlands Highway,  Epping Forest TAS 7211",-41.75935,147.35149,U91,Unleaded 91,196.9,2023-04-20 14:00:16.498751,2023-04-20
+381,Independent,Stanley Supermarket,"25 WHARF RD, STANLEY TAS 7331",-40.7625421,145.2948895,DL,Diesel,196.0,2023-04-20 14:00:16.498751,2023-04-20
+381,Independent,Stanley Supermarket,"25 WHARF RD, STANLEY TAS 7331",-40.7625421,145.2948895,U91,Unleaded 91,198.0,2023-04-20 14:00:16.498751,2023-04-20
+382,Ampol, AMPOL Cambridge Unmanned,"263 KENNEDY DR, CAMBRIDGE TAS 7170",-42.8312934,147.4859474,DL,Diesel,191.9,2023-04-20 14:00:16.498751,2023-04-20
+382,Ampol, AMPOL Cambridge Unmanned,"263 KENNEDY DR, CAMBRIDGE TAS 7170",-42.8312934,147.4859474,P95,Premium 95,195.9,2023-04-20 14:00:16.498751,2023-04-20
+382,Ampol, AMPOL Cambridge Unmanned,"263 KENNEDY DR, CAMBRIDGE TAS 7170",-42.8312934,147.4859474,U91,Unleaded 91,185.9,2023-04-20 14:00:16.498751,2023-04-20
+383,Independent,Waratah Roadhouse,"11 SMITH ST, WARATAH TAS 7321",-41.4441037,145.532945,DL,Diesel,249.5,2023-04-20 14:00:16.498751,2023-04-20
+383,Independent,Waratah Roadhouse,"11 SMITH ST, WARATAH TAS 7321",-41.4441037,145.532945,P95,Premium 95,234.9,2023-04-20 14:00:16.498751,2023-04-20
+383,Independent,Waratah Roadhouse,"11 SMITH ST, WARATAH TAS 7321",-41.4441037,145.532945,U91,Unleaded 91,225.5,2023-04-20 14:00:16.498751,2023-04-20
+384,BP,Peninsula Hardware,"1556 NUBEENA RD, NUBEENA TAS 7184",-43.0938633,147.7394911,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+384,BP,Peninsula Hardware,"1556 NUBEENA RD, NUBEENA TAS 7184",-43.0938633,147.7394911,P95,Premium 95,207.9,2023-04-20 14:00:16.498751,2023-04-20
+384,BP,Peninsula Hardware,"1556 NUBEENA RD, NUBEENA TAS 7184",-43.0938633,147.7394911,U91,Unleaded 91,198.9,2023-04-20 14:00:16.498751,2023-04-20
+385,Independent,Flinders Island Fuel,"3 ROBERT ST, WHITEMARK TAS 7255",-40.1200307,148.0154478,DL,Diesel,249.9,2023-04-20 14:00:16.498751,2023-04-20
+385,Independent,Flinders Island Fuel,"3 ROBERT ST, WHITEMARK TAS 7255",-40.1200307,148.0154478,P95,Premium 95,244.9,2023-04-20 14:00:16.498751,2023-04-20
+385,Independent,Flinders Island Fuel,"3 ROBERT ST, WHITEMARK TAS 7255",-40.1200307,148.0154478,U91,Unleaded 91,234.9,2023-04-20 14:00:16.498751,2023-04-20
+386,Independent,Westerway Roadhouse,"1573 GORDON RIVER RD, WESTERWAY TAS 7140",-42.6748864,146.7903409,DL,Diesel,215.9,2023-04-20 14:00:16.498751,2023-04-20
+386,Independent,Westerway Roadhouse,"1573 GORDON RIVER RD, WESTERWAY TAS 7140",-42.6748864,146.7903409,P95,Premium 95,219.9,2023-04-20 14:00:16.498751,2023-04-20
+386,Independent,Westerway Roadhouse,"1573 GORDON RIVER RD, WESTERWAY TAS 7140",-42.6748864,146.7903409,U91,Unleaded 91,212.9,2023-04-20 14:00:16.498751,2023-04-20
+387,Independent,Rustic Roadhouse,"33 Main Street, Cressy TAS 7302",-41.68108,147.08176,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+387,Independent,Rustic Roadhouse,"33 Main Street, Cressy TAS 7302",-41.68108,147.08176,U91,Unleaded 91,197.0,2023-04-20 14:00:16.498751,2023-04-20
+388,Tas Petroleum,Tas Petroleum Connector Park (Unmanned),"5 DOLERITE DR, KINGS MEADOWS TAS 7249",-41.4824264,147.1526761,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+388,Tas Petroleum,Tas Petroleum Connector Park (Unmanned),"5 DOLERITE DR, KINGS MEADOWS TAS 7249",-41.4824264,147.1526761,P95,Premium 95,199.9,2023-04-20 14:00:16.498751,2023-04-20
+388,Tas Petroleum,Tas Petroleum Connector Park (Unmanned),"5 DOLERITE DR, KINGS MEADOWS TAS 7249",-41.4824264,147.1526761,P98,Premium 98,207.9,2023-04-20 14:00:16.498751,2023-04-20
+388,Tas Petroleum,Tas Petroleum Connector Park (Unmanned),"5 DOLERITE DR, KINGS MEADOWS TAS 7249",-41.4824264,147.1526761,PDL,Premium Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+388,Tas Petroleum,Tas Petroleum Connector Park (Unmanned),"5 DOLERITE DR, KINGS MEADOWS TAS 7249",-41.4824264,147.1526761,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+389,United,United Petroleum New Norfolk,"20 Burnett Street, New Norfolk TAS 7140",-42.78046,147.06206,DL,Diesel,202.9,2023-04-20 14:00:16.498751,2023-04-20
+389,United,United Petroleum New Norfolk,"20 Burnett Street, New Norfolk TAS 7140",-42.78046,147.06206,P95,Premium 95,205.9,2023-04-20 14:00:16.498751,2023-04-20
+389,United,United Petroleum New Norfolk,"20 Burnett Street, New Norfolk TAS 7140",-42.78046,147.06206,P98,Premium 98,212.9,2023-04-20 14:00:16.498751,2023-04-20
+389,United,United Petroleum New Norfolk,"20 Burnett Street, New Norfolk TAS 7140",-42.78046,147.06206,U91,Unleaded 91,190.9,2023-04-20 14:00:16.498751,2023-04-20
+390,Bennetts Petroleum,Bennetts Bagdad - Unmanned,"41 QUARRYTOWN RD, BAGDAD TAS 7030",-42.6321577,147.2227269,DL,Diesel,203.9,2023-04-20 14:00:16.498751,2023-04-20
+390,Bennetts Petroleum,Bennetts Bagdad - Unmanned,"41 QUARRYTOWN RD, BAGDAD TAS 7030",-42.6321577,147.2227269,P95,Premium 95,206.9,2023-04-20 14:00:16.498751,2023-04-20
+390,Bennetts Petroleum,Bennetts Bagdad - Unmanned,"41 QUARRYTOWN RD, BAGDAD TAS 7030",-42.6321577,147.2227269,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
+391,Bennetts Petroleum,Bennetts Huonville - Unmanned,"183 MAIN ST, HUONVILLE TAS 7109",-43.0191338,147.0559717,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+391,Bennetts Petroleum,Bennetts Huonville - Unmanned,"183 MAIN ST, HUONVILLE TAS 7109",-43.0191338,147.0559717,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+391,Bennetts Petroleum,Bennetts Huonville - Unmanned,"183 MAIN ST, HUONVILLE TAS 7109",-43.0191338,147.0559717,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+392,Bennetts Petroleum,Bennetts Geeveston - Unmanned,"4 ARVE RD, GEEVESTON TAS 7116",-43.1631497,146.928997,DL,Diesel,201.9,2023-04-20 14:00:16.498751,2023-04-20
+392,Bennetts Petroleum,Bennetts Geeveston - Unmanned,"4 ARVE RD, GEEVESTON TAS 7116",-43.1631497,146.928997,P95,Premium 95,210.9,2023-04-20 14:00:16.498751,2023-04-20
+392,Bennetts Petroleum,Bennetts Geeveston - Unmanned,"4 ARVE RD, GEEVESTON TAS 7116",-43.1631497,146.928997,U91,Unleaded 91,195.9,2023-04-20 14:00:16.498751,2023-04-20
+393,Bennetts Petroleum,Bennetts Triabunna Depot - Unmanned,"31 BOYLE ST, TRIABUNNA TAS 7190",-42.5108643,147.928972,DL,Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+393,Bennetts Petroleum,Bennetts Triabunna Depot - Unmanned,"31 BOYLE ST, TRIABUNNA TAS 7190",-42.5108643,147.928972,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+394,Bennetts Petroleum,Bennetts Triabunna Marina - Unmanned,"Esplanade, Triabunna TAS 7190",-42.50939,147.91569,DL,Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+395,Ampol,The Hungry Wombat Cafe,"15488, Derwent Bridge TAS 7140",-42.13135,146.23274,DL,Diesel,220.9,2023-04-20 14:00:16.498751,2023-04-20
+395,Ampol,The Hungry Wombat Cafe,"15488, Derwent Bridge TAS 7140",-42.13135,146.23274,P95,Premium 95,218.9,2023-04-20 14:00:16.498751,2023-04-20
+395,Ampol,The Hungry Wombat Cafe,"15488, Derwent Bridge TAS 7140",-42.13135,146.23274,U91,Unleaded 91,208.6,2023-04-20 14:00:16.498751,2023-04-20
+398,Independent,Xpress eats,"703 ARTHUR HWY, FORCETT TAS 7173",-42.8062036,147.6323767,DL,Diesel,202.9,2023-04-20 14:00:16.498751,2023-04-20
+398,Independent,Xpress eats,"703 ARTHUR HWY, FORCETT TAS 7173",-42.8062036,147.6323767,P95,Premium 95,204.9,2023-04-20 14:00:16.498751,2023-04-20
+398,Independent,Xpress eats,"703 ARTHUR HWY, FORCETT TAS 7173",-42.8062036,147.6323767,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+400,Independent,Fika Time Cafe,"38 KALLISTA RD, MAYDENA TAS 7140",-42.7549495,146.6289934,EV,EV charge,9.3,2023-04-20 14:00:16.498751,2023-04-20
+401,Ampol,THE OPOSSUM BAY STORE,"2-4 PIER RD, OPOSSUM BAY TAS 7023",-42.9940827,147.4027304,DL,Diesel,204.9,2023-04-20 14:00:16.498751,2023-04-20
+401,Ampol,THE OPOSSUM BAY STORE,"2-4 PIER RD, OPOSSUM BAY TAS 7023",-42.9940827,147.4027304,P95,Premium 95,203.9,2023-04-20 14:00:16.498751,2023-04-20
+401,Ampol,THE OPOSSUM BAY STORE,"2-4 PIER RD, OPOSSUM BAY TAS 7023",-42.9940827,147.4027304,U91,Unleaded 91,198.9,2023-04-20 14:00:16.498751,2023-04-20
+403,Ampol,Bothwell Super Store,"18 PATRICK ST, BOTHWELL TAS 7030",-42.3845949,147.0079986,DL,Diesel,205.9,2023-04-20 14:00:16.498751,2023-04-20
+403,Ampol,Bothwell Super Store,"18 PATRICK ST, BOTHWELL TAS 7030",-42.3845949,147.0079986,U91,Unleaded 91,194.9,2023-04-20 14:00:16.498751,2023-04-20
+404,Independent,Bennetts Kempton Unmanned,"3001, Midlands Highway, Kempton TAS 7030",-42.5133,147.18895,DL,Diesel,197.9,2023-04-20 14:00:16.498751,2023-04-20
+404,Independent,Bennetts Kempton Unmanned,"3001, Midlands Highway, Kempton TAS 7030",-42.5133,147.18895,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+405,Tas Petroleum,Tas Petroleum Rocherlea,"334 GEORGE TOWN RD, ROCHERLEA TAS 7248",-41.3712223,147.1137783,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+406,United,Georgetown-ufill,"101 MAIN RD, GEORGE TOWN TAS 7253",-41.1093691,146.8424904,DL,Diesel,213.9,2023-04-20 14:00:16.498751,2023-04-20
+407,Independent,South Arm Store,"3139 SOUTH ARM RD, SOUTH ARM TAS 7022",-43.0281026,147.4168367,DL,Diesel,202.9,2023-04-20 14:00:16.498751,2023-04-20
+407,Independent,South Arm Store,"3139 SOUTH ARM RD, SOUTH ARM TAS 7022",-43.0281026,147.4168367,P98,Premium 98,224.9,2023-04-20 14:00:16.498751,2023-04-20
+407,Independent,South Arm Store,"3139 SOUTH ARM RD, SOUTH ARM TAS 7022",-43.0281026,147.4168367,U91,Unleaded 91,199.9,2023-04-20 14:00:16.498751,2023-04-20
+408,Ampol,Ampol Sidmouth,"254 BATMAN HWY, SIDMOUTH TAS 7270",-41.2224713,146.8881984,DL,Diesel,202.7,2023-04-20 14:00:16.498751,2023-04-20
+408,Ampol,Ampol Sidmouth,"254 BATMAN HWY, SIDMOUTH TAS 7270",-41.2224713,146.8881984,U91,Unleaded 91,195.7,2023-04-20 14:00:16.498751,2023-04-20
+409,Tas Petroleum,NK Energy Co Kingston Beach (unmanned site),"8 BEACH RD, KINGSTON BEACH TAS 7050",-42.9815795,147.3234897,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+409,Tas Petroleum,NK Energy Co Kingston Beach (unmanned site),"8 BEACH RD, KINGSTON BEACH TAS 7050",-42.9815795,147.3234897,P98,Premium 98,207.9,2023-04-20 14:00:16.498751,2023-04-20
+409,Tas Petroleum,NK Energy Co Kingston Beach (unmanned site),"8 BEACH RD, KINGSTON BEACH TAS 7050",-42.9815795,147.3234897,U91,Unleaded 91,187.9,2023-04-20 14:00:16.498751,2023-04-20
+410,Independent, Astron,"1853 MIDLAND HWY, BAGDAD TAS 7030",-42.6031571,147.2197463,DL,Diesel,211.9,2023-04-20 14:00:16.498751,2023-04-20
+410,Independent, Astron,"1853 MIDLAND HWY, BAGDAD TAS 7030",-42.6031571,147.2197463,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+410,Independent, Astron,"1853 MIDLAND HWY, BAGDAD TAS 7030",-42.6031571,147.2197463,U91,Unleaded 91,193.9,2023-04-20 14:00:16.498751,2023-04-20
+411,Independent,Colebrook Roadhouse,"33 RICHMOND ST, COLEBROOK TAS 7027",-42.5341864,147.3635628,DL,Diesel,193.9,2023-04-20 14:00:16.498751,2023-04-20
+411,Independent,Colebrook Roadhouse,"33 RICHMOND ST, COLEBROOK TAS 7027",-42.5341864,147.3635628,P95,Premium 95,201.2,2023-04-20 14:00:16.498751,2023-04-20
+411,Independent,Colebrook Roadhouse,"33 RICHMOND ST, COLEBROOK TAS 7027",-42.5341864,147.3635628,U91,Unleaded 91,190.9,2023-04-20 14:00:16.498751,2023-04-20
+412,Liberty,Pipers River General Store,"5098 Flinders Highway, Pipers River TAS 7252",-41.09775,147.0761,DL,Diesel,204.0,2023-04-20 14:00:16.498751,2023-04-20
+412,Liberty,Pipers River General Store,"5098 Flinders Highway, Pipers River TAS 7252",-41.09775,147.0761,P95,Premium 95,212.0,2023-04-20 14:00:16.498751,2023-04-20
+412,Liberty,Pipers River General Store,"5098 Flinders Highway, Pipers River TAS 7252",-41.09775,147.0761,U91,Unleaded 91,203.0,2023-04-20 14:00:16.498751,2023-04-20
+413,BP,	 Scamander Supermarket,"92 SCAMANDER AV, SCAMANDER TAS 7215",-41.4515318,148.2644714,PDL,Premium Diesel,203.0,2023-04-20 14:00:16.498751,2023-04-20
+414,Tas Petroleum,NK Energy Co Beaconsfield (Unmanned),"115-117 WELD ST, BEACONSFIELD TAS 7270",-41.2022939,146.8171926,DL,Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+414,Tas Petroleum,NK Energy Co Beaconsfield (Unmanned),"115-117 WELD ST, BEACONSFIELD TAS 7270",-41.2022939,146.8171926,P98,Premium 98,207.9,2023-04-20 14:00:16.498751,2023-04-20
+414,Tas Petroleum,NK Energy Co Beaconsfield (Unmanned),"115-117 WELD ST, BEACONSFIELD TAS 7270",-41.2022939,146.8171926,U91,Unleaded 91,189.9,2023-04-20 14:00:16.498751,2023-04-20
+415,Lowes Petroleum BP,BP Lauderdale,"538 SOUTH ARM RD, LAUDERDALE TAS 7021",-42.9158135,147.4863145,P98,Premium 98,213.9,2023-04-20 14:00:16.498751,2023-04-20
+415,Lowes Petroleum BP,BP Lauderdale,"538 SOUTH ARM RD, LAUDERDALE TAS 7021",-42.9158135,147.4863145,PDL,Premium Diesel,199.9,2023-04-20 14:00:16.498751,2023-04-20
+415,Lowes Petroleum BP,BP Lauderdale,"538 SOUTH ARM RD, LAUDERDALE TAS 7021",-42.9158135,147.4863145,U91,Unleaded 91,191.9,2023-04-20 14:00:16.498751,2023-04-20
