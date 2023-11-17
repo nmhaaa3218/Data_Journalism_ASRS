@@ -4,3 +4,112 @@ author: "Manh Ha Nguyen"
 date: "`r Sys.Date()`"
 output: html_document
 ---
+
+# Import library
+
+```{r}
+library(tidyverse)
+library(mapview)
+library(sf)
+```
+
+# List of all function
+
+-   Note: all function are written based on the format of nsw_fuel structure.
+
+## Plot gas station on map
+
+-   Ensure columns correctly named long, lat, brand
+-   Need further adjustment as station may sell many fuels type
+
+```{r}
+plot_points_on_map <- function(df, fueltype) {
+  # Filter the data by fuel type
+  df <- df[df$fueltype == fueltype, ]
+  
+  # Convert lat and long to spatial points
+  points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
+  
+  # Plot the data
+  mapview(points_sdf, zcol = "price", label = points_sdf$brand)
+}
+
+```
+
+## Average fuel type price for given postcode
+
+-   Ensure postcode, fueltype, price correctly named
+
+```{r}
+avg_fuel_price <- function(df, fueltype, postcode) {
+  # Filter the data by fuel type
+  df <- df[df$fueltype == fueltype, ]
+  
+  # Filter the data by postcode
+  df <- df[df$postcode == postcode, ]
+  
+  # Calculate the average price
+  avg_price <- mean(df$price)
+  
+  # Return the average price
+  return(avg_price)
+}
+
+```
+
+## Function to extract postcode from address
+
+```{r}
+# Extract postcode from address and mutate to postcode column
+postcode <- function(df) {
+  df <- df %>%
+    mutate(postcode = str_extract(address, "\\d{4}"))
+  return(df)
+}
+```
+
+## Find closet gas station given a coordinates
+
+-   Ensure long, lat, fueltype columns correctly named
+
+```{r}
+find_closest_gas_station <- function(df, fueltype, lat, long) {
+  # Filter the data by fuel type
+  df <- df[df$fueltype == fueltype, ]
+  
+  # Convert lat and long to spatial points
+  points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
+  
+  # Convert lat and long to spatial points
+  point_sdf = st_as_sf(data.frame(long = long, lat = lat), coords = c("long", "lat"), crs = 4326)
+  
+  # Find the closest gas station
+  closest_gas_station <- st_nearest_feature(point_sdf, points_sdf)
+  
+  # Return the closest gas station (station code)
+  return(closest_gas_station)
+}
+
+```
+
+## Combine all csv files in a folder to a single dataframe (using parralel processing???)
+
+```{r}
+combine_csv <- function(path) {
+  # Get all csv files in the folder
+  files <- list.files(path = path, pattern = "*.csv", full.names = TRUE)
+  
+  # Combine all csv files into a single dataframe
+  df <- do.call(rbind, lapply(files, read_csv))
+  
+  # Return the dataframe
+  return(df)
+}
+
+```
+
+
+```
+
+
+

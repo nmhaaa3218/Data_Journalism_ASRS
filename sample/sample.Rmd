@@ -102,8 +102,7 @@ nsw_fuel[nsw_fuel$stationcode == station_code, ]
 Mutate postcode columns
 
 ```{r}
-nsw_fuel <- nsw_fuel %>%
-  mutate(postcode = str_extract(address, "\\b\\d{4}\\b")) 
+# Extract last 4 number of address as postcode
 
 ```
 
