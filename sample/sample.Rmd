@@ -64,7 +64,17 @@ avg_fuel_price <- function(df, fueltype, postcode) {
   return(avg_price)
 }
 
-avg_fuel_price(nsw_fuel, "U91", 2450)
+avg_fuel_price(nsw_fuel, "U91", 2000)
+```
+## Function to extract postcode from address
+
+```{r}
+# Extract postcode from address and mutate to postcode column
+postcode <- function(df) {
+  df <- df %>%
+    mutate(postcode = str_extract(address, "\\d{4}"))
+  return(df)
+}
 ```
 
 ## Find closet gas station given a coordinates
@@ -102,8 +112,12 @@ nsw_fuel[nsw_fuel$stationcode == station_code, ]
 Mutate postcode columns
 
 ```{r}
+<<<<<<< HEAD
 # Extract last 4 number of address as postcode
 
+=======
+nsw_fuel <- postcode(nsw_fuel)
+>>>>>>> origin/main
 ```
 
 For all fuel
