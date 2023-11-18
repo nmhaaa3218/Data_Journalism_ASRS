@@ -9,7 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 # Import library
 
 ```{r}
@@ -24,15 +23,18 @@ library(doParallel)
 
 -   Note: all function are written based on the format of nsw_fuel structure.
 
-## Plot gas station on map
+## Plot gas station on map given fuel type and date
 
 -   Ensure columns correctly named long, lat, brand
 -   Need further adjustment as station may sell many fuels type
 
 ```{r}
-plot_points_on_map <- function(df, fueltype) {
+plot_points_on_map <- function(df, fueltype, collection_date) {
   # Filter the data by fuel type
   df <- df[df$fueltype == fueltype, ]
+  
+  # Filter the data by collection date
+  df <- df[df$collection_date == collection_date, ]
   
   # Convert lat and long to spatial points
   points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
@@ -99,7 +101,9 @@ find_closest_gas_station <- function(df, fueltype, lat, long) {
 
 ```
 
-## Combine all csv files in a folder to a single dataframe (using parralel processing???)
+## Combine all csv files in a folder to a single dataframe
+
+-   Assume format of data are the same within a folder
 
 ```{r}
 combine_csv <- function(path) {
@@ -151,12 +155,123 @@ combine_csv_parallel <- function(path) {
 # Import data
 
 ```{r}
-# Import data (test parallel processing also)
-nsw <- combine_csv("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
-nsw_2 <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
+nsw <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
+nt <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nt")
+qld <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/qld")
+sa <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/sa")
+tas <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/tas")
+```
+
+## NSW
+
+### Mutate postcode columns
+
+```{r}
+nsw <- postcode(nsw)
+```
+
+### Map station and its price for a type of fuel across the state
+
+For all fuel
+
+-   further away from SYD, price tend to be higher?
+
+-   further in land, more expensive the fuel?
+
+-   along the coast, relatively equal?
+
+```{r}
+fueltype <- unique(nsw$fueltype)
+plot_points_on_map(nsw,fueltype[1], "2023-9-23") 
+```
+
+### Fuel type vs price
+
+-   Reccommend using EV consistently cheaper than fossil fuel
+-   There exist extreme outliers for all fuel type (except for EV and E85)
+
+```{r}
+ggplot(nsw, aes(x=fueltype, y=price)) +
+  geom_boxplot() +
+  labs(title="Price Distribution by Fuel Type from 2022-07-26 to 2023-11-12", x="Fuel", y="Price")
+
+```
+
+### Price Distribution by Brand for a type of fuel for a given day
+
+-   Observe that even for same type of fuel, and brand there can be variations between location
+
+```{r}
+# Combustion fuel price distribution by brand
+nsw %>%
+  filter(fueltype != "EV") %>%   # remove EV as price is fixed
+  filter(fueltype == "U91") %>%  # change fuel type
+  filter(collection_date == "2023-8-21") %>%
+  ggplot(aes(x=brand, y=price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title="Price Distribution by Brand", x="Brand", y="Price")
+
+```
+
+### Fuel Type Popularity
+
+-   Variations of petroleum are the most popular
+
+```{r}
+# Fuel Type Popularity
+ggplot(nsw, aes(x=fueltype)) +
+  geom_bar() +
+  labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
+```
+
+### How far do you have to travel on average to fill up your car???
+
+-   Consider population density of each postcode to determine the weight of each postcode??
+
+-   Randomly distributed a corresponding number of representative points in each postcode???
+
+-   Calculate average distance from each point to the nearest gas station???
+
+-   Consider the number of gas station in each postcode???
+
+-   Problem: how to map postcode border??? + density within each postcode can fluctuate btw sections???
+
+### Linear regression price \~ long + lat + fueltype + collection_date
+
+-   contains influential cases that might need to ignore (might improve outcome of all assumption?)
+
+```{r}
+# linear regression to fit price ~ long lat fueltype
+nsw_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = nsw)
+plot(nsw_model_parallel)
+summary(nsw_model_parallel)
 
 ```
 
 
+### Experimental shiny app (not working as intended)
+
+```{r}
+library(shiny)
+library(mapview)
+
+ui <- fluidPage(
+  selectInput("fueltype", "Choose a Fuel Type:", choices = unique(nsw$fueltype)),
+  dateInput("collection_date", "Choose a Collection Date:", min = min(nsw$collection_date), max = max(nsw$collection_date)),
+  plotOutput("map")
+)
+
+server <- function(input, output) {
+  output$map <- renderPlot({
+    df <- nsw[nsw$fueltype == input$fueltype, ]
+    df <- df[df$collection_date == input$collection_date, ]
+    points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
+    mapview(points_sdf, zcol = "price", label = points_sdf$brand)
+  })
+}
+
+shinyApp(ui = ui, server = server)
 
 
+```
