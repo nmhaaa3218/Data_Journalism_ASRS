@@ -5,12 +5,19 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
 # Import library
 
 ```{r}
 library(tidyverse)
 library(mapview)
 library(sf)
+library(foreach)
+library(doParallel)
 ```
 
 # List of all function
@@ -96,20 +103,60 @@ find_closest_gas_station <- function(df, fueltype, lat, long) {
 
 ```{r}
 combine_csv <- function(path) {
+  # Record start time
+  start_time <- Sys.time()
+  
   # Get all csv files in the folder
   files <- list.files(path = path, pattern = "*.csv", full.names = TRUE)
   
   # Combine all csv files into a single dataframe
   df <- do.call(rbind, lapply(files, read_csv))
   
+  # Record end time and print time taken
+  end_time <- Sys.time()
+  print(end_time - start_time)
+  
   # Return the dataframe
   return(df)
 }
 
-```
+combine_csv_parallel <- function(path) {
+  # Record start time
+  start_time <- Sys.time()
+  
+  # Get all csv files in the folder
+  files <- list.files(path = path, pattern = "*.csv", full.names = TRUE)
+  
+  # Register parallel backend
+  cl <- makeCluster(detectCores())
+  registerDoParallel(cl)
+  
+  # Combine all csv files into a single dataframe using foreach
+  df <- do.call(rbind, foreach(i = files, .packages = "readr") %dopar% read_csv(i))
+  
+  # Stop the cluster
+  stopCluster(cl)
+  
+  # Record end time and print time taken
+  end_time <- Sys.time()
+  print(end_time - start_time)
+ 
+   # Return the dataframe
+  return(df)
+}
 
 
 ```
+
+# Import data
+
+```{r}
+# Import data (test parallel processing also)
+nsw <- combine_csv("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
+nsw_2 <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
+
+```
+
 
 
 
