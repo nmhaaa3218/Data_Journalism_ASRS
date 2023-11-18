@@ -109,17 +109,6 @@ nsw_fuel[nsw_fuel$stationcode == station_code, ]
 
 ## NSW
 
-Mutate postcode columns
-
-```{r}
-<<<<<<< HEAD
-# Extract last 4 number of address as postcode
-
-=======
-nsw_fuel <- postcode(nsw_fuel)
->>>>>>> origin/main
-```
-
 For all fuel
 
 -   further away from SYD, price tend to be higher?
