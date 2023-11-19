@@ -154,6 +154,8 @@ combine_csv_parallel <- function(path) {
 
 # Import data
 
+-   Change path to local path of fuel-prices/(states)
+
 ```{r}
 nsw <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
 nt <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nt")
@@ -244,11 +246,13 @@ ggplot(nsw, aes(x=fueltype)) +
 ```{r}
 # linear regression to fit price ~ long lat fueltype
 nsw_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = nsw)
-plot(nsw_model_parallel)
+
+# plot(nsw_model_parallel)
+
+# view model
 summary(nsw_model_parallel)
 
 ```
-
 
 ### Experimental shiny app (not working as intended)
 
