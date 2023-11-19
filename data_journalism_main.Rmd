@@ -17,6 +17,7 @@ library(mapview)
 library(sf)
 library(foreach)
 library(doParallel)
+library(forecast)
 ```
 
 # List of all function
@@ -179,6 +180,39 @@ plot_avg_fuel_price_time <- function(df, fueltype) {
 
 ```
 
+## Auto rename columns 
+
+```{r}
+auto_rename_columns <- function(df) {
+  long_list <- c("Longtitude", "Lng")  
+  for (col_name in long_list) {
+    if (col_name %in% colnames(df)) {
+      df <- df %>%
+        rename(long = all_of(col_name))
+      break
+    }
+  }
+  lat_list <- c("Latitude", "Lat")
+  for (col_name in lat_list) {
+    if (col_name %in% colnames(df)) {
+      df <- df %>%
+        rename(lat = all_of(col_name))
+      break
+    }
+  }
+  if ("Postcode" %in% colnames(df)) {
+    df <- df %>%
+      rename(postcode = all_of("Postcode"))
+  }
+  if ("Price" %in% colnames(df)) {
+    df <- df %>%
+      rename(price = all_of("Price"))
+  }
+  return(df)
+}
+
+```
+
 # Import data
 
 -   Change path to local path of fuel-prices/(states)
@@ -285,6 +319,27 @@ summary(nsw_model_parallel)
 
 ```{r}
 plot_avg_fuel_price_time(nsw, "U91")
+```
+
+### Experimental time series prediction
+
+```{r}
+fuel_data <- nsw %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE))
+  
+# Convert to time series object
+fuel_ts <- ts(fuel_data$avg_price, frequency = 365.25)
+
+# Apply ets and forecast
+model <- ets(fuel_ts)
+fc <- forecast(model, h = 15)
+
+# Plot the forecast
+plot(fc)
+
+
 ```
 
 ### Experimental shiny app (not working as intended)
