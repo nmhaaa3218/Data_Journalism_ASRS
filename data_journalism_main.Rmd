@@ -152,6 +152,33 @@ combine_csv_parallel <- function(path) {
 
 ```
 
+## Plot average price for a given fuel type by all brand over the time
+
+```{r}
+plot_avg_fuel_price_time <- function(df, fueltype) {
+  
+  # Filter the data for the specified fuel type
+  df_fuel <- df[df$fueltype == fueltype,]
+  
+  # Calculate the average price per day
+  df_avg <- df_fuel %>%
+    group_by(collection_date) %>%
+    summarise(avg_price = mean(price, na.rm = TRUE))
+  
+  # Create the plot
+  p <- ggplot(df_avg, aes(x = collection_date, y = avg_price)) +
+    geom_line() +
+    geom_smooth() +
+    labs(title = paste("Average Fuel Price Over Time:", fueltype),
+         x = "Time",
+         y = "Average Price")
+  
+  # Print the plot
+  print(p)
+}
+
+```
+
 # Import data
 
 -   Change path to local path of fuel-prices/(states)
@@ -252,6 +279,12 @@ nsw_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = nsw)
 # view model
 summary(nsw_model_parallel)
 
+```
+
+### Plot average price for a given fueltype over time
+
+```{r}
+plot_avg_fuel_price_time(nsw, "U91")
 ```
 
 ### Experimental shiny app (not working as intended)
