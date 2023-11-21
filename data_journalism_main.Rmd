@@ -18,6 +18,7 @@ library(sf)
 library(foreach)
 library(doParallel)
 library(forecast)
+library(geosphere)
 ```
 
 # List of all function
@@ -180,7 +181,7 @@ plot_avg_fuel_price_time <- function(df, fueltype) {
 
 ```
 
-## Auto rename columns 
+## Auto rename columns
 
 ```{r}
 auto_rename_columns <- function(df) {
@@ -254,15 +255,15 @@ plot_points_on_map(nsw,fueltype[1], "2023-9-23")
 -   There exist extreme outliers for all fuel type (except for EV and E85)
 
 ```{r}
-ggplot(nsw, aes(x=fueltype, y=price)) +
+nsw %>%
+  ggplot(aes(x=fueltype,y=price)) +
   geom_boxplot() +
   labs(title="Price Distribution by Fuel Type from 2022-07-26 to 2023-11-12", x="Fuel", y="Price")
-
 ```
 
 ### Price Distribution by Brand for a type of fuel for a given day
 
--   Observe that even for same type of fuel, and brand there can be variations between location
+-   Observe that even for same type of fuel and brand, there can be variations between location
 
 ```{r}
 # Combustion fuel price distribution by brand
@@ -300,6 +301,11 @@ ggplot(nsw, aes(x=fueltype)) +
 
 -   Problem: how to map postcode border??? + density within each postcode can fluctuate btw sections???
 
+```{r}
+postcode_sf <- read_sf(dsn = "D:/UOA WORK/Summer Research/Data_Journalism_ASRS/postcode-shapefile",layer = "POA_2021_AUST_GDA94")
+mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+```
+
 ### Linear regression price \~ long + lat + fueltype + collection_date
 
 -   contains influential cases that might need to ignore (might improve outcome of all assumption?)
@@ -323,18 +329,22 @@ plot_avg_fuel_price_time(nsw, "U91")
 
 ### Experimental time series prediction
 
+#### Using ETS
+
 ```{r}
 fuel_data <- nsw %>%
   filter(fueltype == "U91") %>%
   group_by(collection_date) %>%
-  summarise(avg_price = mean(price, na.rm = TRUE))
+  summarise(avg_price = mean(price, na.rm = TRUE)) %>%
+  # only take 1 year of data
+  filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
   
 # Convert to time series object
 fuel_ts <- ts(fuel_data$avg_price, frequency = 365.25)
 
 # Apply ets and forecast
 model <- ets(fuel_ts)
-fc <- forecast(model, h = 15)
+fc <- forecast(model, h = 30)
 
 # Plot the forecast
 plot(fc)
@@ -342,7 +352,39 @@ plot(fc)
 
 ```
 
-### Experimental shiny app (not working as intended)
+#### Using ARIMA
+
+-   Seems more accurate given the data after 2023-11-12
+
+```{r}
+# Load necessary libraries
+library(forecast)
+library(dplyr)
+
+# Convert collection_date to Date class
+nsw$collection_date <- as.Date(nsw$collection_date)
+
+# Aggregate data to daily level
+daily_data <- nsw %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE))
+
+# Convert to time series
+ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365.25)
+
+# Fit model
+fit <- auto.arima(ts_data)
+
+# Forecast
+future <- forecast(fit, h = 30)
+
+# Plot forecast
+plot(future)
+
+```
+
+### Experimental shiny app (kinda working)
 
 ```{r}
 library(shiny)
