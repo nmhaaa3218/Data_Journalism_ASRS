@@ -19,6 +19,8 @@ library(foreach)
 library(doParallel)
 library(forecast)
 library(geosphere)
+library(broom)
+library(shiny)
 ```
 
 # List of all function
@@ -183,6 +185,12 @@ plot_avg_fuel_price_time <- function(df, fueltype) {
 
 ## Auto rename columns
 
+-   Rename "Longtitude", "Lng" to "long"
+
+-   Rename "Latitude", "Lat" to "lat"
+
+-   Rename "Postcode" to "postcode"
+
 ```{r}
 auto_rename_columns <- function(df) {
   long_list <- c("Longtitude", "Lng")  
@@ -289,21 +297,35 @@ ggplot(nsw, aes(x=fueltype)) +
   labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
 ```
 
-### How far do you have to travel on average to fill up your car???
+### How far do you have to travel on average to fill up your car
 
--   Consider population density of each postcode to determine the weight of each postcode??
+-   Consider population density of each postcode to determine the weight of each postcode
 
--   Randomly distributed a corresponding number of representative points in each postcode???
+-   Randomly distributed a corresponding number of representative points in each postcode
 
--   Calculate average distance from each point to the nearest gas station???
+-   Distributed accordingly to the population density
 
--   Consider the number of gas station in each postcode???
-
--   Problem: how to map postcode border??? + density within each postcode can fluctuate btw sections???
+-   Calculate average distance from each point to the nearest gas station
 
 ```{r}
 postcode_sf <- read_sf(dsn = "D:/UOA WORK/Summer Research/Data_Journalism_ASRS/postcode-shapefile",layer = "POA_2021_AUST_GDA94")
-mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+# mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+
+# Select the postcode you are interested in
+postcode <- postcode_sf[postcode_sf$POA_CODE21 == "2000", ]
+
+# Generate random points
+n <- 100 # number of points you want to generate
+random_points <- st_sample(postcode, size = n)
+
+# Convert to data frame for easier manipulation
+random_points_df <- st_coordinates(random_points)
+
+# If you want to plot the points
+plot(st_geometry(postcode))
+plot(random_points, add = TRUE, col = 'red', pch = 20)
+
+
 ```
 
 ### Linear regression price \~ long + lat + fueltype + collection_date
@@ -314,6 +336,7 @@ mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
 # linear regression to fit price ~ long lat fueltype
 nsw_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = nsw)
 
+# Plot diagnostic
 # plot(nsw_model_parallel)
 
 # view model
@@ -357,10 +380,6 @@ plot(fc)
 -   Seems more accurate given the data after 2023-11-12
 
 ```{r}
-# Load necessary libraries
-library(forecast)
-library(dplyr)
-
 # Convert collection_date to Date class
 nsw$collection_date <- as.Date(nsw$collection_date)
 
@@ -387,9 +406,6 @@ plot(future)
 ### Experimental shiny app (kinda working)
 
 ```{r}
-library(shiny)
-library(mapview)
-
 ui <- fluidPage(
   selectInput("fueltype", "Choose a Fuel Type:", choices = unique(nsw$fueltype)),
   dateInput("collection_date", "Choose a Collection Date:", min = min(nsw$collection_date), max = max(nsw$collection_date)),
