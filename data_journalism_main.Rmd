@@ -84,25 +84,39 @@ postcode <- function(df) {
 ## Find closet gas station given a coordinates
 
 -   Ensure long, lat, fueltype columns correctly named
+-   Not suitable for large sets of data
 
 ```{r}
-find_closest_gas_station <- function(df, fueltype, lat, long) {
+find_closest_gas_station <- function(df, fueltype, point_sdf) {
   # Filter the data by fuel type
   df <- df[df$fueltype == fueltype, ]
   
   # Convert lat and long to spatial points
   points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
   
-  # Convert lat and long to spatial points
-  point_sdf = st_as_sf(data.frame(long = long, lat = lat), coords = c("long", "lat"), crs = 4326)
-  
   # Find the closest gas station
   closest_gas_station <- st_nearest_feature(point_sdf, points_sdf)
   
   # Return the closest gas station (station code)
-  return(closest_gas_station)
+  return(df[closest_gas_station, ])
 }
+```
 
+## Selecting data given dataframe, fueltype, date and output to spatial object sf
+
+```{r}
+select_data <- function(data, fueltype, date) {
+  # Select entries with specified fuel type
+  data <- data[data$fueltype == fueltype, ]
+  
+  # Select entries with specified date
+  data <- data[data$collection_date == date, ]
+  
+  # Convert to sf object
+  data_sf <- st_as_sf(data, coords = c("long", "lat"), crs = 4326)
+  
+  return(data_sf)
+}
 ```
 
 ## Combine all csv files in a folder to a single dataframe
@@ -222,16 +236,26 @@ auto_rename_columns <- function(df) {
 
 ```
 
+
 # Import data
 
 -   Change path to local path of fuel-prices/(states)
 
 ```{r}
 nsw <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
-nt <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nt")
-qld <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/qld")
-sa <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/sa")
-tas <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/tas")
+
+# nt <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nt")
+
+# qld <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/qld")
+
+# sa <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/sa")
+
+# tas <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/tas")
+
+postcode_sf <- read_sf(dsn = "D:/UOA WORK/Summer Research/Data_Journalism_ASRS/postcode-shapefile",layer = "POA_2021_AUST_GDA94")
+
+# raster_layer <- raster("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/aus_pd_2020_1km.tif")
+
 ```
 
 ## NSW
@@ -241,6 +265,7 @@ tas <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fu
 ```{r}
 nsw <- postcode(nsw)
 ```
+
 
 ### Map station and its price for a type of fuel across the state
 
@@ -308,22 +333,39 @@ ggplot(nsw, aes(x=fueltype)) +
 -   Calculate average distance from each point to the nearest gas station
 
 ```{r}
-postcode_sf <- read_sf(dsn = "D:/UOA WORK/Summer Research/Data_Journalism_ASRS/postcode-shapefile",layer = "POA_2021_AUST_GDA94")
+# View the postcode shapefile
 # mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
 
 # Select the postcode you are interested in
 postcode <- postcode_sf[postcode_sf$POA_CODE21 == "2000", ]
+# Select the fueltype you are interested in
+nsw_sf <- select_data(nsw_sf, "U91", "2023-11-12")
 
 # Generate random points
 n <- 100 # number of points you want to generate
 random_points <- st_sample(postcode, size = n)
-
 # Convert to data frame for easier manipulation
-random_points_df <- st_coordinates(random_points)
+random_points_df <- as.data.frame(st_coordinates(random_points))
+# Convert to sf object
+random_points_sf <- st_as_sf(random_points_df, coords = c("X", "Y"), crs = 4326)
 
-# If you want to plot the points
+# calculate nearest station for each point
+nearest_station_code <- sapply(1:n, function(i) {
+  st_nearest_feature(random_points_sf[i,], nsw_sf)
+})
+
+# calculate distance between each point and its nearest station
+distance <- sapply(1:n, function(i) {
+  st_distance(random_points_sf[i,], nsw_sf[nearest_station_code[i],])
+})
+
+distance <- as.data.frame(distance)
+print(mean(distance$distance))
+
+# plot the points
 plot(st_geometry(postcode))
 plot(random_points, add = TRUE, col = 'red', pch = 20)
+
 
 
 ```
