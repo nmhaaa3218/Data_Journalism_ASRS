@@ -3,6 +3,7 @@ title: "Data Journalism"
 author: "Manh Ha Nguyen"
 date: "`r Sys.Date()`"
 output: html_document
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -339,10 +340,10 @@ ggplot(nsw, aes(x=fueltype)) +
 # Select the postcode you are interested in
 postcode <- postcode_sf[postcode_sf$POA_CODE21 == "2000", ]
 # Select the fueltype you are interested in
-nsw_sf <- select_data(nsw_sf, "U91", "2023-11-12")
+nsw_sf <- select_data(nsw, "U91", "2023-11-12")
 
 # Generate random points
-n <- 100 # number of points you want to generate
+n <- 1000 # number of points you want to generate
 random_points <- st_sample(postcode, size = n)
 # Convert to data frame for easier manipulation
 random_points_df <- as.data.frame(st_coordinates(random_points))
