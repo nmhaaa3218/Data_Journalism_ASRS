@@ -347,6 +347,18 @@ random_points_df <- as.data.frame(st_coordinates(random_points))
 # Convert to sf object
 random_points_sf <- st_as_sf(random_points_df, coords = c("X", "Y"), crs = 4326)
 
+# Assuming pop_density is your raster object of population density
+pop_density_values <- extract(pop_density, random_points_sf)
+
+# Add these values to your data frame
+random_points_sf$pop_density <- pop_density_values$aus_pd_2020_1km
+
+# Total population density in sample
+total_pop_density <- sum(random_points_sf$pop_density)
+
+# Divide each value by the total to get the proportion
+random_points_sf$pop_density <- random_points_sf$pop_density / total_pop_density
+
 # Select the fueltype you are interested in
 nsw_sf <- select_data(nsw, "U91", "2023-11-12")
 
@@ -364,15 +376,20 @@ distance <- as.data.frame(distance)
 # Assuming your data frame is named df
 distance$average <- cumsum(distance$distance) / seq_along(distance$distance)
 
+# Weighted average distance
+distance$average_weighted <- cumsum(distance$distance * random_points_sf$pop_density) / cumsum(random_points_sf$pop_density)
+
 # Plotting the average
-ggplot(distance, aes(x = seq_along(average), y = average)) +
-  geom_line() +
+ggplot(distance, aes(x = seq_along(average))) +
+  geom_line(aes(y = average), color = "blue") +
+  geom_line(aes(y = average_weighted), color = "red") +
   labs(title = "Average distance to the closest gas station",
        x = "n trials",
        y = "Average distance (m)")
 
 print(paste("Average distance to the closest gas station in", p_code, "is", mean(distance$average), "meters"))
 
+print(paste("Average weighted distance to the closest gas station in", p_code, "is", mean(distance$average_weighted), "meters"))
 
 # plot random points on map with postcode
 # plot(st_geometry(postcode))
