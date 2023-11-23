@@ -3,7 +3,6 @@ title: "Data Journalism"
 author: "Manh Ha Nguyen"
 date: "`r Sys.Date()`"
 output: html_document
-runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -16,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(mapview)
 library(sf)
+library(terra)
 library(foreach)
 library(doParallel)
 library(forecast)
@@ -237,7 +237,6 @@ auto_rename_columns <- function(df) {
 
 ```
 
-
 # Import data
 
 -   Change path to local path of fuel-prices/(states)
@@ -255,7 +254,7 @@ nsw <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fu
 
 postcode_sf <- read_sf(dsn = "D:/UOA WORK/Summer Research/Data_Journalism_ASRS/postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 
-# raster_layer <- raster("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/aus_pd_2020_1km.tif")
+pop_density <- rast("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/aus_pd_2020_1km.tif")
 
 ```
 
@@ -266,7 +265,6 @@ postcode_sf <- read_sf(dsn = "D:/UOA WORK/Summer Research/Data_Journalism_ASRS/p
 ```{r}
 nsw <- postcode(nsw)
 ```
-
 
 ### Map station and its price for a type of fuel across the state
 
@@ -338,9 +336,8 @@ ggplot(nsw, aes(x=fueltype)) +
 # mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
 
 # Select the postcode you are interested in
-postcode <- postcode_sf[postcode_sf$POA_CODE21 == "2000", ]
-# Select the fueltype you are interested in
-nsw_sf <- select_data(nsw, "U91", "2023-11-12")
+p_code <- "2000"
+postcode <- postcode_sf[postcode_sf$POA_CODE21 == p_code, ]
 
 # Generate random points
 n <- 1000 # number of points you want to generate
@@ -349,6 +346,9 @@ random_points <- st_sample(postcode, size = n)
 random_points_df <- as.data.frame(st_coordinates(random_points))
 # Convert to sf object
 random_points_sf <- st_as_sf(random_points_df, coords = c("X", "Y"), crs = 4326)
+
+# Select the fueltype you are interested in
+nsw_sf <- select_data(nsw, "U91", "2023-11-12")
 
 # calculate nearest station for each point
 nearest_station_code <- sapply(1:n, function(i) {
@@ -361,12 +361,22 @@ distance <- sapply(1:n, function(i) {
 })
 
 distance <- as.data.frame(distance)
-print(mean(distance$distance))
+# Assuming your data frame is named df
+distance$average <- cumsum(distance$distance) / seq_along(distance$distance)
 
-# plot the points
-plot(st_geometry(postcode))
-plot(random_points, add = TRUE, col = 'red', pch = 20)
+# Plotting the average
+ggplot(distance, aes(x = seq_along(average), y = average)) +
+  geom_line() +
+  labs(title = "Average distance to the closest gas station",
+       x = "n trials",
+       y = "Average distance (m)")
 
+print(paste("Average distance to the closest gas station in", p_code, "is", mean(distance$average), "meters"))
+
+
+# plot random points on map with postcode
+# plot(st_geometry(postcode))
+# plot(random_points, add = TRUE, col = 'red', pch = 20)
 
 
 ```
