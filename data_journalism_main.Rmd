@@ -22,15 +22,16 @@ library(forecast)
 library(geosphere)
 library(broom)
 library(shiny)
+library(units)
 ```
 
 # List of all function
 
--   Note: all function are written based on the format of nsw_fuel structure.
+-   Note: all function are written based on the format of nsw data structure.
 
 ## Plot gas station on map given fuel type and date
 
--   Ensure columns correctly named long, lat, brand
+-   Ensure columns correctly named long, lat, brand, price, fueltype, collection_date
 -   Need further adjustment as station may sell many fuels type
 
 ```{r}
@@ -100,23 +101,6 @@ find_closest_gas_station <- function(df, fueltype, point_sdf) {
   
   # Return the closest gas station (station code)
   return(df[closest_gas_station, ])
-}
-```
-
-## Selecting data given dataframe, fueltype, date and output to spatial object sf
-
-```{r}
-select_data <- function(data, fueltype, date) {
-  # Select entries with specified fuel type
-  data <- data[data$fueltype == fueltype, ]
-  
-  # Select entries with specified date
-  data <- data[data$collection_date == date, ]
-  
-  # Convert to sf object
-  data_sf <- st_as_sf(data, coords = c("long", "lat"), crs = 4326)
-  
-  return(data_sf)
 }
 ```
 
@@ -245,22 +229,46 @@ auto_rename_columns <- function(df) {
 
 ```
 
-## Method to calculate average distance an average person have to travel to the nearest gas station given a fuel type, date, and postcode
+## Selecting data given dataframe, fueltype, date and output to spatial object sf
+
+-   Ensure state data of gas station are correctly format (fueltype, long, lat, collection_date)
 
 ```{r}
-calculate_distance <- function(state_fuel, postcode_sf, fueltype, date, p_code) {
+select_data <- function(data, fueltype, date) {
+  # Select entries with specified fuel type
+  data <- data[data$fueltype == fueltype, ]
+  
+  # Select entries with specified date
+  data <- data[data$collection_date == date, ]
+  
+  # Convert to sf object
+  data_sf <- st_as_sf(data, coords = c("long", "lat"), crs = 4326)
+  
+  return(data_sf)
+}
+```
+
+## Method to calculate average distance an average person have to travel to the nearest gas station given a fuel type, date, and postcode
+
+-   Ensure state data of gas station are correctly format (fueltype, long, lat, date, collection_date)
+
+```{r}
+calculate_distance <- function(state_fuel, postcode_sf, pop_density, fueltype, date, p_code, n_trial) {
+  # Start time
+  start_time <- Sys.time()
+  
   # Select the postcode you are interested in
   postcode <- postcode_sf[postcode_sf$POA_CODE21 == p_code, ]
 
   # Generate random points
-  n <- 1000 # number of points you want to generate
+  n <- n_trial # number of points you want to generate
   random_points <- st_sample(postcode, size = n)
   # Convert to data frame for easier manipulation
   random_points_df <- as.data.frame(st_coordinates(random_points))
   # Convert to sf object
   random_points_sf <- st_as_sf(random_points_df, coords = c("X", "Y"), crs = 4326)
 
-  # Assuming pop_density is your raster object of population density
+  # Extract population density values
   pop_density_values <- extract(pop_density, random_points_sf)
 
   # Add these values to your data frame
@@ -292,11 +300,79 @@ calculate_distance <- function(state_fuel, postcode_sf, fueltype, date, p_code) 
   # Weighted average distance
   distance$average_weighted <- cumsum(distance$distance * random_points_sf$pop_density) / cumsum(random_points_sf$pop_density)
   
+  # End time
+  end_time <- Sys.time()
+  print(end_time - start_time)
   return(distance)
 }
 
-```
+calculate_distance_parallel <- function(state_fuel, postcode_sf, pop_density, fueltype, date, p_code, n_trial) {
+  # Start time
+  start_time <- Sys.time()
+  
+  # Select the postcode you are interested in
+  postcode <- postcode_sf[postcode_sf$POA_CODE21 == p_code, ]
 
+  # Generate random points
+  n <- n_trial # number of points you want to generate
+  random_points <- st_sample(postcode, size = n)
+  # Convert to data frame for easier manipulation
+  random_points_df <- as.data.frame(st_coordinates(random_points))
+  # Convert to sf object
+  random_points_sf <- st_as_sf(random_points_df, coords = c("X", "Y"), crs = 4326)
+
+  # Extract population density values
+  pop_density_values <- extract(pop_density, random_points_sf)
+
+  # Add these values to your data frame
+  random_points_sf$pop_density <- pop_density_values$aus_pd_2020_1km
+
+  # Total population density in sample
+  total_pop_density <- sum(random_points_sf$pop_density)
+
+  # Divide each value by the total to get the proportion
+  random_points_sf$pop_density <- random_points_sf$pop_density / total_pop_density
+
+  # Select the fueltype you are interested in
+  state_fuel_sf <- select_data(state_fuel, fueltype, date)
+
+  
+  c1 <- makeCluster(detectCores())
+  registerDoParallel(c1)
+  # calculate nearest station for each point
+  nearest_station_code <- foreach(i = 1:n, .combine = c, .packages = "sf") %dopar% {
+    st_nearest_feature(random_points_sf[i,], state_fuel_sf)
+  }
+  stopCluster(c1)
+  
+  c2 <- makeCluster(detectCores())
+  registerDoParallel(c2)
+  # calculate distance between each point and its nearest station
+  distance <- foreach(i = 1:n, .combine = c, .packages = "sf") %dopar% {
+    st_distance(random_points_sf[i,], state_fuel_sf[nearest_station_code[i],])
+  }
+  stopCluster(c2)
+  
+  
+  # Convert to data frame
+  distance <- as.data.frame(distance)
+  
+  # Calculate average distance as n increases
+  distance$average <- cumsum(distance$distance) / seq_along(distance$distance)
+
+  # Weighted average distance
+  distance$average_weighted <- cumsum(distance$distance * random_points_sf$pop_density) / cumsum(random_points_sf$pop_density)
+  
+  # End time
+  end_time <- Sys.time()
+  print(end_time - start_time)
+  
+  return(distance)
+}
+
+
+
+```
 
 # Import data
 
@@ -305,7 +381,7 @@ calculate_distance <- function(state_fuel, postcode_sf, fueltype, date, p_code) 
 ```{r}
 nsw <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
 
-nt <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nt")
+# nt <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nt")
 
 # qld <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/qld")
 
@@ -394,68 +470,34 @@ ggplot(nsw, aes(x=fueltype)) +
 
 ```{r}
 # View the postcode shapefile
-# mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+#mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
 
-# Select the postcode you are interested in
-p_code <- "2000"
-postcode <- postcode_sf[postcode_sf$POA_CODE21 == p_code, ]
-
-# Generate random points
-n <- 1000 # number of points you want to generate
-random_points <- st_sample(postcode, size = n)
-# Convert to data frame for easier manipulation
-random_points_df <- as.data.frame(st_coordinates(random_points))
-# Convert to sf object
-random_points_sf <- st_as_sf(random_points_df, coords = c("X", "Y"), crs = 4326)
-
-# Assuming pop_density is your raster object of population density
-pop_density_values <- extract(pop_density, random_points_sf)
-
-# Add these values to your data frame
-random_points_sf$pop_density <- pop_density_values$aus_pd_2020_1km
-
-# Total population density in sample
-total_pop_density <- sum(random_points_sf$pop_density)
-
-# Divide each value by the total to get the proportion
-random_points_sf$pop_density <- random_points_sf$pop_density / total_pop_density
-
-# Select the fueltype you are interested in
-nsw_sf <- select_data(nsw, "U91", "2023-11-12")
-
-# calculate nearest station for each point
-nearest_station_code <- sapply(1:n, function(i) {
-  st_nearest_feature(random_points_sf[i,], nsw_sf)
-})
-
-# calculate distance between each point and its nearest station
-distance <- sapply(1:n, function(i) {
-  st_distance(random_points_sf[i,], nsw_sf[nearest_station_code[i],])
-})
-
-distance <- as.data.frame(distance)
-# Assuming your data frame is named df
-distance$average <- cumsum(distance$distance) / seq_along(distance$distance)
-
-# Weighted average distance
-distance$average_weighted <- cumsum(distance$distance * random_points_sf$pop_density) / cumsum(random_points_sf$pop_density)
+p_code <- "2023"
+n_trials <- 1000
+# distance <- calculate_distance(nsw, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
+distance2 <- calculate_distance_parallel(nsw, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
 
 # Plotting the average
-ggplot(distance, aes(x = seq_along(average))) +
+# ggplot(distance, aes(x = seq_along(average))) +
+#  geom_line(aes(y = average), color = "blue") +
+#  geom_line(aes(y = average_weighted), color = "red") +
+#  labs(title = "Average distance to the closest gas station",
+#       x = "n trials",
+#       y = "Average distance (m)")
+
+# Plotting the average calculated by parallel processing
+ggplot(distance2, aes(x = seq_along(average))) +
   geom_line(aes(y = average), color = "blue") +
   geom_line(aes(y = average_weighted), color = "red") +
   labs(title = "Average distance to the closest gas station",
        x = "n trials",
        y = "Average distance (m)")
 
-print(paste("Average distance to the closest gas station in", p_code, "is", mean(distance$average), "meters"))
+# print(paste("Average distance to the closest gas station in", p_code, "is", tail(distance$average, n = 1), "meters"))
+# print(paste("Average weighted distance to the closest gas station in", p_code, "is", tail(distance$average_weighted, n = 1), "meters"))
 
-print(paste("Average weighted distance to the closest gas station in", p_code, "is", mean(distance$average_weighted), "meters"))
-
-# plot random points on map with postcode
-# plot(st_geometry(postcode))
-# plot(random_points, add = TRUE, col = 'red', pch = 20)
-
+print(paste("PP Average distance to the closest gas station in", p_code, "is", tail(distance2$average, n = 1), "meters"))
+print(paste("PP Average weighted distance to the closest gas station in", p_code, "is", tail(distance2$average_weighted, n = 1), "meters"))
 
 ```
 
