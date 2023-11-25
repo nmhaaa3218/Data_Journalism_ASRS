@@ -23,6 +23,7 @@ library(geosphere)
 library(broom)
 library(shiny)
 library(units)
+library(prophet)
 ```
 
 # List of all function
@@ -575,6 +576,26 @@ future <- forecast(fit, h = 30)
 plot(future)
 
 ```
+
+#### Using Facebook Prophet
+
+```{r}
+# Aggregate data to daily level
+daily_data <- nsw %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE)) %>%
+  rename(ds = collection_date, y = price)
+
+m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
+future <- make_future_dataframe(m, periods = 15)
+forecast <- predict(m, future)
+tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
+plot(m, forecast)
+prophet_plot_components(m, forecast)
+
+```
+
 
 ### Experimental shiny app (kinda working)
 
