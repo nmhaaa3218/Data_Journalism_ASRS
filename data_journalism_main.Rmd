@@ -301,11 +301,15 @@ calculate_distance <- function(state_fuel, postcode_sf, pop_density, fueltype, d
   })
 
   distance <- as.data.frame(distance)
+  
   # Assuming your data frame is named df
   distance$average <- cumsum(distance$distance) / seq_along(distance$distance)
 
   # Weighted average distance
   distance$average_weighted <- cumsum(distance$distance * random_points_sf$pop_density) / cumsum(random_points_sf$pop_density)
+  
+  # add spatial points to distance df (easier debug)
+  distance$sf <- random_points_sf$geometry
   
   # End time
   end_time <- Sys.time()
@@ -360,7 +364,6 @@ calculate_distance_parallel <- function(state_fuel, postcode_sf, pop_density, fu
   }
   stopCluster(c2)
   
-  
   # Convert to data frame
   distance <- as.data.frame(distance)
   
@@ -369,6 +372,9 @@ calculate_distance_parallel <- function(state_fuel, postcode_sf, pop_density, fu
 
   # Weighted average distance
   distance$average_weighted <- cumsum(distance$distance * random_points_sf$pop_density) / cumsum(random_points_sf$pop_density)
+  
+  # add spatial points to distance df (easier debug)
+  distance$sf <- random_points_sf$geometry
   
   # End time
   end_time <- Sys.time()
@@ -428,7 +434,7 @@ plot_points_on_map(nsw,fueltype[1], "2023-9-23")
 ### Fuel type vs price
 
 -   Reccommend using EV consistently cheaper than fossil fuel
--   There exist extreme outliers for all fuel type (except for EV and E85)
+-   There exist extreme outliers for all fuel type except for EV and E85 (possible data error)
 
 ```{r}
 nsw %>%
@@ -477,7 +483,11 @@ ggplot(nsw, aes(x=fueltype)) +
 
 ```{r}
 # View the postcode shapefile
-#mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+# mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+
+# plot random points on map with postcode
+# plot(st_geometry(postcode))
+# plot(random_points, add = TRUE, col = 'red', pch = 20)
 
 p_code <- "2023"
 n_trials <- 1000
@@ -635,24 +645,15 @@ nt <- auto_rename_columns(nt)
 ```
 
 ### Map station and its price for a type of fuel across the state
-
-For all fuel
-
--   further away from SYD, price tend to be higher?
   
-  -   further in land, more expensive the fuel?
-  
-  -   along the coast, relatively equal?
-  
-  ```{r}
+```{r}
 fueltype <- unique(nt$fueltype)
 plot_points_on_map(nt,fueltype[1], "2023-9-23") 
 ```
 
 ### Fuel type vs price
 
--   Reccommend using EV consistently cheaper than fossil fuel
--   There exist extreme outliers for all fuel type (except for EV and E85)
+-   There exist extreme outliers for DL, LAF, P95, P98 (possible data error)
 
 ```{r}
 nt %>%
@@ -679,7 +680,7 @@ nt %>%
 
 ### Fuel Type Popularity
 
--   Variations of petroleum are the most popular
+-   Diesel is most popular fuel type
 
 ```{r}
 # Fuel Type Popularity
@@ -700,10 +701,15 @@ ggplot(nt, aes(x=fueltype)) +
 
 ```{r}
 # View the postcode shapefile
-#mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+# mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
+
+# plot random points on map with postcode
+# plot(st_geometry(postcode))
+# plot(random_points, add = TRUE, col = 'red', pch = 20)
+# mapview(pop_density, zcol = "density")
 
 p_code <- "0820"
-n_trials <- 1000
+n_trials <- 100
 # distance <- calculate_distance(nt, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
 distance2 <- calculate_distance_parallel(nt, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
 
@@ -762,7 +768,7 @@ fuel_data <- nt %>%
   filter(fueltype == "U91") %>%
   group_by(collection_date) %>%
   summarise(avg_price = mean(price, na.rm = TRUE)) %>%
-  # only take 1 year of data
+  # only take 1 year of data 
   filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
 
 # Convert to time series object
@@ -779,8 +785,6 @@ plot(fc)
 ```
 
 #### Using ARIMA
-
--   Seems more accurate given the data after 2023-11-12
 
 ```{r}
 # Convert collection_date to Date class
