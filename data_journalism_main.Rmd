@@ -392,19 +392,19 @@ calculate_distance_parallel <- function(state_fuel, postcode_sf, pop_density, fu
 -   Change path to local path of fuel-prices/(states)
 
 ```{r}
-nsw <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nsw")
+nsw <- combine_csv_parallel("fuel-prices/nsw")
 
-nt <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/nt")
+nt <- combine_csv_parallel("fuel-prices/nt")
 
-qld <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/qld")
+qld <- combine_csv_parallel("fuel-prices/qld")
 
-sa <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/sa")
+sa <- combine_csv_parallel("fuel-prices/sa")
 
-tas <- combine_csv_parallel("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/fuel-prices/tas")
+tas <- combine_csv_parallel("fuel-prices/tas")
 
-postcode_sf <- read_sf(dsn = "D:/UOA WORK/Summer Research/Data_Journalism_ASRS/postcode-shapefile",layer = "POA_2021_AUST_GDA94")
+postcode_sf <- read_sf(dsn = "postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 
-pop_density <- rast("D:/UOA WORK/Summer Research/Data_Journalism_ASRS/aus_pd_2020_1km.tif")
+pop_density <- rast("aus_pd_2020_1km.tif")
 
 ```
 
