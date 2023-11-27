@@ -387,6 +387,20 @@ calculate_distance_parallel <- function(state_fuel, postcode_sf, pop_density, fu
 
 ```
 
+## Calculate the average price of a given fuel in the last n days for each postcode in australia and return a data frame
+
+```{r}
+calculate_avg_postcode_fuelprice <- function(state_fuel, fueltype, n_days) {
+  state_fuel <- state_fuel %>%
+    filter(fueltype == fueltype) %>%
+    filter(collection_date >= max(collection_date) - n_days & collection_date <= max(collection_date)) %>%
+    group_by(postcode) %>%
+    summarise(avg_price = mean(price, na.rm = TRUE))
+  return(state_fuel)
+}
+```
+
+
 # Import data
 
 -   Change path to local path of fuel-prices/(states)
