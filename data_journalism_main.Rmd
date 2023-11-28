@@ -427,13 +427,22 @@ road_map <- combine_csv_parallel("osm-road-map")
 
 ```
 
-## NSW
-
-### Mutate postcode columns
+# Data cleaning & renaming
 
 ```{r}
+# Mutate postcode columns
 nsw <- postcode(nsw)
+tas <- postcode(tas)
+
+# Rename columns
+nt <- auto_rename_columns(nt)
+qld <- auto_rename_columns(qld)
+sa <- auto_rename_columns(sa)
+
 ```
+
+## NSW
+
 
 ### Map station and its price for a type of fuel across the state
 
@@ -655,12 +664,6 @@ server <- function(input, output) {
 ```
 
 ## NT
-
-### Data cleaning
-
-```{r}
-nt <- auto_rename_columns(nt)
-```
 
 ### Map station and its price for a type of fuel across the state
 
