@@ -400,8 +400,13 @@ calculate_avg_postcode_fuelprice <- function(state_fuel, fueltype, n_days) {
 }
 ```
 
-
 # Import data
+
+-   Population density from [Australia - Population Density - Humanitarian Data Exchange (humdata.org)](https://data.humdata.org/dataset/worldpop-population-density-for-australia?)
+
+-   Road map from [AURIN](https://adp-access.aurin.org.au/dataset/osm-osm-roads-2020-na)
+
+-   Postcode boundaries from [Digital boundary files \| Australian Bureau of Statistics (abs.gov.au)](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files)
 
 ```{r}
 nsw <- combine_csv_parallel("fuel-prices/nsw")
@@ -417,6 +422,8 @@ tas <- combine_csv_parallel("fuel-prices/tas")
 postcode_sf <- read_sf(dsn = "postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 
 pop_density <- rast("aus_pd_2020_1km.tif")
+
+road_map <- combine_csv_parallel("osm-road-map")
 
 ```
 
@@ -624,7 +631,6 @@ prophet_plot_components(m, forecast)
 
 ```
 
-
 ### Experimental shiny app (kinda working)
 
 ```{r}
@@ -643,7 +649,7 @@ server <- function(input, output) {
   })
 }
 
-shinyApp(ui = ui, server = server)
+# shinyApp(ui = ui, server = server)
 
 
 ```
@@ -657,7 +663,7 @@ nt <- auto_rename_columns(nt)
 ```
 
 ### Map station and its price for a type of fuel across the state
-  
+
 ```{r}
 fueltype <- unique(nt$fueltype)
 plot_points_on_map(nt,fueltype[1], "2023-9-23") 
@@ -841,7 +847,6 @@ prophet_plot_components(m, forecast)
 
 ```
 
-
 ### Experimental shiny app (kinda working)
 
 ```{r}
@@ -860,8 +865,7 @@ server <- function(input, output) {
   })
 }
 
-shinyApp(ui = ui, server = server)
+# shinyApp(ui = ui, server = server)
 
 
 ```
-
