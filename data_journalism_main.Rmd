@@ -441,8 +441,25 @@ sa <- auto_rename_columns(sa)
 
 ```
 
-## NSW
+# Data exploration
 
+## All states analysis
+
+### Calculate average price of a given fuel in the last n days for each postcode in australia and return a data frame
+
+-   Ideas: create a heat map to answer whether there are any patterns in price distribution of the same type of fuel in the last n days over all available postcode.
+
+```{r}
+# add price for all postcode in each states
+postcode_avg_fuel_price <- rbind(calculate_avg_postcode_fuelprice(nsw, "U91", 30),
+                                 calculate_avg_postcode_fuelprice(nt, "U91", 30),
+                                 calculate_avg_postcode_fuelprice(qld, "U91", 30),
+                                 calculate_avg_postcode_fuelprice(sa, "U91", 30),
+                                 calculate_avg_postcode_fuelprice(tas, "U91", 30))
+
+```
+
+## NSW
 
 ### Map station and its price for a type of fuel across the state
 
