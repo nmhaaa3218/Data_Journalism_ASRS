@@ -189,16 +189,21 @@ plot_avg_fuel_price_time <- function(df, fueltype) {
 
 -   Rename "Latitude", "Lat" to "lat"
 
--   Rename "Postcode" to "postcode"
+-   Rename "Postcode", "POSTCODE" to "postcode"
 
 -   Rename "FuelCode" to "fueltype"
 
--   Rename "Price" to "price"
+-   Rename "Price", "PRODUCT_PRICE" to "price"
 
--   Rename "BrandName" to "brand"
+-   Rename "BrandName", "BRAND_DESCRIPTION" to "brand"
+
+-   Rename "PUBLISH_DATE" to "collection_date"
+
+-   
 
 ```{r}
 auto_rename_columns <- function(df) {
+  
   long_list <- c("Longitude", "Lng")  
   for (col_name in long_list) {
     if (col_name %in% colnames(df)) {
@@ -207,6 +212,7 @@ auto_rename_columns <- function(df) {
       break
     }
   }
+  
   lat_list <- c("Latitude", "Lat")
   for (col_name in lat_list) {
     if (col_name %in% colnames(df)) {
@@ -215,22 +221,44 @@ auto_rename_columns <- function(df) {
       break
     }
   }
-  if ("Postcode" %in% colnames(df)) {
-    df <- df %>%
-      rename(postcode = all_of("Postcode"))
+  
+  postcode_list <- c("Postcode", "POSTCODE")  
+  for (col_name in postcode_list) {
+    if (col_name %in% colnames(df)) {
+      df <- df %>%
+        rename(postcode = all_of(col_name))
+      break
+    }
   }
-  if ("Price" %in% colnames(df)) {
-    df <- df %>%
-      rename(price = all_of("Price"))
+  
+  price_list <- c("PRODUCT_PRICE", "Price")  
+  for (col_name in price_list) {
+    if (col_name %in% colnames(df)) {
+      df <- df %>%
+        rename(price = all_of(col_name))
+      break
+    }
   }
+  
   if ("FuelCode" %in% colnames(df)) {
     df <- df %>%
       rename(fueltype = all_of("FuelCode"))
   }
-  if ("BrandName" %in% colnames(df)) {
-    df <- df %>%
-      rename(brand = all_of("BrandName"))
+  
+  brand_list <- c("BrandName", "BRAND_DESCRIPTION")  
+  for (col_name in brand_list) {
+    if (col_name %in% colnames(df)) {
+      df <- df %>%
+        rename(brand = all_of(col_name))
+      break
+    }
   }
+  
+  if ("PUBLISH_DATE" %in% colnames(df)) {
+    df <- df %>%
+      rename(collection_date = all_of("PUBLISH_DATE"))
+  }
+  
   return(df)
 }
 
@@ -419,6 +447,8 @@ sa <- combine_csv_parallel("fuel-prices/sa")
 
 tas <- combine_csv_parallel("fuel-prices/tas")
 
+wa <- combine_csv_parallel("fuel-prices/wa")
+
 postcode_sf <- read_sf(dsn = "postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 
 pop_density <- rast("aus_pd_2020_1km.tif")
@@ -438,6 +468,7 @@ tas <- postcode(tas)
 nt <- auto_rename_columns(nt)
 qld <- auto_rename_columns(qld)
 sa <- auto_rename_columns(sa)
+wa <- auto_rename_columns(wa)
 
 ```
 
