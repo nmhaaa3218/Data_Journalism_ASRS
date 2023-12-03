@@ -5,25 +5,45 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Import library
 
-```{r}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# General data wrangling and visualisation
 library(tidyverse)
+
+# Spatial analysis
 library(mapview)
 library(sf)
 library(terra)
+library(geosphere)
+library(units)
+
+# Parallel processing
 library(foreach)
 library(doParallel)
-library(forecast)
-library(geosphere)
-library(broom)
+
+# Shiny app
 library(shiny)
-library(units)
+
+# Time series forecasting
+library(forecast)
 library(prophet)
+
+# Python integration
+# To find path
+#   Use where python for Windows
+#   Use which python for UNIX
+library(reticulate)
+use_python("C:/Users/Nebula PC/AppData/Local/Programs/Python/Python312/python.exe", required = TRUE)
+
+```
+
+```{python}
+# Mutate coordinates
+import pandas as pd
+import osmnx as ox
 ```
 
 # List of all function
@@ -429,6 +449,17 @@ calculate_avg_postcode_fuelprice <- function(state_fuel, fueltype, n_days) {
 }
 ```
 
+## Extract coordinates from address
+
+```{python}
+def get_coordinates(address):
+    try:
+        return ox.geocode(address)
+    except:
+        return (None, None)
+```
+
+
 # Import data
 
 -   Population density from [Australia - Population Density - Humanitarian Data Exchange (humdata.org)](https://data.humdata.org/dataset/worldpop-population-density-for-australia?)
@@ -453,8 +484,6 @@ wa <- combine_csv_parallel("fuel-prices/wa")
 postcode_sf <- read_sf(dsn = "postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 
 pop_density <- rast("aus_pd_2020_1km.tif")
-
-road_map <- combine_csv_parallel("osm-road-map")
 
 ```
 
@@ -622,11 +651,11 @@ plot_avg_fuel_price_time(nsw, "U91")
 
 #### Using ETS (Exponential Triple Smoothing)
 
--   The \"frequency\" is the number of observations before the seasonal pattern repeats.\
-    - Annual: 1\
-    - Quaterly: 4\
-    - Monthly: 12\
-    - Weekly: 52
+-   The "frequency" is the number of observations before the seasonal pattern repeats.\
+    -   Annual: 1\
+    -   Quaterly: 4\
+    -   Monthly: 12\
+    -   Weekly: 52
 
 ```{r}
 fuel_data <- nsw %>%
