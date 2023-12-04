@@ -462,6 +462,9 @@ def mutate_coordinates(df):
 
 ```
 
+## Based on address, decide if location is convenient or inconvenient
+
+-   Define convenient:
 
 # Import data
 
