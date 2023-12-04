@@ -464,7 +464,28 @@ def mutate_coordinates(df):
 
 ## Based on address, decide if location is convenient or inconvenient
 
--   Define convenient:
+-   Define convenient: within 500m to highway=motorway, highway=trunk, highway=primary
+-   Else: inconvenient
+
+```{python}
+def is_convenient(point):
+    # only include main road structures
+    tags = {'highway': ['motorway', 'trunk', 'primary']}
+
+    try:
+        # features_from_point to get features within 500 meters
+        features = ox.features_from_point(point, tags, dist=500)
+        
+        # if no features
+        if features.empty:
+            return False
+        # if exist features
+        else:
+            return True
+    except Exception as e:
+        # handle features_from_point error
+        return False
+```
 
 # Import data
 
