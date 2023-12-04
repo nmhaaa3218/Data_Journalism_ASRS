@@ -34,14 +34,14 @@ library(prophet)
 # Python integration
 # To find path
 #   Use where python for Windows
-#   Use which python for UNIX
+#   Use which python3 for UNIX
 library(reticulate)
-use_python("C:/Users/Nebula PC/AppData/Local/Programs/Python/Python312/python.exe", required = TRUE)
+use_python("/usr/local/bin/python3", required = TRUE)
 
 ```
 
 ```{python}
-# Mutate coordinates
+# Spatial analysis with OSMnx
 import pandas as pd
 import osmnx as ox
 ```
@@ -449,7 +449,7 @@ calculate_avg_postcode_fuelprice <- function(state_fuel, fueltype, n_days) {
 }
 ```
 
-## Extract coordinates from address
+## Mutate coordinates from address
 
 ```{python}
 def get_coordinates(address):
@@ -457,6 +457,9 @@ def get_coordinates(address):
         return ox.geocode(address)
     except:
         return (None, None)
+      
+def mutate_coordinates(df):
+
 ```
 
 
