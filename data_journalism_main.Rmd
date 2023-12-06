@@ -5,25 +5,47 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Import library
 
-```{r}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# General data wrangling and visualisation
 library(tidyverse)
+
+# Spatial analysis
 library(mapview)
 library(sf)
 library(terra)
+library(geosphere)
+library(units)
+
+# Parallel processing
 library(foreach)
 library(doParallel)
-library(forecast)
-library(geosphere)
-library(broom)
+
+# Shiny app
 library(shiny)
-library(units)
+
+# Time series forecasting
+library(forecast)
 library(prophet)
+
+# Python integration
+# To find path
+#   Use where python for Windows
+#   Use which python3 for UNIX
+library(reticulate)
+use_python("C:/Users/Nebula PC/AppData/Local/Programs/Python/Python312/python.exe", required = TRUE)
+
+
+```
+
+```{python}
+# Spatial analysis with OSMnx
+import pandas as pd
+import osmnx as ox
+import time
 ```
 
 # List of all function
@@ -260,6 +282,10 @@ auto_rename_columns <- function(df) {
       rename(collection_date = all_of("PUBLISH_DATE"))
   }
   
+  if ("Address" %in% colnames(df)) {
+    df <- df %>%
+      rename(address = all_of("Address"))
+  }
   return(df)
 }
 
@@ -429,11 +455,114 @@ calculate_avg_postcode_fuelprice <- function(state_fuel, fueltype, n_days) {
 }
 ```
 
+## Extract dataframe of unique address from dataframe of state_fuel
+
+```{r}
+extract_address <- function(state_fuel) {
+  address <- state_fuel %>%
+    select(address, lat, long) %>%
+    distinct()
+  return(address)
+}
+```
+
+
+## Mutate coordinates from address
+
+```{python}
+def get_coordinates(address):
+    try:
+        return ox.geocode(address)
+    except:
+        return (None, None)
+
+```
+
+## Based on coordinates, decide if location is convenient or inconvenient
+
+-   Define convenient: within 500m to highway=motorway, highway=trunk, highway=primary
+-   Else: inconvenient
+
+```{python}
+def extract_address(state_fuel):
+    address = state_fuel[["address", "lat", "long"]].drop_duplicates()
+    return address
+
+
+def is_convenient(lat, long):
+    # check performance
+    #start_time = time.time()
+    
+    point = (lat, long)
+    # only include main road structures
+    tags = {'highway': ['motorway', 'trunk', 'primary']}
+
+    try:
+        # features_from_point to get features within 500 meters
+        features = ox.features_from_point(point, tags, dist=500)
+        
+        # check performance
+        #end_time = time.time()
+        #print(end_time - start_time)
+        
+        # if no features
+        if features is None or features.empty:
+            return False
+        # if exist features
+        else:
+            return True
+    except Exception as e:
+        # handle features_from_point error
+        return False
+      
+
+def mutate_convenient(state_fuel):
+    start_time = time.time()
+
+    # Assuming 'extract_address' is a predefined function
+    address = extract_address(state_fuel)
+
+    # Check if convenient
+    address['convenient'] = address.apply(lambda row: is_convenient(row['lat'], row['long']), axis=1)
+
+    # Left join to original dataframe
+    state_fuel = pd.merge(state_fuel, address, on=['address', 'lat', 'long'], how='left')
+
+    end_time = time.time()
+    print(end_time - start_time)
+
+    return state_fuel
+
+```
+
+
+```{r}
+mutate_convenient <- function(state_fuel) {
+  start_time <- Sys.time()
+  # extract list of unique adress
+  address <- extract_address(state_fuel)
+  
+  # check if convenient
+  address <- address %>%
+    rowwise() %>%
+    mutate(convenient = py$is_convenient(lat, long))
+  
+  # left join to OG df
+  state_fuel %>%
+    # join shorter df to longer df
+    left_join(address, by = c("address", "lat", "long"), relationship = "many-to-many") %>%
+  
+  end_time <- Sys.time()
+  print(end_time - start_time)
+  # return
+  return(state_fuel)
+}
+```
+
+
 # Import data
 
 -   Population density from [Australia - Population Density - Humanitarian Data Exchange (humdata.org)](https://data.humdata.org/dataset/worldpop-population-density-for-australia?)
-
--   Road map from [AURIN](https://adp-access.aurin.org.au/dataset/osm-osm-roads-2020-na)
 
 -   Postcode boundaries from [Digital boundary files \| Australian Bureau of Statistics (abs.gov.au)](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files)
 
@@ -453,8 +582,6 @@ wa <- combine_csv_parallel("fuel-prices/wa")
 postcode_sf <- read_sf(dsn = "postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 
 pop_density <- rast("aus_pd_2020_1km.tif")
-
-road_map <- combine_csv_parallel("osm-road-map")
 
 ```
 ##add long and lat for wa
@@ -563,12 +690,13 @@ wa <- auto_rename_columns(wa)
 
 ## All states analysis
 
-### Calculate average price of a given fuel in the last n days for each postcode in australia and return a data frame
+### Calculate average price of a given fuel in the last n days for each postcode in Australia and return a data frame
 
 -   Ideas: create a heat map to answer whether there are any patterns in price distribution of the same type of fuel in the last n days over all available postcode.
 
 ```{r}
 # add price for all postcode in each states
+
 postcode_avg_fuel_price <- calculate_avg_postcode_fuelprice(nsw, "U91", 30)
 
 merged_data <- postcode_sf %>%
@@ -704,34 +832,55 @@ summary(nsw_model_parallel)
 plot_avg_fuel_price_time(nsw, "U91")
 ```
 
-### Experimental time series prediction
+### Time series prediction
 
-#### Using ETS
+#### Using ETS (Exponential Triple Smoothing)
+
+-   The "frequency" is the number of observations before the seasonal pattern repeats.\
+    -   Annual: 1\
+    -   Quaterly: 4\
+    -   Monthly: 12\
+    -   Weekly: 52
 
 ```{r}
 fuel_data <- nsw %>%
   filter(fueltype == "U91") %>%
   group_by(collection_date) %>%
-  summarise(avg_price = mean(price, na.rm = TRUE)) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE)) #%>%
   # only take 1 year of data
-  filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
+  # filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
   
 # Convert to time series object
-fuel_ts <- ts(fuel_data$avg_price, frequency = 365.25)
+fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
 
-# Apply ets and forecast
-model <- ets(fuel_ts)
-fc <- forecast(model, h = 30)
+# Apply stlf and forecast
+model <- stlf(fuel_ts, method='ets')
+fc <- forecast(model, h = 100)
 
 # Plot the forecast
 plot(fc)
 
 
+
 ```
 
-#### Using ARIMA
+#### Using ARIMA (Autoregressive Intergrated Moving Average)
 
--   Seems more accurate given the data after 2023-11-12
+ARIMA model is composed of three parts:
+
+1.  **Autoregressive (AR)**: This part involves regressing the variable of interest on its own lagged (i.e., prior) values.
+
+2.  **Integrated (I)**: This represents the differencing of raw observations to allow the time series to become stationary. In other words, it's used to remove any trend or seasonality in the data.
+
+3.  **Moving Average (MA)**: This part involves the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+Each component functions as a parameter in ARIMA models, typically denoted as ARIMA(p, d, q):
+
+-   `p`: The number of lag observations in the model, also known as the lag order.
+-   `d`: The number of times the raw observations are differenced, also known as the degree of differencing.
+-   `q`: The size of the moving average window, also known as the order of the moving average.
+
+For example, an ARIMA(1,1,1) model means that it includes one lagged value of the series (p=1), differences the series once to achieve stationarity (d=1), and uses a moving average model of order 1 (q=1).
 
 ```{r}
 # Convert collection_date to Date class
@@ -744,13 +893,13 @@ daily_data <- nsw %>%
   summarise(price = mean(price, na.rm = TRUE))
 
 # Convert to time series
-ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365.25)
+ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365)
 
 # Fit model
 fit <- auto.arima(ts_data)
 
 # Forecast
-future <- forecast(fit, h = 30)
+future <- forecast(fit, h = 100)
 
 # Plot forecast
 plot(future)
@@ -768,7 +917,7 @@ daily_data <- nsw %>%
   rename(ds = collection_date, y = price)
 
 m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
-future <- make_future_dataframe(m, periods = 15)
+future <- make_future_dataframe(m, periods = 100)
 forecast <- predict(m, future)
 tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
 plot(m, forecast)
@@ -799,212 +948,4 @@ server <- function(input, output) {
 
 ```
 
-## NT
 
-### Map station and its price for a type of fuel across the state
-
-```{r}
-fueltype <- unique(nt$fueltype)
-plot_points_on_map(nt,fueltype[1], "2023-9-23") 
-```
-
-### Fuel type vs price
-
--   There exist extreme outliers for DL, LAF, P95, P98 (possible data error)
-
-```{r}
-nt %>%
-  ggplot(aes(x=fueltype,y=price)) +
-  geom_boxplot() +
-  labs(title="Price Distribution by Fuel Type from 2022-07-26 to 2023-11-12", x="Fuel", y="Price")
-```
-
-### Price Distribution by Brand for a type of fuel for a given day
-
--   Observe that even for same type of fuel and brand, there can be variations between location
-
-```{r}
-# Combustion fuel price distribution by brand
-nt %>%
-  filter(fueltype == "U91") %>%  # change fuel type
-  filter(collection_date == "2023-8-21") %>%
-  ggplot(aes(x=brand, y=price)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  labs(title="Price Distribution by Brand", x="Brand", y="Price")
-
-```
-
-### Fuel Type Popularity
-
--   Diesel is most popular fuel type
-
-```{r}
-# Fuel Type Popularity
-ggplot(nt, aes(x=fueltype)) +
-  geom_bar() +
-  labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
-```
-
-### How far do you have to travel on average to fill up your car
-
--   Consider population density of each postcode to determine the weight of each postcode
-
--   Randomly distributed a corresponding number of representative points in each postcode
-
--   Distributed accordingly to the population density
-
--   Calculate average distance from each point to the nearest gas station
-
-```{r}
-# View the postcode shapefile
-# mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
-
-# plot random points on map with postcode
-# plot(st_geometry(postcode))
-# plot(random_points, add = TRUE, col = 'red', pch = 20)
-# mapview(pop_density, zcol = "density")
-
-p_code <- "0820"
-n_trials <- 100
-# distance <- calculate_distance(nt, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
-distance2 <- calculate_distance_parallel(nt, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
-
-# Plotting the average
-# ggplot(distance, aes(x = seq_along(average))) +
-#  geom_line(aes(y = average), color = "blue") +
-#  geom_line(aes(y = average_weighted), color = "red") +
-#  labs(title = "Average distance to the closest gas station",
-#       x = "n trials",
-#       y = "Average distance (m)")
-
-# Plotting the average calculated by parallel processing
-ggplot(distance2, aes(x = seq_along(average))) +
-  geom_line(aes(y = average), color = "blue") +
-  geom_line(aes(y = average_weighted), color = "red") +
-  labs(title = "Average distance to the closest gas station",
-       x = "n trials",
-       y = "Average distance (m)")
-
-# print(paste("Average distance to the closest gas station in", p_code, "is", tail(distance$average, n = 1), "meters"))
-# print(paste("Average weighted distance to the closest gas station in", p_code, "is", tail(distance$average_weighted, n = 1), "meters"))
-
-print(paste("PP Average distance to the closest gas station in", p_code, "is", tail(distance2$average, n = 1), "meters"))
-print(paste("PP Average weighted distance to the closest gas station in", p_code, "is", tail(distance2$average_weighted, n = 1), "meters"))
-
-```
-
-### Linear regression price \~ long + lat + fueltype + collection_date
-
--   contains influential cases that might need to ignore (might improve outcome of all assumption?)
-
-```{r}
-# linear regression to fit price ~ long lat fueltype
-nt_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = nt)
-
-# Plot diagnostic
-# plot(nt_model_parallel)
-
-# view model
-summary(nt_model_parallel)
-
-```
-
-### Plot average price for a given fueltype over time
-
-```{r}
-plot_avg_fuel_price_time(nt, "U91")
-```
-
-### Experimental time series prediction
-
-#### Using ETS
-
-```{r}
-fuel_data <- nt %>%
-  filter(fueltype == "U91") %>%
-  group_by(collection_date) %>%
-  summarise(avg_price = mean(price, na.rm = TRUE)) %>%
-  # only take 1 year of data 
-  filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
-
-# Convert to time series object
-fuel_ts <- ts(fuel_data$avg_price, frequency = 365.25)
-
-# Apply ets and forecast
-model <- ets(fuel_ts)
-fc <- forecast(model, h = 30)
-
-# Plot the forecast
-plot(fc)
-
-
-```
-
-#### Using ARIMA
-
-```{r}
-# Convert collection_date to Date class
-nt$collection_date <- as.Date(nt$collection_date)
-
-# Aggregate data to daily level
-daily_data <- nt %>%
-  filter(fueltype == "U91") %>%
-  group_by(collection_date) %>%
-  summarise(price = mean(price, na.rm = TRUE))
-
-# Convert to time series
-ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365.25)
-
-# Fit model
-fit <- auto.arima(ts_data)
-
-# Forecast
-future <- forecast(fit, h = 30)
-
-# Plot forecast
-plot(future)
-
-```
-
-#### Using Facebook Prophet
-
-```{r}
-# Aggregate data to daily level
-daily_data <- nt %>%
-  filter(fueltype == "U91") %>%
-  group_by(collection_date) %>%
-  summarise(price = mean(price, na.rm = TRUE)) %>%
-  rename(ds = collection_date, y = price)
-
-m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
-future <- make_future_dataframe(m, periods = 15)
-forecast <- predict(m, future)
-tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
-plot(m, forecast)
-prophet_plot_components(m, forecast)
-
-```
-
-### Experimental shiny app (kinda working)
-
-```{r}
-ui <- fluidPage(
-  selectInput("fueltype", "Choose a Fuel Type:", choices = unique(nt$fueltype)),
-  dateInput("collection_date", "Choose a Collection Date:", min = min(nt$collection_date), max = max(nt$collection_date)),
-  plotOutput("map")
-)
-
-server <- function(input, output) {
-  output$map <- renderPlot({
-    df <- nt[nt$fueltype == input$fueltype, ]
-    df <- df[df$collection_date == input$collection_date, ]
-    points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
-    mapview(points_sdf, zcol = "price", label = points_sdf$brand)
-  })
-}
-
-# shinyApp(ui = ui, server = server)
-
-
-```
