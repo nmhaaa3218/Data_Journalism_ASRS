@@ -467,17 +467,6 @@ extract_address <- function(state_fuel) {
 ```
 
 
-## Mutate coordinates from address
-
-```{python}
-def get_coordinates(address):
-    try:
-        return ox.geocode(address)
-    except:
-        return (None, None)
-
-```
-
 ## Based on coordinates, decide if location is convenient or inconvenient
 
 -   Define convenient: within 500m to highway=motorway, highway=trunk, highway=primary
@@ -533,6 +522,10 @@ def mutate_convenient(state_fuel):
 
     return state_fuel
 
+start = time.time()
+print(is_convenient(-12.463, 130.845))
+end = time.time()
+print(end - start)
 ```
 
 
@@ -550,13 +543,31 @@ mutate_convenient <- function(state_fuel) {
   # left join to OG df
   state_fuel %>%
     # join shorter df to longer df
-    left_join(address, by = c("address", "lat", "long"), relationship = "many-to-many") %>%
+    left_join(address, by = c("address", "lat", "long"), relationship = "many-to-many") 
   
   end_time <- Sys.time()
   print(end_time - start_time)
   # return
   return(state_fuel)
 }
+```
+
+
+```{r}
+start <- Sys.time()
+#nt_address <- extract_address(nt)
+#nt_address <- nt_address %>%
+ # rowwise() %>%
+#  mutate(convenient = py$is_convenient(lat, long))
+
+#nt %>%
+#  left_join(nt_address, by = c("address", "lat", "long"), relationship = "many-to-many") 
+
+print(py$is_convenient(-12.463, 130.845))
+
+end <- Sys.time()
+print(end - start)
+
 ```
 
 
