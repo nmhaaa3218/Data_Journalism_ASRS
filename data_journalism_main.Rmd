@@ -457,6 +457,92 @@ pop_density <- rast("aus_pd_2020_1km.tif")
 road_map <- combine_csv_parallel("osm-road-map")
 
 ```
+##add long and lat for wa
+###find unique address
+```{r}
+
+wa_folder_path <- "fuel-prices/wa"
+
+# Function to extract unique addresses and transform street types
+extract_unique_addresses <- function(folder_path) {
+  files <- list.files(path = folder_path, pattern = "*.csv", full.names = TRUE)
+  
+  unique_addresses_df <- data.frame(address = character(), stringsAsFactors = FALSE)
+  
+  for (file in files) {
+    # Read the CSV file
+    df <- read_csv(file)
+    
+    unique_addresses <- df %>%
+      distinct(ADDRESS) %>%
+      select(ADDRESS) %>%
+      mutate(ADDRESS = gsub("\\bRd\\b", "Road", ADDRESS, ignore.case = TRUE)) %>%
+      mutate(ADDRESS = gsub("\\bHwy\\b", "Highway", ADDRESS, ignore.case = TRUE)) %>%
+      mutate(ADDRESS = gsub("\\bSt\\b", "Street", ADDRESS, ignore.case = TRUE)) %>%
+      mutate(ADDRESS = gsub("\\bDr\\b", "Drive", ADDRESS, ignore.case = TRUE))
+    
+    # Combine with the overall unique addresses dataframe
+    unique_addresses_df <- unique_addresses_df %>% bind_rows(unique_addresses)
+  }
+  
+  # Remove duplicate addresses
+  unique_addresses_df <- unique(unique_addresses_df)
+    return(unique_addresses_df)
+}
+
+unique_addresses_data <- extract_unique_addresses(wa_folder_path)
+
+#print(unique_addresses_data)
+
+write_csv(unique_addresses_data, "unique_addresses.csv")
+
+
+```
+
+### final file with long and lat for unique address
+
+```{r}
+
+df <- read.csv("output_file.csv") 
+
+replace_address_words <- function(address) {
+  address <- gsub("\\bRoad\\b", "Rd", address)
+  address <- gsub("\\bDrive\\b", "Dr", address)
+  address <- gsub("\\bHighway\\b", "Hwy", address)
+  address <- gsub("\\bStreet\\b", "St", address)
+  return(address)
+}
+
+df$ADDRESS <- sapply(df$ADDRESS, replace_address_words)
+
+#print(df)
+
+write.csv(df, "output_file_long_lat.csv", row.names = FALSE) 
+```
+
+###merge lat and long function 
+
+```{r}
+
+merge_with_long_lat <- function(df) {
+  long_lat <- read.csv("output_file_long_lat.csv")  
+  long_lat <- long_lat %>%
+  select(-address)
+
+  df <- left_join(df, long_lat, by = "ADDRESS")
+
+  return(df)
+}
+
+
+
+```
+### merge data for wa
+
+```{r}
+wa <- merge_with_long_lat(wa)
+```
+
 
 # Data cleaning & renaming
 
