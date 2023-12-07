@@ -455,121 +455,6 @@ calculate_avg_postcode_fuelprice <- function(state_fuel, fueltype, n_days) {
 }
 ```
 
-## Extract dataframe of unique address from dataframe of state_fuel
-
-```{r}
-extract_address <- function(state_fuel) {
-  address <- state_fuel %>%
-    select(address, lat, long) %>%
-    distinct()
-  return(address)
-}
-```
-
-
-## Based on coordinates, decide if location is convenient or inconvenient
-
--   Define convenient: within 500m to highway=motorway, highway=trunk, highway=primary
--   Else: inconvenient
-
-```{python}
-def extract_address(state_fuel):
-    address = state_fuel[["address", "lat", "long"]].drop_duplicates()
-    return address
-
-
-def is_convenient(lat, long):
-    # check performance
-    #start_time = time.time()
-    
-    point = (lat, long)
-    # only include main road structures
-    tags = {'highway': ['motorway', 'trunk', 'primary']}
-
-    try:
-        # features_from_point to get features within 500 meters
-        features = ox.features_from_point(point, tags, dist=500)
-        
-        # check performance
-        #end_time = time.time()
-        #print(end_time - start_time)
-        
-        # if no features
-        if features is None or features.empty:
-            return False
-        # if exist features
-        else:
-            return True
-    except Exception as e:
-        # handle features_from_point error
-        return False
-      
-
-def mutate_convenient(state_fuel):
-    start_time = time.time()
-
-    # Assuming 'extract_address' is a predefined function
-    address = extract_address(state_fuel)
-
-    # Check if convenient
-    address['convenient'] = address.apply(lambda row: is_convenient(row['lat'], row['long']), axis=1)
-
-    # Left join to original dataframe
-    state_fuel = pd.merge(state_fuel, address, on=['address', 'lat', 'long'], how='left')
-
-    end_time = time.time()
-    print(end_time - start_time)
-
-    return state_fuel
-
-start = time.time()
-print(is_convenient(-12.463, 130.845))
-end = time.time()
-print(end - start)
-```
-
-
-```{r}
-mutate_convenient <- function(state_fuel) {
-  start_time <- Sys.time()
-  # extract list of unique adress
-  address <- extract_address(state_fuel)
-  
-  # check if convenient
-  address <- address %>%
-    rowwise() %>%
-    mutate(convenient = py$is_convenient(lat, long))
-  
-  # left join to OG df
-  state_fuel %>%
-    # join shorter df to longer df
-    left_join(address, by = c("address", "lat", "long"), relationship = "many-to-many") 
-  
-  end_time <- Sys.time()
-  print(end_time - start_time)
-  # return
-  return(state_fuel)
-}
-```
-
-
-```{r}
-start <- Sys.time()
-#nt_address <- extract_address(nt)
-#nt_address <- nt_address %>%
- # rowwise() %>%
-#  mutate(convenient = py$is_convenient(lat, long))
-
-#nt %>%
-#  left_join(nt_address, by = c("address", "lat", "long"), relationship = "many-to-many") 
-
-print(py$is_convenient(-12.463, 130.845))
-
-end <- Sys.time()
-print(end - start)
-
-```
-
 
 # Import data
 
@@ -578,6 +463,7 @@ print(end - start)
 -   Postcode boundaries from [Digital boundary files \| Australian Bureau of Statistics (abs.gov.au)](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files)
 
 ```{r}
+# fuel station and price data
 nsw <- combine_csv_parallel("fuel-prices/nsw")
 
 nt <- combine_csv_parallel("fuel-prices/nt")
@@ -590,13 +476,27 @@ tas <- combine_csv_parallel("fuel-prices/tas")
 
 wa <- combine_csv_parallel("fuel-prices/wa")
 
+# postcode boundaries
 postcode_sf <- read_sf(dsn = "postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 
+# population density
 pop_density <- rast("aus_pd_2020_1km.tif")
 
+# unique state fuel station address and convenient classification
+nsw_address <- read_csv("fuel-prices/nsw_address.csv")
+
+nt_address <- read_csv("fuel-prices/nt_address.csv")
+
+qld_address <- read_csv("fuel-prices/qld_address.csv")
+
+sa_address <- read_csv("fuel-prices/sa_address.csv")
+
+tas_address <- read_csv("fuel-prices/tas_address.csv")
+
+# wa_address <- read_csv("fuel-prices/wa_address.csv")
 ```
-##add long and lat for wa
-###find unique address
+## Add long and lat for wa
+### find unique address
 ```{r}
 
 wa_folder_path <- "fuel-prices/wa"
