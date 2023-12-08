@@ -282,9 +282,13 @@ auto_rename_columns <- function(df) {
       rename(collection_date = all_of("PUBLISH_DATE"))
   }
   
-  if ("Address" %in% colnames(df)) {
-    df <- df %>%
-      rename(address = all_of("Address"))
+  address_list <- c("Address", "ADDRESS")
+  for (col_name in address_list) {
+    if (col_name %in% colnames(df)) {
+      df <- df %>%
+        rename(address = all_of(col_name))
+      break
+    }
   }
   return(df)
 }
@@ -483,56 +487,60 @@ postcode_sf <- read_sf(dsn = "postcode-shapefile",layer = "POA_2021_AUST_GDA94")
 pop_density <- rast("aus_pd_2020_1km.tif")
 
 # unique state fuel station address and convenient classification
-nsw_address <- read_csv("fuel-prices/nsw_address.csv")
+nsw_address <- read_csv("fuel-prices/nsw_address.csv", show_col_types = FALSE)
 
-nt_address <- read_csv("fuel-prices/nt_address.csv")
+nt_address <- read_csv("fuel-prices/nt_address.csv", show_col_types = FALSE)
 
-qld_address <- read_csv("fuel-prices/qld_address.csv")
+qld_address <- read_csv("fuel-prices/qld_address.csv", show_col_types = FALSE)
 
-sa_address <- read_csv("fuel-prices/sa_address.csv")
+sa_address <- read_csv("fuel-prices/sa_address.csv", show_col_types = FALSE)
 
-tas_address <- read_csv("fuel-prices/tas_address.csv")
+tas_address <- read_csv("fuel-prices/tas_address.csv", show_col_types = FALSE)
 
-# wa_address <- read_csv("fuel-prices/wa_address.csv")
+# wa_address <- read_csv("fuel-prices/wa_address.csv", show_col_types = FALSE)
 ```
-## Add long and lat for wa
-### find unique address
+
+# Data cleaning & renaming
+
 ```{r}
+# Mutate postcode columns
+nsw <- postcode(nsw)
+tas <- postcode(tas)
 
-wa_folder_path <- "fuel-prices/wa"
+# Rename columns
+nt <- auto_rename_columns(nt)
+qld <- auto_rename_columns(qld)
+sa <- auto_rename_columns(sa)
+wa <- auto_rename_columns(wa)
 
-# Function to extract unique addresses and transform street types
-extract_unique_addresses <- function(folder_path) {
-  files <- list.files(path = folder_path, pattern = "*.csv", full.names = TRUE)
-  
-  unique_addresses_df <- data.frame(address = character(), stringsAsFactors = FALSE)
-  
-  for (file in files) {
-    # Read the CSV file
-    df <- read_csv(file)
-    
-    unique_addresses <- df %>%
-      distinct(ADDRESS) %>%
-      select(ADDRESS) %>%
-      mutate(ADDRESS = gsub("\\bRd\\b", "Road", ADDRESS, ignore.case = TRUE)) %>%
-      mutate(ADDRESS = gsub("\\bHwy\\b", "Highway", ADDRESS, ignore.case = TRUE)) %>%
-      mutate(ADDRESS = gsub("\\bSt\\b", "Street", ADDRESS, ignore.case = TRUE)) %>%
-      mutate(ADDRESS = gsub("\\bDr\\b", "Drive", ADDRESS, ignore.case = TRUE))
-    
-    # Combine with the overall unique addresses dataframe
-    unique_addresses_df <- unique_addresses_df %>% bind_rows(unique_addresses)
-  }
+```
+
+## Add long and lat for wa
+### Find unique address
+```{r}
+unique_addresses <- wa %>%
+  distinct(address, LOCATION) %>%
+  select(address, LOCATION) %>%
+  mutate(address = gsub("\\bRd\\b", "Road", address, ignore.case = TRUE)) %>%
+  mutate(address = gsub("\\bHwy\\b", "Highway", address, ignore.case = TRUE)) %>%
+  mutate(address = gsub("\\bSt\\b", "Street", address, ignore.case = TRUE)) %>%
+  mutate(address = gsub("\\bDr\\b", "Drive", address, ignore.case = TRUE)) %>%
+  unite("address", c("address", "LOCATION"), sep = ", ") %>%
+  mutate(address = paste(address, ", Western Australia"))
+
+# Combine with the overall unique addresses dataframe
+# unique_addresses_df <- unique_addresses_df %>% bind_rows(unique_addresses)
   
   # Remove duplicate addresses
-  unique_addresses_df <- unique(unique_addresses_df)
-    return(unique_addresses_df)
-}
+  unique_addresses_df <- unique(unique_addresses)
 
-unique_addresses_data <- extract_unique_addresses(wa_folder_path)
+
+# unique_addresses_data <- extract_unique_addresses(wa_folder_path)
+
 
 #print(unique_addresses_data)
 
-write_csv(unique_addresses_data, "unique_addresses.csv")
+write_csv(unique_addresses_df, "unique_addresses.csv")
 
 
 ```
@@ -558,7 +566,7 @@ df$ADDRESS <- sapply(df$ADDRESS, replace_address_words)
 write.csv(df, "output_file_long_lat.csv", row.names = FALSE) 
 ```
 
-###merge lat and long function 
+### Merge lat and long for WA
 
 ```{r}
 
@@ -572,28 +580,8 @@ merge_with_long_lat <- function(df) {
   return(df)
 }
 
-
-
-```
-### merge data for wa
-
-```{r}
 wa <- merge_with_long_lat(wa)
-```
 
-
-# Data cleaning & renaming
-
-```{r}
-# Mutate postcode columns
-nsw <- postcode(nsw)
-tas <- postcode(tas)
-
-# Rename columns
-nt <- auto_rename_columns(nt)
-qld <- auto_rename_columns(qld)
-sa <- auto_rename_columns(sa)
-wa <- auto_rename_columns(wa)
 
 ```
 
