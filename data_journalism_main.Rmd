@@ -518,9 +518,8 @@ wa <- auto_rename_columns(wa)
 ## Add long and lat for wa
 ### Find unique address
 ```{r}
-unique_addresses <- wa %>%
-  distinct(address, LOCATION) %>%
-  select(address, LOCATION) %>%
+# preprocessing address data for WA
+wa <- wa %>%
   mutate(address = gsub("\\bRd\\b", "Road", address, ignore.case = TRUE)) %>%
   mutate(address = gsub("\\bHwy\\b", "Highway", address, ignore.case = TRUE)) %>%
   mutate(address = gsub("\\bSt\\b", "Street", address, ignore.case = TRUE)) %>%
@@ -528,62 +527,26 @@ unique_addresses <- wa %>%
   unite("address", c("address", "LOCATION"), sep = ", ") %>%
   mutate(address = paste(address, ", Western Australia"))
 
-# Combine with the overall unique addresses dataframe
-# unique_addresses_df <- unique_addresses_df %>% bind_rows(unique_addresses)
-  
-  # Remove duplicate addresses
-  unique_addresses_df <- unique(unique_addresses)
+wa_address <- wa %>%
+  distinct(address) 
+
+# write_csv(wa_address, "unique_addresses.csv")
 
 
-# unique_addresses_data <- extract_unique_addresses(wa_folder_path)
-
-
-#print(unique_addresses_data)
-
-write_csv(unique_addresses_df, "unique_addresses.csv")
-
-
-```
-
-### final file with long and lat for unique address
-
-```{r}
-
-df <- read.csv("output_file.csv") 
-
-replace_address_words <- function(address) {
-  address <- gsub("\\bRoad\\b", "Rd", address)
-  address <- gsub("\\bDrive\\b", "Dr", address)
-  address <- gsub("\\bHighway\\b", "Hwy", address)
-  address <- gsub("\\bStreet\\b", "St", address)
-  return(address)
-}
-
-df$ADDRESS <- sapply(df$ADDRESS, replace_address_words)
-
-#print(df)
-
-write.csv(df, "output_file_long_lat.csv", row.names = FALSE) 
 ```
 
 ### Merge lat and long for WA
 
 ```{r}
 
-merge_with_long_lat <- function(df) {
-  long_lat <- read.csv("output_file_long_lat.csv")  
-  long_lat <- long_lat %>%
-  select(-address)
+wa_long_lat <- read_csv("output_file.csv", show_col_types = FALSE)
 
-  df <- left_join(df, long_lat, by = "ADDRESS")
+wa <- wa %>%
+  left_join(wa_long_lat, by = "address", relationship = "many-to-many")
 
-  return(df)
-}
-
-wa <- merge_with_long_lat(wa)
-
-
+# write_csv(wa, "wa_cleaned.csv")
 ```
+
 
 # Data exploration
 
