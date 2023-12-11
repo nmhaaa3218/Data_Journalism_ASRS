@@ -497,7 +497,7 @@ sa_address <- read_csv("fuel-prices/sa_address.csv", show_col_types = FALSE)
 
 tas_address <- read_csv("fuel-prices/tas_address.csv", show_col_types = FALSE)
 
-# wa_address <- read_csv("fuel-prices/wa_address.csv", show_col_types = FALSE)
+wa_address <- read_csv("fuel-prices/wa_address.csv", show_col_types = FALSE)
 ```
 
 # Data cleaning & renaming
@@ -512,6 +512,7 @@ nt <- auto_rename_columns(nt)
 qld <- auto_rename_columns(qld)
 sa <- auto_rename_columns(sa)
 wa <- auto_rename_columns(wa)
+
 
 ```
 
@@ -545,6 +546,28 @@ wa <- wa %>%
   left_join(wa_long_lat, by = "address", relationship = "many-to-many")
 
 # write_csv(wa, "wa_cleaned.csv")
+```
+
+# Left join convenient output from python
+
+```{r}
+nsw <- nsw %>%
+  left_join(nsw_address, by = c("address","lat","long"), relationship = "many-to-many")
+
+nt <- nt %>%
+  left_join(nt_address, by = c("address","lat","long"), relationship = "many-to-many")
+
+qld <- qld %>%
+  left_join(qld_address, by = c("address","lat","long"), relationship = "many-to-many")
+
+sa <- sa %>%
+  left_join(sa_address, by = c("address","lat","long"), relationship = "many-to-many")
+
+tas <- tas %>%
+  left_join(tas_address, by = c("address","lat","long"), relationship = "many-to-many")
+
+wa <- wa %>%
+  left_join(wa_address, by = c("address","lat","long"), relationship = "many-to-many")
 ```
 
 
@@ -693,6 +716,24 @@ summary(nsw_model_parallel)
 ```{r}
 plot_avg_fuel_price_time(nsw, "U91")
 ```
+
+### t.test to check if there is a significant difference in price between convenient and inconvenient fuel station
+
+```{r}
+nsw_convenient <- nsw %>%
+  filter(convenient == TRUE)
+
+nsw_inconvenient <- nsw %>%
+  filter(convenient == FALSE)
+
+t.test(nsw_convenient$price, nsw_inconvenient$price, paired = FALSE, var.equal = FALSE)
+# var.test(nsw_convenient$price, nsw_inconvenient$price)
+
+```
+
+
+
+
 
 ### Time series prediction
 
