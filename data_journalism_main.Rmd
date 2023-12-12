@@ -528,8 +528,8 @@ wa <- wa %>%
   unite("address", c("address", "LOCATION"), sep = ", ") %>%
   mutate(address = paste(address, ", Western Australia"))
 
-wa_address <- wa %>%
-  distinct(address) 
+#wa_address <- wa %>%
+#  distinct(address) 
 
 # write_csv(wa_address, "unique_addresses.csv")
 
@@ -548,7 +548,7 @@ wa <- wa %>%
 # write_csv(wa, "wa_cleaned.csv")
 ```
 
-# Left join convenient output from python
+## Left join convenient output from python
 
 ```{r}
 nsw <- nsw %>%
@@ -568,6 +568,43 @@ tas <- tas %>%
 
 wa <- wa %>%
   left_join(wa_address, by = c("address","lat","long"), relationship = "many-to-many")
+```
+
+## Remove outliers according to empirical rule
+
+```{r}
+# remove outliers according to empirical rule
+nsw <- nsw %>%
+  group_by(fueltype) %>%
+  group_by(collection_date) %>%
+  filter(price < mean(price) + 3 * sd(price)) %>%
+  filter(price > mean(price) - 3 * sd(price))
+
+nt <- nt %>%
+  group_by(fueltype) %>%
+  group_by(collection_date) %>%
+  filter(price < mean(price) + 3 * sd(price)) %>%
+  filter(price > mean(price) - 3 * sd(price))
+
+qld <- qld %>%
+  group_by(FuelName) %>%
+  group_by(collection_date) %>%
+  filter(price < mean(price) + 3 * sd(price)) %>%
+  filter(price > mean(price) - 3 * sd(price))
+
+sa <- sa %>%
+  group_by(FuelName) %>%
+  group_by(collection_date) %>%
+  filter(price < mean(price) + 3 * sd(price)) %>%
+  filter(price > mean(price) - 3 * sd(price))
+
+tas <- tas %>%
+  group_by(fueltype) %>%
+  group_by(collection_date) %>%
+  filter(price < mean(price) + 3 * sd(price)) %>%
+  filter(price > mean(price) - 3 * sd(price))
+
+# ignore WA 
 ```
 
 
@@ -721,10 +758,10 @@ plot_avg_fuel_price_time(nsw, "U91")
 
 ```{r}
 nsw_convenient <- nsw %>%
-  filter(convenient == TRUE)
+  filter(convenient == TRUE, fueltype == "U91")
 
 nsw_inconvenient <- nsw %>%
-  filter(convenient == FALSE)
+  filter(convenient == FALSE, fueltype == "U91")
 
 t.test(nsw_convenient$price, nsw_inconvenient$price, paired = FALSE, var.equal = FALSE)
 # var.test(nsw_convenient$price, nsw_inconvenient$price)
