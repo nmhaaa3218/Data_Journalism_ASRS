@@ -514,6 +514,15 @@ sa <- auto_rename_columns(sa)
 wa <- auto_rename_columns(wa)
 
 
+wa <- wa %>%
+  rename(fueltype = PRODUCT_DESCRIPTION)
+
+sa <- sa %>%
+  rename(fueltype = FuelName)
+
+qld <- qld %>%
+  rename(fueltype = FuelName)
+
 ```
 
 ## Add long and lat for wa
@@ -528,7 +537,7 @@ wa <- wa %>%
   unite("address", c("address", "LOCATION"), sep = ", ") %>%
   mutate(address = paste(address, ", Western Australia"))
 
-#wa_address <- wa %>%
+# wa_address <- wa %>%
 #  distinct(address) 
 
 # write_csv(wa_address, "unique_addresses.csv")
@@ -587,13 +596,13 @@ nt <- nt %>%
   filter(price > mean(price) - 3 * sd(price))
 
 qld <- qld %>%
-  group_by(FuelName) %>%
+  group_by(fueltype) %>%
   group_by(collection_date) %>%
   filter(price < mean(price) + 3 * sd(price)) %>%
   filter(price > mean(price) - 3 * sd(price))
 
 sa <- sa %>%
-  group_by(FuelName) %>%
+  group_by(fueltype) %>%
   group_by(collection_date) %>%
   filter(price < mean(price) + 3 * sd(price)) %>%
   filter(price > mean(price) - 3 * sd(price))
@@ -865,117 +874,982 @@ prophet_plot_components(m, forecast)
 
 ```
 
-#### Using LSTM
+## SA
+
+### Map station and its price for a type of fuel across the state
 
 ```{r}
-library(keras)
-library(tensorflow)
+fueltype <- unique(sa$fueltype)
+plot_points_on_map(sa,fueltype[1], "2023-9-23") 
+```
+
+### Fuel type vs price
+
+```{r}
+sa %>%
+  ggplot(aes(x=fueltype,y=price)) +
+  geom_boxplot() +
+  labs(title="Price Distribution by Fuel Type from 2022-07-26 to 2023-11-12", x="Fuel", y="Price")
+```
+
+### Price Distribution by Brand for a type of fuel for a given day
+
+```{r}
+# Combustion fuel price distribution by brand
+sa %>%
+  filter(fueltype == "Unleaded") %>%  # change fuel type
+  filter(collection_date == "2023-8-21") %>%
+  ggplot(aes(x=brand, y=price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title="Price Distribution by Brand", x="Brand", y="Price")
+
+```
+
+### Fuel Type Popularity
+
+```{r}
+# Fuel Type Popularity
+ggplot(sa, aes(x=fueltype)) +
+  geom_bar() +
+  labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
+```
+
+### How far do you have to travel on average to fill up your car
+
+```{r}
+p_code <- "5000"
+n_trials <- 1000
+
+distance2 <- calculate_distance_parallel(sa, postcode_sf, pop_density, "Unleaded", "2023-10-10", p_code, n_trials)
+
+# Plotting the average calculated by parallel processing
+ggplot(distance2, aes(x = seq_along(average))) +
+  geom_line(aes(y = average), color = "blue") +
+  geom_line(aes(y = average_weighted), color = "red") +
+  labs(title = "Average distance to the closest gas station",
+       x = "n trials",
+       y = "Average distance (m)")
+
+print(paste("PP Average distance to the closest gas station in", p_code, "is", tail(distance2$average, n = 1), "meters"))
+print(paste("PP Average weighted distance to the closest gas station in", p_code, "is", tail(distance2$average_weighted, n = 1), "meters"))
+
+```
+
+### Linear regression price \~ long + lat + fueltype + collection_date
+
+```{r}
+# linear regression to fit price ~ long lat fueltype
+sa_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = sa)
+
+# Plot diagnostic
+# plot(sa_model_parallel)
+
+# view model
+summary(sa_model_parallel)
+
+```
+
+### Plot average price for a given fueltype over time
+
+```{r}
+plot_avg_fuel_price_time(sa, "Unleaded")
+
+```
+
+### t.test to check if there is a significant difference in price between convenient and inconvenient fuel station
+
+```{r}
+sa_convenient <- sa %>%
+  filter(convenient == TRUE, fueltype == "Unleaded")
+
+sa_inconvenient <- sa %>%
+  filter(convenient == FALSE, fueltype == "Unleaded")
+
+t.test(sa_convenient$price, sa_inconvenient$price, paired = FALSE, var.equal = FALSE)
+# var.test(sa_convenient$price, sa_inconvenient$price)
+
+```
+
+
+
+
+
+### Time series prediction
+
+#### Using ETS (Exponential Triple Smoothing)
+
+-   The "frequency" is the number of observations before the seasonal pattern repeats.\
+    -   Annual: 1\
+    -   Quaterly: 4\
+    -   Monthly: 12\
+    -   Weekly: 52
+
+```{r}
+fuel_data <- sa %>%
+  filter(fueltype == "Unleaded") %>%
+  group_by(collection_date) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE)) #%>%
+  # only take 1 year of data
+  # filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
+  
+# Convert to time series object
+fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
+
+# Apply stlf and forecast
+model <- stlf(fuel_ts, method='ets')
+fc <- forecast(model, h = 15)
+
+# Plot the forecast
+plot(fc)
+
+
+
+```
+
+#### Using ARIMA (Autoregressive Intergrated Moving Average)
+
+ARIMA model is composed of three parts:
+
+1.  **Autoregressive (AR)**: This part involves regressing the variable of interest on its own lagged (i.e., prior) values.
+
+2.  **Integrated (I)**: This represents the differencing of raw observations to allow the time series to become stationary. In other words, it's used to remove any trend or seasonality in the data.
+
+3.  **Moving Average (MA)**: This part involves the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+Each component functions as a parameter in ARIMA models, typically denoted as ARIMA(p, d, q):
+
+-   `p`: The number of lag observations in the model, also known as the lag order.
+-   `d`: The number of times the raw observations are differenced, also known as the degree of differencing.
+-   `q`: The size of the moving average window, also known as the order of the moving average.
+
+For example, an ARIMA(1,1,1) model means that it includes one lagged value of the series (p=1), differences the series once to achieve stationarity (d=1), and uses a moving average model of order 1 (q=1).
+
+```{r}
+# Convert collection_date to Date class
+sa$collection_date <- as.Date(sa$collection_date)
 
 # Aggregate data to daily level
-daily_data <- nsw %>%
+daily_data <- sa %>%
+  filter(fueltype == "Unleaded") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE))
+
+# Convert to time series
+ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365)
+
+# Fit model
+fit <- auto.arima(ts_data)
+
+# Forecast
+future <- forecast(fit, h = 15)
+
+# Plot forecast
+plot(future)
+
+```
+
+#### Using Facebook Prophet
+
+```{r}
+# Aggregate data to daily level
+daily_data <- sa %>%
+  filter(fueltype == "Unleaded") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE)) %>%
+  rename(ds = collection_date, y = price)
+
+m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
+future <- make_future_dataframe(m, periods = 15)
+forecast <- predict(m, future)
+tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
+plot(m, forecast)
+prophet_plot_components(m, forecast)
+
+```
+
+## TAS
+
+### Map station and its price for a type of fuel across the state
+
+```{r}
+fueltype <- unique(tas$fueltype)
+plot_points_on_map(tas,fueltype[1], "2023-9-23") 
+```
+
+### Fuel type vs price
+
+```{r}
+tas %>%
+  ggplot(aes(x=fueltype,y=price)) +
+  geom_boxplot() +
+  labs(title="Price Distribution by Fuel Type from 2022-07-26 to 2023-11-12", x="Fuel", y="Price")
+```
+
+### Price Distribution by Brand for a type of fuel for a given day
+
+```{r}
+# Combustion fuel price distribution by brand
+tas %>%
+  filter(fueltype != "EV") %>%   # remove EV as price is fixed
+  filter(fueltype == "U91") %>%  # change fuel type
+  filter(collection_date == "2023-8-21") %>%
+  ggplot(aes(x=brand, y=price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title="Price Distribution by Brand", x="Brand", y="Price")
+
+```
+
+### Fuel Type Popularity
+
+```{r}
+# Fuel Type Popularity
+ggplot(tas, aes(x=fueltype)) +
+  geom_bar() +
+  labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
+```
+
+### How far do you have to travel on average to fill up your car
+
+```{r}
+p_code <- "7000"
+n_trials <- 1000
+
+distance2 <- calculate_distance_parallel(tas, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
+
+# Plotting the average calculated by parallel processing
+ggplot(distance2, aes(x = seq_along(average))) +
+  geom_line(aes(y = average), color = "blue") +
+  geom_line(aes(y = average_weighted), color = "red") +
+  labs(title = "Average distance to the closest gas station",
+       x = "n trials",
+       y = "Average distance (m)")
+
+
+print(paste("PP Average distance to the closest gas station in", p_code, "is", tail(distance2$average, n = 1), "meters"))
+print(paste("PP Average weighted distance to the closest gas station in", p_code, "is", tail(distance2$average_weighted, n = 1), "meters"))
+
+```
+
+### Linear regression price \~ long + lat + fueltype + collection_date
+
+```{r}
+# linear regression to fit price ~ long lat fueltype
+tas_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = tas)
+
+# Plot diagnostic
+# plot(tas_model_parallel)
+
+# view model
+summary(tas_model_parallel)
+
+```
+
+### Plot average price for a given fueltype over time
+
+```{r}
+plot_avg_fuel_price_time(tas, "U91")
+```
+
+### t.test to check if there is a significant difference in price between convenient and inconvenient fuel station
+
+```{r}
+tas_convenient <- tas %>%
+  filter(convenient == TRUE, fueltype == "U91")
+
+tas_inconvenient <- tas %>%
+  filter(convenient == FALSE, fueltype == "U91")
+
+t.test(tas_convenient$price, tas_inconvenient$price, paired = FALSE, var.equal = FALSE)
+# var.test(tas_convenient$price, tas_inconvenient$price)
+
+```
+
+
+
+
+
+### Time series prediction
+
+#### Using ETS (Exponential Triple Smoothing)
+
+-   The "frequency" is the number of observations before the seasonal pattern repeats.\
+    -   Annual: 1\
+    -   Quaterly: 4\
+    -   Monthly: 12\
+    -   Weekly: 52
+
+```{r}
+fuel_data <- tas %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE)) #%>%
+  # only take 1 year of data
+  # filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
+  
+# Convert to time series object
+fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
+
+# Apply stlf and forecast
+model <- stlf(fuel_ts, method='ets')
+fc <- forecast(model, h = 100)
+
+# Plot the forecast
+plot(fc)
+
+
+
+```
+
+#### Using ARIMA (Autoregressive Intergrated Moving Average)
+
+ARIMA model is composed of three parts:
+
+1.  **Autoregressive (AR)**: This part involves regressing the variable of interest on its own lagged (i.e., prior) values.
+
+2.  **Integrated (I)**: This represents the differencing of raw observations to allow the time series to become stationary. In other words, it's used to remove any trend or seasonality in the data.
+
+3.  **Moving Average (MA)**: This part involves the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+Each component functions as a parameter in ARIMA models, typically denoted as ARIMA(p, d, q):
+
+-   `p`: The number of lag observations in the model, also known as the lag order.
+-   `d`: The number of times the raw observations are differenced, also known as the degree of differencing.
+-   `q`: The size of the moving average window, also known as the order of the moving average.
+
+For example, an ARIMA(1,1,1) model means that it includes one lagged value of the series (p=1), differences the series once to achieve stationarity (d=1), and uses a moving average model of order 1 (q=1).
+
+```{r}
+# Convert collection_date to Date class
+tas$collection_date <- as.Date(tas$collection_date)
+
+# Aggregate data to daily level
+daily_data <- tas %>%
   filter(fueltype == "U91") %>%
   group_by(collection_date) %>%
   summarise(price = mean(price, na.rm = TRUE))
 
-# create lagged data
-diff_data <- diff(daily_data$price, differences = 1)
+# Convert to time series
+ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365)
 
-lag_transform <- function(x, k= 1){
-      lagged =  c(rep(NA, k), x[1:(length(x)-k)])
-      DF = as.data.frame(cbind(lagged, x))
-      colnames(DF) <- c( paste0('x-', k), 'x')
-      DF[is.na(DF)] <- 0
-      return(DF)
-}
+# Fit model
+fit <- auto.arima(ts_data)
 
-lagged_data <- lag_transform(diff_data, k = 1)
+# Forecast
+future <- forecast(fit, h = 100)
 
-# split data into train and test sets
-N = nrow(lagged_data)
-n = round(N *0.7, digits = 0)
-train = lagged_data[1:n, ]
-test  = lagged_data[(n+1):N,  ]
+# Plot forecast
+plot(future)
 
-# Normalize data
-scale_data = function(train, test, feature_range = c(0, 1)) {
-  x = train
-  fr_min = feature_range[1]
-  fr_max = feature_range[2]
-  std_train = ((x - min(x) ) / (max(x) - min(x)  ))
-  std_test  = ((test - min(x) ) / (max(x) - min(x)  ))
-  
-  scaled_train = std_train *(fr_max -fr_min) + fr_min
-  scaled_test = std_test *(fr_max -fr_min) + fr_min
-  
-  return( list(scaled_train = as.vector(scaled_train), scaled_test = as.vector(scaled_test) ,scaler= c(min =min(x), max = max(x))) )
-  
-}
-
-Scaled = scale_data(train, test, c(-1, 1))
-
-y_train = Scaled$scaled_train$x
-x_train = Scaled$scaled_train$`x-1`
-
-y_test = Scaled$scaled_test$x
-x_test = Scaled$scaled_test$`x-1`
-
-# inverse-transform
-invert_scaling = function(scaled, scaler, feature_range = c(0, 1)){
-  min = scaler[1]
-  max = scaler[2]
-  t = length(scaled)
-  mins = feature_range[1]
-  maxs = feature_range[2]
-  inverted_dfs = numeric(t)
-  
-  for( i in 1:t){
-    X = (scaled[i]- mins)/(maxs - mins)
-    rawValues = X *(max - min) + min
-    inverted_dfs[i] <- rawValues
-  }
-  return(inverted_dfs)
-}
-
-# Reshape the input to 3-dim
-dim(x_train) <- c(length(x_train), 1, 1)
-
-# specify required arguments
-X_shape2 = dim(x_train)[2]
-X_shape3 = dim(x_train)[3]
-batch_size = 1                # must be a common factor of both the train and test samples
-units = 1                     # can adjust this, in model tuninig phase
-
-model <- keras_model_sequential() 
-model%>%
-  layer_lstm(units, batch_input_shape = c(batch_size, X_shape2, X_shape3), stateful= TRUE)%>%
-  layer_dense(units = 1)
-
-model %>% compile(
-  loss = 'mean_squared_error',
-  optimizer = optimizer_adam( lr= 0.02, decay = 1e-6 ),  
-  metrics = c('accuracy')
-)
-
-Epochs = 50   
-for(i in 1:Epochs ){
-  model %>% fit(x_train, y_train, epochs=1, batch_size=batch_size, verbose=1, shuffle=FALSE)
-  model %>% reset_states()
-}
-
-L = length(x_test)
-scaler = Scaled$scaler
-predictions = numeric(L)
-
-for(i in 1:L){
-     X = x_test[i]
-     dim(X) = c(1,1,1)
-     yhat = model %>% predict(X, batch_size=batch_size)
-     # invert scaling
-     yhat = invert_scaling(yhat, scaler,  c(-1, 1))
-     # invert differencing
-     yhat  = yhat + Series[(n+i)]
-     # store
-     predictions[i] <- yhat
-}
 ```
+
+#### Using Facebook Prophet
+
+```{r}
+# Aggregate data to daily level
+daily_data <- tas %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE)) %>%
+  rename(ds = collection_date, y = price)
+
+m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
+future <- make_future_dataframe(m, periods = 100)
+forecast <- predict(m, future)
+tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
+plot(m, forecast)
+prophet_plot_components(m, forecast)
+
+```
+
+## QLD
+
+### Map station and its price for a type of fuel across the state
+
+```{r}
+fueltype <- unique(qld$fueltype)
+plot_points_on_map(qld,fueltype[1], "2023-9-23") 
+```
+
+### Fuel type vs price
+
+```{r}
+qld %>%
+  ggplot(aes(x=fueltype,y=price)) +
+  geom_boxplot() +
+  labs(title="Price Distribution by Fuel Type from 2022-07-26 to 2023-11-12", x="Fuel", y="Price")
+```
+
+### Price Distribution by Brand for a type of fuel for a given day
+
+```{r}
+# Combustion fuel price distribution by brand
+qld %>%
+  filter(fueltype == "Unleaded") %>%  # change fuel type
+  filter(collection_date == "2023-8-21") %>%
+  ggplot(aes(x=brand, y=price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title="Price Distribution by Brand", x="Brand", y="Price")
+
+```
+
+### Fuel Type Popularity
+
+```{r}
+# Fuel Type Popularity
+ggplot(qld, aes(x=fueltype)) +
+  geom_bar() +
+  labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
+```
+
+### How far do you have to travel on average to fill up your car
+
+```{r}
+p_code <- "4000"
+n_trials <- 1000
+
+distance2 <- calculate_distance_parallel(qld, postcode_sf, pop_density, "Unleaded", "2023-10-10", p_code, n_trials)
+
+# Plotting the average calculated by parallel processing
+ggplot(distance2, aes(x = seq_along(average))) +
+  geom_line(aes(y = average), color = "blue") +
+  geom_line(aes(y = average_weighted), color = "red") +
+  labs(title = "Average distance to the closest gas station",
+       x = "n trials",
+       y = "Average distance (m)")
+
+
+print(paste("PP Average distance to the closest gas station in", p_code, "is", tail(distance2$average, n = 1), "meters"))
+print(paste("PP Average weighted distance to the closest gas station in", p_code, "is", tail(distance2$average_weighted, n = 1), "meters"))
+
+```
+
+### Linear regression price \~ long + lat + fueltype + collection_date
+
+```{r}
+# linear regression to fit price ~ long lat fueltype
+qld_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = qld)
+
+# Plot diagnostic
+# plot(qld_model_parallel)
+
+# view model
+summary(qld_model_parallel)
+
+```
+
+### Plot average price for a given fueltype over time
+
+```{r}
+plot_avg_fuel_price_time(qld, "Unleaded")
+```
+
+### t.test to check if there is a significant difference in price between convenient and inconvenient fuel station
+
+```{r}
+qld_convenient <- qld %>%
+  filter(convenient == TRUE, fueltype == "Unleaded")
+
+qld_inconvenient <- qld %>%
+  filter(convenient == FALSE, fueltype == "Unleaded")
+
+t.test(qld_convenient$price, qld_inconvenient$price, paired = FALSE, var.equal = FALSE)
+# var.test(qld_convenient$price, qld_inconvenient$price)
+
+```
+
+
+
+
+
+### Time series prediction
+
+#### Using ETS (Exponential Triple Smoothing)
+
+-   The "frequency" is the number of observations before the seasonal pattern repeats.\
+    -   Annual: 1\
+    -   Quaterly: 4\
+    -   Monthly: 12\
+    -   Weekly: 52
+
+```{r}
+fuel_data <- qld %>%
+  filter(fueltype == "Unleaded") %>%
+  group_by(collection_date) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE)) #%>%
+  # only take 1 year of data
+  # filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
+  
+# Convert to time series object
+fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
+
+# Apply stlf and forecast
+model <- stlf(fuel_ts, method='ets')
+fc <- forecast(model, h = 15)
+
+# Plot the forecast
+plot(fc)
+
+
+
+```
+
+#### Using ARIMA (Autoregressive Intergrated Moving Average)
+
+ARIMA model is composed of three parts:
+
+1.  **Autoregressive (AR)**: This part involves regressing the variable of interest on its own lagged (i.e., prior) values.
+
+2.  **Integrated (I)**: This represents the differencing of raw observations to allow the time series to become stationary. In other words, it's used to remove any trend or seasonality in the data.
+
+3.  **Moving Average (MA)**: This part involves the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+Each component functions as a parameter in ARIMA models, typically denoted as ARIMA(p, d, q):
+
+-   `p`: The number of lag observations in the model, also known as the lag order.
+-   `d`: The number of times the raw observations are differenced, also known as the degree of differencing.
+-   `q`: The size of the moving average window, also known as the order of the moving average.
+
+For example, an ARIMA(1,1,1) model means that it includes one lagged value of the series (p=1), differences the series once to achieve stationarity (d=1), and uses a moving average model of order 1 (q=1).
+
+```{r}
+# Convert collection_date to Date class
+qld$collection_date <- as.Date(qld$collection_date)
+
+# Aggregate data to daily level
+daily_data <- qld %>%
+  filter(fueltype == "Unleaded") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE))
+
+# Convert to time series
+ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365)
+
+# Fit model
+fit <- auto.arima(ts_data)
+
+# Forecast
+future <- forecast(fit, h = 15)
+
+# Plot forecast
+plot(future)
+
+```
+
+#### Using Facebook Prophet
+
+```{r}
+# Aggregate data to daily level
+daily_data <- qld %>%
+  filter(fueltype == "Unleaded") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE)) %>%
+  rename(ds = collection_date, y = price)
+
+m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
+future <- make_future_dataframe(m, periods = 15)
+forecast <- predict(m, future)
+tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
+plot(m, forecast)
+prophet_plot_components(m, forecast)
+
+```
+
+## NT
+
+### Map station and its price for a type of fuel across the state
+
+```{r}
+fueltype <- unique(nt$fueltype)
+plot_points_on_map(nt,fueltype[1], "2023-9-23") 
+```
+
+### Fuel type vs price
+
+```{r}
+nt %>%
+  ggplot(aes(x=fueltype,y=price)) +
+  geom_boxplot() +
+  labs(title="Price Distribution by Fuel Type from 2022-07-26 to 2023-11-12", x="Fuel", y="Price")
+```
+
+### Price Distribution by Brand for a type of fuel for a given day
+
+```{r}
+# Combustion fuel price distribution by brand
+nt %>%
+  filter(fueltype != "EV") %>%   # remove EV as price is fixed
+  filter(fueltype == "U91") %>%  # change fuel type
+  filter(collection_date == "2023-8-21") %>%
+  ggplot(aes(x=brand, y=price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title="Price Distribution by Brand", x="Brand", y="Price")
+
+```
+
+### Fuel Type Popularity
+
+```{r}
+# Fuel Type Popularity
+ggplot(nt, aes(x=fueltype)) +
+  geom_bar() +
+  labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
+```
+
+### How far do you have to travel on average to fill up your car
+
+```{r}
+p_code <- "0800"
+n_trials <- 1000
+
+distance2 <- calculate_distance_parallel(nt, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
+
+# Plotting the average calculated by parallel processing
+ggplot(distance2, aes(x = seq_along(average))) +
+  geom_line(aes(y = average), color = "blue") +
+  geom_line(aes(y = average_weighted), color = "red") +
+  labs(title = "Average distance to the closest gas station",
+       x = "n trials",
+       y = "Average distance (m)")
+
+
+print(paste("PP Average distance to the closest gas station in", p_code, "is", tail(distance2$average, n = 1), "meters"))
+print(paste("PP Average weighted distance to the closest gas station in", p_code, "is", tail(distance2$average_weighted, n = 1), "meters"))
+
+```
+
+### Linear regression price \~ long + lat + fueltype + collection_date
+
+```{r}
+# linear regression to fit price ~ long lat fueltype
+nt_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = nt)
+
+# Plot diagnostic
+# plot(nt_model_parallel)
+
+# view model
+summary(nt_model_parallel)
+
+```
+
+### Plot average price for a given fueltype over time
+
+```{r}
+plot_avg_fuel_price_time(nt, "U91")
+```
+
+### t.test to check if there is a significant difference in price between convenient and inconvenient fuel station
+
+```{r}
+nt_convenient <- nt %>%
+  filter(convenient == TRUE, fueltype == "U91")
+
+nt_inconvenient <- nt %>%
+  filter(convenient == FALSE, fueltype == "U91")
+
+t.test(nt_convenient$price, nt_inconvenient$price, paired = FALSE, var.equal = FALSE)
+# var.test(nt_convenient$price, nt_inconvenient$price)
+
+```
+
+
+
+
+
+### Time series prediction
+
+#### Using ETS (Exponential Triple Smoothing)
+
+-   The "frequency" is the number of observations before the seasonal pattern repeats.\
+    -   Annual: 1\
+    -   Quaterly: 4\
+    -   Monthly: 12\
+    -   Weekly: 52
+
+```{r}
+fuel_data <- nt %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE)) #%>%
+  # only take 1 year of data
+  # filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
+  
+# Convert to time series object
+fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
+
+# Apply stlf and forecast
+model <- stlf(fuel_ts, method='ets')
+fc <- forecast(model, h = 100)
+
+# Plot the forecast
+plot(fc)
+
+
+
+```
+
+#### Using ARIMA (Autoregressive Intergrated Moving Average)
+
+ARIMA model is composed of three parts:
+
+1.  **Autoregressive (AR)**: This part involves regressing the variable of interest on its own lagged (i.e., prior) values.
+
+2.  **Integrated (I)**: This represents the differencing of raw observations to allow the time series to become stationary. In other words, it's used to remove any trend or seasonality in the data.
+
+3.  **Moving Average (MA)**: This part involves the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+Each component functions as a parameter in ARIMA models, typically denoted as ARIMA(p, d, q):
+
+-   `p`: The number of lag observations in the model, also known as the lag order.
+-   `d`: The number of times the raw observations are differenced, also known as the degree of differencing.
+-   `q`: The size of the moving average window, also known as the order of the moving average.
+
+For example, an ARIMA(1,1,1) model means that it includes one lagged value of the series (p=1), differences the series once to achieve stationarity (d=1), and uses a moving average model of order 1 (q=1).
+
+```{r}
+# Convert collection_date to Date class
+nt$collection_date <- as.Date(nt$collection_date)
+
+# Aggregate data to daily level
+daily_data <- nt %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE))
+
+# Convert to time series
+ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365)
+
+# Fit model
+fit <- auto.arima(ts_data)
+
+# Forecast
+future <- forecast(fit, h = 100)
+
+# Plot forecast
+plot(future)
+
+```
+
+#### Using Facebook Prophet
+
+```{r}
+# Aggregate data to daily level
+daily_data <- nt %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE)) %>%
+  rename(ds = collection_date, y = price)
+
+m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
+future <- make_future_dataframe(m, periods = 100)
+forecast <- predict(m, future)
+tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
+plot(m, forecast)
+prophet_plot_components(m, forecast)
+
+```
+
+## WA
+
+### Map station and its price for a type of fuel across the state
+
+```{r}
+wa <- wa %>%
+  select(collection_date, TRADING_NAME, brand, fueltype, price, address, postcode, AREA_DESCRIPTION, REGION_DESCRIPTION, long, lat, convenient)
+
+
+fueltype <- unique(wa$fueltype)
+plot_points_on_map(wa,fueltype[1], "2021-31-12") 
+```
+
+### Fuel type vs price
+
+```{r}
+wa %>%
+  ggplot(aes(x=fueltype,y=price)) +
+  geom_boxplot() +
+  labs(title="Price Distribution by Fuel Type from 2021-01-01 to 2022-12-31", x="Fuel", y="Price")
+```
+
+### Price Distribution by Brand for a type of fuel for a given day
+
+```{r}
+# Combustion fuel price distribution by brand
+wa %>%
+  filter(fueltype == "E85") %>%  # change fuel type
+  filter(collection_date == "2022-12-21") %>%
+  ggplot(aes(x=brand, y=price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title="Price Distribution by Brand", x="Brand", y="Price")
+
+```
+
+### Fuel Type Popularity
+
+```{r}
+# Fuel Type Popularity
+ggplot(wa, aes(x=fueltype)) +
+  geom_bar() +
+  labs(title="Fuel Type Popularity", x="Fuel Type", y="Count")
+```
+
+### How far do you have to travel on average to fill up your car
+
+```{r}
+p_code <- "6000"
+n_trials <- 1000
+
+distance2 <- calculate_distance_parallel(wa, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
+
+# Plotting the average calculated by parallel processing
+ggplot(distance2, aes(x = seq_along(average))) +
+  geom_line(aes(y = average), color = "blue") +
+  geom_line(aes(y = average_weighted), color = "red") +
+  labs(title = "Average distance to the closest gas station",
+       x = "n trials",
+       y = "Average distance (m)")
+
+
+print(paste("PP Average distance to the closest gas station in", p_code, "is", tail(distance2$average, n = 1), "meters"))
+print(paste("PP Average weighted distance to the closest gas station in", p_code, "is", tail(distance2$average_weighted, n = 1), "meters"))
+
+```
+
+### Linear regression price \~ long + lat + fueltype + collection_date
+
+```{r}
+# linear regression to fit price ~ long lat fueltype
+wa_model_parallel <- lm(price ~ long+lat+fueltype+collection_date, data = wa)
+
+# Plot diagnostic
+# plot(wa_model_parallel)
+
+# view model
+summary(wa_model_parallel)
+
+```
+
+### Plot average price for a given fueltype over time
+
+```{r}
+plot_avg_fuel_price_time(wa, "U91")
+```
+
+### t.test to check if there is a significant difference in price between convenient and inconvenient fuel station
+
+```{r}
+wa_convenient <- wa %>%
+  filter(convenient == TRUE, fueltype == "U91")
+
+wa_inconvenient <- wa %>%
+  filter(convenient == FALSE, fueltype == "U91")
+
+t.test(wa_convenient$price, wa_inconvenient$price, paired = FALSE, var.equal = FALSE)
+# var.test(wa_convenient$price, wa_inconvenient$price)
+
+```
+
+
+
+
+
+### Time series prediction
+
+#### Using ETS (Exponential Triple Smoothing)
+
+-   The "frequency" is the number of observations before the seasonal pattern repeats.\
+    -   Annual: 1\
+    -   Quaterly: 4\
+    -   Monthly: 12\
+    -   Weekly: 52
+
+```{r}
+fuel_data <- wa %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE)) #%>%
+  # only take 1 year of data
+  # filter(collection_date >= "2021-07-26" & collection_date <= "2023-07-26")
+  
+# Convert to time series object
+fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
+
+# Apply stlf and forecast
+model <- stlf(fuel_ts, method='ets')
+fc <- forecast(model, h = 100)
+
+# Plot the forecast
+plot(fc)
+
+
+
+```
+
+#### Using ARIMA (Autoregressive Intergrated Moving Average)
+
+ARIMA model is composed of three parts:
+
+1.  **Autoregressive (AR)**: This part involves regressing the variable of interest on its own lagged (i.e., prior) values.
+
+2.  **Integrated (I)**: This represents the differencing of raw observations to allow the time series to become stationary. In other words, it's used to remove any trend or seasonality in the data.
+
+3.  **Moving Average (MA)**: This part involves the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+Each component functions as a parameter in ARIMA models, typically denoted as ARIMA(p, d, q):
+
+-   `p`: The number of lag observations in the model, also known as the lag order.
+-   `d`: The number of times the raw observations are differenced, also known as the degree of differencing.
+-   `q`: The size of the moving average window, also known as the order of the moving average.
+
+For example, an ARIMA(1,1,1) model means that it includes one lagged value of the series (p=1), differences the series once to achieve stationarity (d=1), and uses a moving average model of order 1 (q=1).
+
+```{r}
+# Convert collection_date to Date class
+wa$collection_date <- as.Date(wa$collection_date)
+
+# Aggregate data to daily level
+daily_data <- wa %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE))
+
+# Convert to time series
+ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)), month(min(daily_data$collection_date))), frequency = 365)
+
+# Fit model
+fit <- auto.arima(ts_data)
+
+# Forecast
+future <- forecast(fit, h = 100)
+
+# Plot forecast
+plot(future)
+
+```
+
+#### Using Facebook Prophet
+
+```{r}
+# Aggregate data to daily level
+daily_data <- wa %>%
+  filter(fueltype == "U91") %>%
+  group_by(collection_date) %>%
+  summarise(price = mean(price, na.rm = TRUE)) %>%
+  rename(ds = collection_date, y = price)
+
+m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
+future <- make_future_dataframe(m, periods = 100)
+forecast <- predict(m, future)
+tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
+plot(m, forecast)
+prophet_plot_components(m, forecast)
+
+```
+
+
+
 
