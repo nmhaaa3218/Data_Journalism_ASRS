@@ -1655,14 +1655,103 @@ prophet_plot_components(m, forecast)
 ## WA
 
 ### Map station and its price for a type of fuel across the state
+```{r}
+# Print unique fuel types
+unique_fueltypes <- unique(wa$fueltype)
+print(unique_fueltypes)
+
+```
 
 ```{r}
-wa <- wa %>%
-  select(collection_date, TRADING_NAME, brand, fueltype, price, address, postcode, AREA_DESCRIPTION, REGION_DESCRIPTION, long, lat, convenient)
+# Print unique collection dates
+unique_dates <- unique(wa$collection_date)
+print(unique_dates)
+
+```
+
+
+
+
+```{r}
+# Check dimensions of wa
+dim(wa)
+
+```
+
+
+```{r}
+plot_points_on_map_second <- function(df, fueltype, collection_date) {
+  # Filter the data by fuel type
+  df <- df[df$fueltype == fueltype, ]
+  print(dim(df))  # Add this line to print dimensions
+  
+  # Filter the data by collection date
+  df <- df[df$collection_date == collection_date, ]
+  print(dim(df))  # Add this line to print dimensions
+  
+  # Convert lat and long to spatial points
+  points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
+  
+  # Plot the data
+  mapview(points_sdf, zcol = "price", label = points_sdf$brand)
+}
+
+```
+
+```{r}
+library(dplyr)
+
+```
+
+
+```{r}
+# Assuming your data frame is named 'original_data'
+copied_data <- copy_to(src = as.data.frame(wa), dest = NULL)
+
+```
+
+
+
+
+
+
+
+
+```{r}
+# Assuming your data frame is named 'original_data'
+library(base)
+
+```
+
+```{r}
+
+copied_data <- copy(wa)
+# Assuming your data frame is named 'original_data'
+copied_data <- original_data
+
+
+```
+
+
+
+
+
+
+```{r}
+head(wa)
+```
+```{r}
+str(wa)
+```
+
+
+```{r}
+#wa <- wa %>%
+ # select(collection_date, TRADING_NAME, brand, fueltype, price, address, postcode, AREA_DESCRIPTION, REGION_DESCRIPTION, long, lat, convenient)
 
 
 fueltype <- unique(wa$fueltype)
-plot_points_on_map(wa,fueltype[1], "2021-31-12") 
+plot_points_on_map_second(wa,fueltype[1], "2021-31-12") 
 ```
 
 ### Fuel type vs price
