@@ -1,6 +1,6 @@
 ---
 title: "Data Journalism"
-author: "Manh Ha Nguyen"
+author: "Manh Ha Nguyen, Trang Nguyen
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -35,18 +35,12 @@ library(prophet)
 # To find path
 #   Use where python for Windows
 #   Use which python3 for UNIX
-library(reticulate)
-use_python("C:/Users/Nebula PC/AppData/Local/Programs/Python/Python312/python.exe", required = TRUE)
+# library(reticulate)
+# use_python("C:/Users/Nebula PC/AppData/Local/Programs/Python/Python312/python.exe", required = TRUE)
 
 
 ```
 
-```{python}
-# Spatial analysis with OSMnx
-import pandas as pd
-import osmnx as ox
-import time
-```
 
 # List of all function
 
@@ -59,17 +53,17 @@ import time
 
 ```{r}
 plot_points_on_map <- function(df, fueltype, collection_date) {
-  # Filter the data by fuel type
-  df <- df[df$fueltype == fueltype, ]
+ # Filter the data by fuel type
+ df <- df[df$fueltype == fueltype, ]
   
-  # Filter the data by collection date
-  df <- df[df$collection_date == collection_date, ]
+ # Filter the data by collection date
+ df <- df[df$collection_date == collection_date, ]
+ 
+ # Convert lat and long to spatial points
+ points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
   
-  # Convert lat and long to spatial points
-  points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
-  
-  # Plot the data
-  mapview(points_sdf, zcol = "price", label = points_sdf$brand)
+ # Plot the data
+ mapview(points_sdf, zcol = "price", label = points_sdf$brand)
 }
 
 ```
@@ -141,7 +135,7 @@ combine_csv <- function(path) {
   files <- list.files(path = path, pattern = "*.csv", full.names = TRUE)
   
   # Combine all csv files into a single dataframe
-  df <- do.call(rbind, lapply(files, read_csv))
+  df <- do.call(rbind, lapply(files, read_csv, show_col_types = FALSE))
   
   # Record end time and print time taken
   end_time <- Sys.time()
@@ -314,7 +308,7 @@ select_data <- function(data, fueltype, date) {
 }
 ```
 
-## Method to calculate average distance an average person have to travel to the nearest gas station given a fuel type, date, and postcode
+## Calculate average distance an average person have to travel to the nearest gas station given a fuel type, date, and postcode
 
 -   Ensure state data of gas station are correctly format (fueltype, long, lat, date, collection_date)
 
@@ -549,10 +543,10 @@ wa <- wa %>%
 
 ```{r}
 
-wa_long_lat <- read_csv("output_file.csv", show_col_types = FALSE)
+wa_long_lat <- read_csv("wa_unique_coords.csv", show_col_types = FALSE)
 
 wa <- wa %>%
-  left_join(wa_long_lat, by = "address", relationship = "many-to-many")
+  left_join(wa_long_lat, by = "address")
 
 # write_csv(wa, "wa_cleaned.csv")
 ```
@@ -561,22 +555,22 @@ wa <- wa %>%
 
 ```{r}
 nsw <- nsw %>%
-  left_join(nsw_address, by = c("address","lat","long"), relationship = "many-to-many")
+  left_join(nsw_address, by = c("address","lat","long"))
 
 nt <- nt %>%
-  left_join(nt_address, by = c("address","lat","long"), relationship = "many-to-many")
+  left_join(nt_address, by = c("address","lat","long"))
 
 qld <- qld %>%
-  left_join(qld_address, by = c("address","lat","long"), relationship = "many-to-many")
+  left_join(qld_address, by = c("address","lat","long"))
 
 sa <- sa %>%
-  left_join(sa_address, by = c("address","lat","long"), relationship = "many-to-many")
+  left_join(sa_address, by = c("address","lat","long"))
 
 tas <- tas %>%
-  left_join(tas_address, by = c("address","lat","long"), relationship = "many-to-many")
+  left_join(tas_address, by = c("address","lat","long"))
 
 wa <- wa %>%
-  left_join(wa_address, by = c("address","lat","long"), relationship = "many-to-many")
+  left_join(wa_address, by = c("address","lat","long"))
 ```
 
 ## Remove outliers according to empirical rule
@@ -614,6 +608,24 @@ tas <- tas %>%
   filter(price > mean(price) - 3 * sd(price))
 
 # ignore WA 
+```
+
+## Format WA collection_date into date format
+
+```{r}
+# format date for WA
+wa <- wa %>%
+  mutate(collection_date = as.Date(collection_date, format = "%d/%m/%Y"))
+
+```
+
+## Switch lat and long order for WA
+
+```{r}
+# switch lat and long order for WA
+temp <- wa %>%
+  select(lat, long)
+
 ```
 
 
@@ -1658,101 +1670,10 @@ prophet_plot_components(m, forecast)
 ```{r}
 # Print unique fuel types
 unique_fueltypes <- unique(wa$fueltype)
-print(unique_fueltypes)
+plot_points_on_map(wa, "ULP", "2022-12-21")
 
 ```
 
-```{r}
-# Print unique collection dates
-unique_dates <- unique(wa$collection_date)
-print(unique_dates)
-
-```
-
-
-
-
-```{r}
-# Check dimensions of wa
-dim(wa)
-
-```
-
-
-```{r}
-plot_points_on_map_second <- function(df, fueltype, collection_date) {
-  # Filter the data by fuel type
-  df <- df[df$fueltype == fueltype, ]
-  print(dim(df))  # Add this line to print dimensions
-  
-  # Filter the data by collection date
-  df <- df[df$collection_date == collection_date, ]
-  print(dim(df))  # Add this line to print dimensions
-  
-  # Convert lat and long to spatial points
-  points_sdf = st_as_sf(df, coords = c("long", "lat"), crs = 4326)
-  
-  # Plot the data
-  mapview(points_sdf, zcol = "price", label = points_sdf$brand)
-}
-
-```
-
-```{r}
-library(dplyr)
-
-```
-
-
-```{r}
-# Assuming your data frame is named 'original_data'
-copied_data <- copy_to(src = as.data.frame(wa), dest = NULL)
-
-```
-
-
-
-
-
-
-
-
-```{r}
-# Assuming your data frame is named 'original_data'
-library(base)
-
-```
-
-```{r}
-
-copied_data <- copy(wa)
-# Assuming your data frame is named 'original_data'
-copied_data <- original_data
-
-
-```
-
-
-
-
-
-
-```{r}
-head(wa)
-```
-```{r}
-str(wa)
-```
-
-
-```{r}
-#wa <- wa %>%
- # select(collection_date, TRADING_NAME, brand, fueltype, price, address, postcode, AREA_DESCRIPTION, REGION_DESCRIPTION, long, lat, convenient)
-
-
-fueltype <- unique(wa$fueltype)
-plot_points_on_map_second(wa,fueltype[1], "2021-31-12") 
-```
 
 ### Fuel type vs price
 
@@ -1768,7 +1689,7 @@ wa %>%
 ```{r}
 # Combustion fuel price distribution by brand
 wa %>%
-  filter(fueltype == "E85") %>%  # change fuel type
+  filter(fueltype == "ULP") %>%  # change fuel type
   filter(collection_date == "2022-12-21") %>%
   ggplot(aes(x=brand, y=price)) +
   geom_boxplot() +
@@ -1792,7 +1713,7 @@ ggplot(wa, aes(x=fueltype)) +
 p_code <- "6000"
 n_trials <- 1000
 
-distance2 <- calculate_distance_parallel(wa, postcode_sf, pop_density, "U91", "2023-10-10", p_code, n_trials)
+distance2 <- calculate_distance_parallel(wa, postcode_sf, pop_density, "ULP", "2023-10-10", p_code, n_trials)
 
 # Plotting the average calculated by parallel processing
 ggplot(distance2, aes(x = seq_along(average))) +
@@ -1825,17 +1746,17 @@ summary(wa_model_parallel)
 ### Plot average price for a given fueltype over time
 
 ```{r}
-plot_avg_fuel_price_time(wa, "U91")
+plot_avg_fuel_price_time(wa, "ULP")
 ```
 
 ### t.test to check if there is a significant difference in price between convenient and inconvenient fuel station
 
 ```{r}
 wa_convenient <- wa %>%
-  filter(convenient == TRUE, fueltype == "U91")
+  filter(convenient == TRUE, fueltype == "ULP")
 
 wa_inconvenient <- wa %>%
-  filter(convenient == FALSE, fueltype == "U91")
+  filter(convenient == FALSE, fueltype == "ULP")
 
 t.test(wa_convenient$price, wa_inconvenient$price, paired = FALSE, var.equal = FALSE)
 # var.test(wa_convenient$price, wa_inconvenient$price)
@@ -1858,7 +1779,7 @@ t.test(wa_convenient$price, wa_inconvenient$price, paired = FALSE, var.equal = F
 
 ```{r}
 fuel_data <- wa %>%
-  filter(fueltype == "U91") %>%
+  filter(fueltype == "ULP") %>%
   group_by(collection_date) %>%
   summarise(avg_price = mean(price, na.rm = TRUE)) #%>%
   # only take 1 year of data
@@ -1869,7 +1790,7 @@ fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
 
 # Apply stlf and forecast
 model <- stlf(fuel_ts, method='ets')
-fc <- forecast(model, h = 100)
+fc <- forecast(model, h = 15)
 
 # Plot the forecast
 plot(fc)
@@ -1902,7 +1823,7 @@ wa$collection_date <- as.Date(wa$collection_date)
 
 # Aggregate data to daily level
 daily_data <- wa %>%
-  filter(fueltype == "U91") %>%
+  filter(fueltype == "ULP") %>%
   group_by(collection_date) %>%
   summarise(price = mean(price, na.rm = TRUE))
 
@@ -1913,7 +1834,7 @@ ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)),
 fit <- auto.arima(ts_data)
 
 # Forecast
-future <- forecast(fit, h = 100)
+future <- forecast(fit, h = 15)
 
 # Plot forecast
 plot(future)
@@ -1925,13 +1846,13 @@ plot(future)
 ```{r}
 # Aggregate data to daily level
 daily_data <- wa %>%
-  filter(fueltype == "U91") %>%
+  filter(fueltype == "ULP") %>%
   group_by(collection_date) %>%
   summarise(price = mean(price, na.rm = TRUE)) %>%
   rename(ds = collection_date, y = price)
 
 m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
-future <- make_future_dataframe(m, periods = 100)
+future <- make_future_dataframe(m, periods = 15)
 forecast <- predict(m, future)
 tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
 plot(m, forecast)
