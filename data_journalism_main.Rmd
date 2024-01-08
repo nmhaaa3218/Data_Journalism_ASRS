@@ -816,7 +816,7 @@ fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
 
 # Apply stlf and forecast
 model <- stlf(fuel_ts, method='ets')
-fc <- forecast(model, h = 100)
+fc <- forecast(model, h = 15)
 
 # Plot the forecast
 plot(fc)
@@ -860,7 +860,7 @@ ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)),
 fit <- auto.arima(ts_data)
 
 # Forecast
-future <- forecast(fit, h = 100)
+future <- forecast(fit, h = 15)
 
 # Plot forecast
 plot(future)
@@ -878,7 +878,7 @@ daily_data <- nsw %>%
   rename(ds = collection_date, y = price)
 
 m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
-future <- make_future_dataframe(m, periods = 100)
+future <- make_future_dataframe(m, periods = 15)
 forecast <- predict(m, future)
 tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
 plot(m, forecast)
@@ -1205,7 +1205,7 @@ fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
 
 # Apply stlf and forecast
 model <- stlf(fuel_ts, method='ets')
-fc <- forecast(model, h = 100)
+fc <- forecast(model, h = 15)
 
 # Plot the forecast
 plot(fc)
@@ -1249,7 +1249,7 @@ ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)),
 fit <- auto.arima(ts_data)
 
 # Forecast
-future <- forecast(fit, h = 100)
+future <- forecast(fit, h = 15)
 
 # Plot forecast
 plot(future)
@@ -1267,7 +1267,7 @@ daily_data <- tas %>%
   rename(ds = collection_date, y = price)
 
 m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
-future <- make_future_dataframe(m, periods = 100)
+future <- make_future_dataframe(m, periods = 15)
 forecast <- predict(m, future)
 tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
 plot(m, forecast)
@@ -1594,7 +1594,7 @@ fuel_ts <- ts(fuel_data$avg_price, frequency = 52)
 
 # Apply stlf and forecast
 model <- stlf(fuel_ts, method='ets')
-fc <- forecast(model, h = 100)
+fc <- forecast(model, h = 15)
 
 # Plot the forecast
 plot(fc)
@@ -1638,7 +1638,7 @@ ts_data <- ts(daily_data$price, start = c(year(min(daily_data$collection_date)),
 fit <- auto.arima(ts_data)
 
 # Forecast
-future <- forecast(fit, h = 100)
+future <- forecast(fit, h = 15)
 
 # Plot forecast
 plot(future)
@@ -1656,7 +1656,7 @@ daily_data <- nt %>%
   rename(ds = collection_date, y = price)
 
 m <- prophet(daily_data, yearly.seasonality = TRUE, weekly.seasonality = TRUE, daily.seasonality = FALSE)
-future <- make_future_dataframe(m, periods = 100)
+future <- make_future_dataframe(m, periods = 15)
 forecast <- predict(m, future)
 tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
 plot(m, forecast)
