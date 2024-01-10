@@ -628,6 +628,28 @@ temp <- wa %>%
 
 ```
 
+###Extract NA addresses
+
+
+
+
+```{r}
+read_data <- read.csv("output_file.csv")
+#geocoded_data <- read_data %>%
+ # geocode(address, method = 'osm', lat = "latitude", long = "longitude")
+
+# Filter rows with NA in either latitude or longitude
+error_addresses <- read_data %>%
+  filter(is.na(lat) | is.na(long))
+
+# Save the error addresses to a new CSV file
+write.csv(error_addresses, "error_addresses.csv", row.names = FALSE)
+
+```
+
+
+
+
 
 # Data exploration
 
