@@ -647,6 +647,27 @@ write.csv(error_addresses, "error_addresses.csv", row.names = FALSE)
 
 ```
 
+###final WA addresses with full long and latitude
+
+```{r}
+# Load the data
+file1 <- read.csv("output_file.csv")
+file2 <- read.csv("error_addresses.csv")
+
+# Identify rows in file1 with NA latitude or longitude
+na_rows <- is.na(file1$lat) | is.na(file1$long)
+
+# Subset file1 to only include rows with NA latitude or longitude
+file1_na <- file1[na_rows, ]
+
+# Merge file1_na with file2 based on the address column
+merged_data <- merge(file1_na, file2, by = "address", all.x = TRUE)
+file1$lat[na_rows] <- merged_data$lat.y
+file1$long[na_rows] <- merged_data$long.y
+
+write.csv(file1, "WA_addresses_long_lat.csv", row.names = FALSE)
+
+```
 
 
 
