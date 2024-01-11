@@ -1,6 +1,6 @@
 ---
 title: "Data Journalism"
-author: "Manh Ha Nguyen, Trang Nguyen
+author: "Manh Ha Nguyen, Kieu Trang Nguyen"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -24,21 +24,9 @@ library(units)
 library(foreach)
 library(doParallel)
 
-# Shiny app
-library(shiny)
-
 # Time series forecasting
 library(forecast)
 library(prophet)
-
-# Python integration
-# To find path
-#   Use where python for Windows
-#   Use which python3 for UNIX
-# library(reticulate)
-# use_python("C:/Users/Nebula PC/AppData/Local/Programs/Python/Python312/python.exe", required = TRUE)
-
-
 ```
 
 
@@ -610,7 +598,8 @@ tas <- tas %>%
 # ignore WA 
 ```
 
-## Format WA collection_date into date format
+## WA data cleaning 
+### Format WA collection_date into date format
 
 ```{r}
 # format date for WA
@@ -619,7 +608,7 @@ wa <- wa %>%
 
 ```
 
-## Switch lat and long order for WA
+### Switch lat and long order for WA
 
 ```{r}
 # switch lat and long order for WA
@@ -628,10 +617,7 @@ temp <- wa %>%
 
 ```
 
-###Extract NA addresses
-
-
-
+### Extract NA addresses
 
 ```{r}
 read_data <- read.csv("output_file.csv")
@@ -643,11 +629,11 @@ error_addresses <- read_data %>%
   filter(is.na(lat) | is.na(long))
 
 # Save the error addresses to a new CSV file
-write.csv(error_addresses, "error_addresses.csv", row.names = FALSE)
+# write.csv(error_addresses, "error_addresses.csv", row.names = FALSE)
 
 ```
 
-###final WA addresses with full long and latitude
+### Final WA addresses with full long and latitude
 
 ```{r}
 # Load the data
@@ -665,11 +651,9 @@ merged_data <- merge(file1_na, file2, by = "address", all.x = TRUE)
 file1$lat[na_rows] <- merged_data$lat.y
 file1$long[na_rows] <- merged_data$long.y
 
-write.csv(file1, "WA_addresses_long_lat.csv", row.names = FALSE)
+# write.csv(file1, "WA_addresses_long_lat.csv", row.names = FALSE)
 
 ```
-
-
 
 
 # Data exploration
@@ -751,14 +735,6 @@ ggplot(nsw, aes(x=fueltype)) +
 
 ### How far do you have to travel on average to fill up your car
 
--   Consider population density of each postcode to determine the weight of each postcode
-
--   Randomly distributed a corresponding number of representative points in each postcode
-
--   Distributed accordingly to the population density
-
--   Calculate average distance from each point to the nearest gas station
-
 ```{r}
 # View the postcode shapefile
 # mapview(postcode_sf, zcol = "POA_CODE21", legend = FALSE)
@@ -833,9 +809,6 @@ t.test(nsw_convenient$price, nsw_inconvenient$price, paired = FALSE, var.equal =
 ```
 
 
-
-
-
 ### Time series prediction
 
 #### Using ETS (Exponential Triple Smoothing)
@@ -863,7 +836,6 @@ fc <- forecast(model, h = 15)
 
 # Plot the forecast
 plot(fc)
-
 
 
 ```
