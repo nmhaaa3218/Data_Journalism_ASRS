@@ -522,6 +522,7 @@ wa <- wa %>%
 # wa_address <- wa %>%
 #  distinct(address) 
 
+# Pass information to Python
 # write_csv(wa_address, "unique_addresses.csv")
 
 
@@ -530,9 +531,10 @@ wa <- wa %>%
 ### Merge lat and long for WA
 
 ```{r}
-
+# Read in long and lat for WA
 wa_long_lat <- read_csv("wa_unique_coords.csv", show_col_types = FALSE)
 
+# Left join by address column
 wa <- wa %>%
   left_join(wa_long_lat, by = "address")
 
@@ -595,10 +597,10 @@ tas <- tas %>%
   filter(price < mean(price) + 3 * sd(price)) %>%
   filter(price > mean(price) - 3 * sd(price))
 
-# ignore WA 
+# ignore WA (assumed all correct)
 ```
 
-## WA data cleaning 
+## WA data cleaning and manually geocoding for addresses with NA lat and long
 ### Format WA collection_date into date format
 
 ```{r}
