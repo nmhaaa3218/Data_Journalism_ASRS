@@ -4,3 +4,4 @@
 .Ruserdata
 osm-osm-roads-2020-na.csv
 fuel-prices/wa_cleaned.csv
+.DS_Store
